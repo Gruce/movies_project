@@ -24,18 +24,25 @@
         <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
     </head>
     <body class="font-sans antialiased">
-        {{-- <x-jet-banner />
-        <div class="min-h-screen bg-black">
-            @include('includes.navbar')
-            @include('includes.sidebar')
-        </div> --}}
-        <div class="container mx-auto mt-4">
-            @yield('content')
-            @isset($slot)
-            {{ $slot }}
-            @endisset
 
+        <div class=" bg-black">
+            @include('includes.navbar')
         </div>
+        <div class="flex flex-col md:flex-row">
+            <div class="w-full md:w-1/2 ">
+            @include('includes.sidebar')
+            </div>
+            <div class="w-full md:w-1/2 ">
+                <div class="container mx-auto ">
+                    @yield('content')
+                    @isset($slot)
+                    {{ $slot }}
+                    @endisset
+
+                </div>
+            </div>
+        </div>
+
         @stack('modals')
 
         @livewireScripts
