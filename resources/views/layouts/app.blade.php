@@ -20,18 +20,22 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
-
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
     </head>
     <body class="font-sans antialiased">
-        <x-jet-banner />
+        {{-- <x-jet-banner />
+        <div class="min-h-screen bg-black">
+            @include('includes.navbar')
+            @include('includes.sidebar')
+        </div> --}}
+        <div class="container mx-auto mt-4">
+            @yield('content')
+            @isset($slot)
+            {{ $slot }}
+            @endisset
 
-        <div class="min-h-screen bg-gray-100">
-            <main>
-                {{ $slot }}
-            </main>
         </div>
-
         @stack('modals')
 
         @livewireScripts
