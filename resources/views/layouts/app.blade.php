@@ -10,6 +10,8 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
@@ -19,29 +21,53 @@
 
 
         <!-- Scripts -->
+
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
     </head>
-    <body class="font-sans antialiased ">
-
-        <div class=" bg-black">
-            @include('includes.navbar')
-        </div>
-        <div class="flex flex-col md:flex-row">
-            <div class="">
-                @include('includes.sidebar')
+    <body class="font-sans antialiased bg-gray-200">
+            <div class="container mx-auto">
+                <div class="my-4 gap-4 ">
+                    <div class="p-6 text-center bg-white rounded-lg border border-gray-200  dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex flex-row">
+                            <div class="basis-1/6">
+                                @include('includes.sidebar')
+                            </div>
+                            <div class="block basis-4/6 ">
+                                <div class="flex flex-col">
+                                    <div class=" sticky mx-3  top-0 z-30">
+                                        @include('includes.navbar')
+                                    </div>
+                                    <div class="container ">
+                                        @isset($slot)
+                                        {{ $slot }}
+                                        @endisset
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="basis-1/6">
+                                @include('includes.sidebar')
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="w-full bg-gray-800">
-                <div class="container mx-auto px-5 py-5">
+
+        {{-- <div class="flex flex-col md:flex-row">
+            <div class="w-full md:w-1/2 ">
+            @include('includes.sidebar')
+            </div>
+            <div class="w-full md:w-1/2 ">
+                <div class="container mx-auto ">
                     @yield('content')
                     @isset($slot)
                     {{ $slot }}
                     @endisset
+
                 </div>
             </div>
-
-        </div>
+        </div> --}}
 
         @stack('modals')
 
