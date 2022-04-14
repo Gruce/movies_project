@@ -14,11 +14,7 @@
             </div>
         @endif
     
-        <x-ui.button>Hello 2</x-ui.button> 
-        <x-ui.alert color="error">
-        <span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
-        </x-ui.alert>
-        <x-ui.movie></x-ui.movie>
-        
+        <x-ui.button>Hello 2</x-ui.button>
+    
     </div>
 </div>
