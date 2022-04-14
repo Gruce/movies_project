@@ -1,5 +1,5 @@
-    <aside class="w-64  " aria-label="Sidebar">
-    <div class="overflow-y-auto h-screen py-4 px-3 bg-black  ">
+    <aside class="w-64" aria-label="Sidebar">
+    <div class="overflow-y-auto h-screen py-4 px-3 bg-gray-800  ">
         <ul class="space-y-2">
             <li>
                 <a href="#" class="flex items-center p-2 text-base font-normal text-white  rounded-lg  ">
