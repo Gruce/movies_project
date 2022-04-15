@@ -6,14 +6,19 @@ use Illuminate\View\Component;
 
 class SmallCover extends Component
 {
+    public $name, $rating, $imgUrl, $url, $category;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name, $rating, $imgUrl, $url, $category)
     {
-        //
+        $this->name = $name;
+        $this->rating = $rating;
+        $this->imgUrl = $imgUrl;
+        $this->url = $url;
+        $this->category = $category;
     }
 
     /**
