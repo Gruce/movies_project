@@ -19,9 +19,7 @@
         <div class="">
             <h1 class="  text-left ml-3 text-gray-500 text-lg font-bold"> Popular Movies</h1>
             <div class="flex flex-col">
-                <x-ui.small-cover class="my-2"></x-ui.small-cover>
-                <x-ui.small-cover></x-ui.small-cover>
-                <x-ui.small-cover></x-ui.small-cover>
+                <x-ui.small-cover class="my-2" name="Avengers 345" rating="9" imgUrl="/img/inv.jpg" category="Action , Drama" url="#" ></x-ui.small-cover>
             </div>
             <x-ui.button color="error" class="mt-3 text-white w-full">
                 see more
