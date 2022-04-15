@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home\Home;
 use App\Http\Controllers\Logout;
-
+use App\Http\Livewire\Movies\Show;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +16,7 @@ use App\Http\Controllers\Logout;
 */
 
 Route::get('/', Home::class)->name('home');
+Route::get('/show',Show::class)->name('show');
 Route::get('/logout', [Logout::class, 'logout'])->name('logout');
 // Route::middleware([
 //     'auth:sanctum',
