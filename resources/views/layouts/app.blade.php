@@ -32,12 +32,12 @@
                     <div class="p-6 text-center bg-white rounded-lg border border-gray-200  dark:bg-gray-800 dark:border-gray-700">
                         <div class="flex flex-row">
                             <div class="basis-1/6">
-                                @include('includes.sidebar')
+                                <x-sidebar />
                             </div>
                             <div class="block basis-4/6 ">
                                 <div class="flex flex-col">
                                     <div class=" sticky mx-3  top-0 z-30">
-                                        @include('includes.navbar')
+                                        <x-navbar />
                                     </div>
                                     <div class="container ">
                                         @isset($slot)
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="basis-1/6">
-                                @include('includes.sidebar')
+
                             </div>
                         </div>
                     </div>
