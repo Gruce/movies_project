@@ -11,17 +11,15 @@
             </a>
         </div>
         @auth
-            <div class=" block p-2 mb-10 bg-gray-200 rounded-lg border border-gray-200  hover:bg-gray-100 "
-                x-data="{ expanded: false }">
-                <button class="w-full" @click="expanded = ! expanded">
-
-                    <span class="text-md" :class="expanded ? 'text-red-500' : 'text-gray-800'">Welcome {{ auth()->user()->name }}
-                        <i :class="expanded ? 'fa-angle-up text-red-500' : 'fa-angle-down text-gray-800' "
-                            class="ml-5 fa-solid  group-hover:text-red-500 transition duration-75"></i>
+            <div class=" block p-2 mb-10 bg-gray-100 rounded-lg border border-gray-200  px-4" x-data="{ expanded: false }">
+                <button class="w-full flex justify-between items-center" @click="expanded = ! expanded">
+                    <span class="text-md" :class="expanded ? 'text-red-500' : 'text-gray-800'">
+                        Welcome {{ auth()->user()->name }} 👋
                     </span>
-
+                    <i :class="expanded ? 'fa-angle-up text-red-500' : 'fa-angle-down text-gray-800' "
+                        class="ml-5 fa-solid  group-hover:text-red-500 transition duration-75"></i>
                 </button>
-                <ul class="space-y-1 mt-3" x-show="expanded" x-collapse>
+                <ul class="space-y-1 mt-3 border-t pt-3" x-show="expanded" x-collapse>
                     <li>
                         <a href=""
                             class="flex  items-center py-2  px-4 text-base font-normal  text-gray-900    rounded-lg group hover:bg-gray-200 ">
@@ -39,9 +37,10 @@
                         </a>
                     </li>
                 </ul>
-
             </div>
         @endauth
+
+        
         @foreach ($tabs as $tab)
             <div class="mb-5 @if (!$loop->first) mt-10 @endif ml-3 text-left  text-gray-300  ">
                 {{ $tab->title }}

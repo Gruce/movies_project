@@ -1673,6 +1673,10 @@ select {
   padding-top: 0px;
   padding-bottom: 0px;
 }
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
 .pt-6 {
   padding-top: 1.5rem;
 }
@@ -1705,6 +1709,9 @@ select {
 }
 .pl-10 {
   padding-left: 2.5rem;
+}
+.pt-3 {
+  padding-top: 0.75rem;
 }
 .text-left {
   text-align: left;
