@@ -8,14 +8,17 @@
             <input type="text" id="table-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-30 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search">
         </div>
     </div>
-    <div class="flex flex-wrap -mx-2">
-        <div class="w-full md:w-1/2 px-2">
+    <div class="flex flex-col ">
+        <div class="">
             <h1 class="  text-left ml-3 text-gray-500 text-lg font-bold"> Popular Movies</h1>
-            <div class=""> الكارد الاول </div>
-            <div class=""> الكارد الثاني </div>
-            <div class=""> الكارد الثالث </div>
+            <div class="flex flex-col">
+                <x-ui.small-cover class="my-2"></x-ui.small-cover>
+                <x-ui.small-cover></x-ui.small-cover>
+                <x-ui.small-cover></x-ui.small-cover>
+                
+            </div>
             <x-ui.button class="w-50 mt-5 text-white" text="see more">
-                see more
+                    see more
             </x-ui.button>
         </div>
         @auth
