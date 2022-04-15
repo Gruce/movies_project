@@ -33,11 +33,12 @@ class Sidebar extends Component
 
             ],
             'Settings' => [
+
                 [
                     'name' => 'Sign in',
                     'route' => '#',
                     'icon' => 'fa-solid fa-arrow-right-to-bracket',
-                    'active' => true,
+                    'active' => false,
                 ],
 
                 [
@@ -47,6 +48,7 @@ class Sidebar extends Component
                     'active' => false,
 
                 ],
+
             ],
         ];
 
