@@ -1023,6 +1023,27 @@ select {
 .left-1\/2 {
   left: 50%;
 }
+.top-10 {
+  top: 2.5rem;
+}
+.left-10 {
+  left: 2.5rem;
+}
+.top-1 {
+  top: 0.25rem;
+}
+.left-1 {
+  left: 0.25rem;
+}
+.right-1 {
+  right: 0.25rem;
+}
+.top-2 {
+  top: 0.5rem;
+}
+.right-2 {
+  right: 0.5rem;
+}
 .z-0 {
   z-index: 0;
 }
