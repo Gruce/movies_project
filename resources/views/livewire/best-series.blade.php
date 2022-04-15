@@ -1,5 +1,6 @@
-    <div class="w-60 h-96  bg-cover flex items-end justify-center  rounded-lg shadow-md relative group transition ease-in-out duration-300"
-        style="background-image: url('/img/inv.jpg')">
+<div>
+    <div class="w-60 h-80  bg-cover flex items-end justify-center  rounded-lg shadow-md relative group transition ease-in-out duration-300"
+        style="background-image: url('https://i.ytimg.com/vi/N2YTmooNR8E/maxresdefault.jpg')">
         <div class="w-full h-full absolute bg-gradient-to-b  to-gray-700 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300"></div>
         <div class="z-10 -mb-3 text-center group-hover:mb-5 group-hover:duration-300 ">
             <h1 class="text-white text-x1 font-semibold tracking-tight">Avengers</h1>
@@ -16,4 +17,4 @@
             </div>
         </div>
     </div>
-
+</div>

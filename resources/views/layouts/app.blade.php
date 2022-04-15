@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="basis-1/6">
-
+                                @livewire('right-side')
                             </div>
                         </div>
                     </div>

@@ -36,18 +36,19 @@ class Sidebar extends Component
 
                 [
                     'name' => 'Sign in',
-                    'route' => '#',
+                    'route' => 'login',
                     'icon' => 'fa-solid fa-arrow-right-to-bracket',
                     'active' => false,
                 ],
 
                 [
                     'name' => 'Sign up',
-                    'route' => '#',
+                    'route' => 'register',
                     'icon' => 'fa-solid fa-user-plus',
                     'active' => false,
 
                 ],
+               
 
             ],
         ];
