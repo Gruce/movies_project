@@ -33,6 +33,7 @@
                         </span>
                     </button>
                 </div>
+                <x-ui.small-cover></x-ui.small-cover>
                 <div class="text-left font-bold text-lg text-gray-500 mt-10">
                     <h1>
                         Best Movies
