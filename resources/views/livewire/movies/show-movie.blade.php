@@ -2,7 +2,7 @@
     <div class="p-3 bg-gray-100 rounded-lg">
         <div class="flex flex-row">
             <div class="basis-1/4 flex justify-center items-center w-1/4 ">
-                <x-ui.movie name="Avengers" rating="4" imgUrl="/img/inv.jpg" url="#" />
+                <img class="rounded-lg h-45 basis-1/3" src="/img/inv.jpg" />
             </div>
             <div class="basis-3/4 w-3/4">
                 <div class="flex flex-col gap-5 p-5">
