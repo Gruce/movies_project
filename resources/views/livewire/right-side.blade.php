@@ -20,7 +20,7 @@
         </div>
 
         <div class="w-full md:w-1/2 px-2 mt-8">
-            <h1 class=" text-left ml-3 text-gray-500 text-lg font-bold">Favorits</h1>
+            <h1 class=" text-left ml-3 text-gray-500 text-lg font-bold">Favourites</h1>
             <div class=""> الكارد الاول </div>
             <div class=""> الكارد الثاني </div>
             <div class=""> الكارد الثالث </div>
