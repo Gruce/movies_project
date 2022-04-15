@@ -1,120 +1,54 @@
 <div>
-    <div class="my-4 gap-4 w-full">
-        <div class="p-6  mx-auto text-center rounded-lg border border-red-800  dark:bg-gray-800 dark:border-red-800">
-            {{-- tap --}}
-            <div>
-                <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-red-800 dark:border-red-800 dark:text-white">
-                    <li class="mr-2">
-                    <a href="#" aria-current="page" class="inline-block p-4 text-gray-50 bg-red-800 rounded-t-lg active dark:bg-gray-800 dark:text-gray-50">Movies</a>
-                    </li>
-                    <li class="mr-2">
-                    <a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-red-800 dark:hover:bg-gray-800 dark:hover:text-gray-300">Series</a>
-                    </li>
-                </ul>
-            </div>
-            <div id="default-carousel" class="relative rounded-lg pt-5" data-carousel="static">
+    <div class="container ">
+        <div class="my-4 mr-16 ml-16">
+                <div id="animation-carousel" class="relative" data-carousel="static">
+                    <!-- Carousel wrapper -->
+                    <div class="overflow-hidden relative h-48 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
+                         <!-- Item 1 -->
+                        <div class="hidden duration-200 ease-linear" data-carousel-item>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUIBgVeuD_lC5UPPa2bf95LVeyukQcEDFVoQ&usqp=CAU" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="hidden duration-200 ease-linear" data-carousel-item>
+                            <img src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="hidden duration-200 ease-linear" data-carousel-item="active">
+                            <img src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+                        </div>
 
-                <!-- Carousel wrapper -->
-                <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
-                    <!-- Item 1 -->
-                    <div class="hidden duration-700 ease-in-out rounded-lg" data-carousel-item>
-                        <span class="absolute top-1/2 left-1/2 text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 sm:text-3xl dark:text-gray-800">First Slide</span>
-                        <img src="https://api.lorem.space/image/furniture?w=250&h=180&hash=500B67FB" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+
                     </div>
-                    <!-- Item 2 -->
-                    <div class="hidden duration-700 ease-in-out rounded-lg" data-carousel-item>
-                        <img src="https://api.lorem.space/image/car?w=800&h=200&hash=8B7BCDC2" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="hidden duration-700 ease-in-out rounded-lg" data-carousel-item>
-                        <img src="https://api.lorem.space/image/car?w=800&h=200&hash=8B7BCDC2" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
-                    </div>
+                    <!-- Slider controls -->
+                    <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
+                        <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                            <span class="hidden">Previous</span>
+                        </span>
+                    </button>
+                    <button type="button" class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next>
+                        <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            <span class="hidden">Next</span>
+                        </span>
+                    </button>
                 </div>
-                <!-- Slider indicators -->
-                <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                <div class="text-left font-bold text-lg text-gray-500 mt-10">
+                    <h1>
+                        Best Movies
+                    </h1>
+
                 </div>
-                <!-- Slider controls -->
-                <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
-                    <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                        <span class="hidden">Previous</span>
-                    </span>
-                </button>
-                <button type="button" class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next>
-                    <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        <span class="hidden">Next</span>
-                    </span>
-                </button>
-            </div>
-            <h1 class="text-left mt-5 text-lg text-white">Top Moveis</h1>
-            <div class="grid grid-cols-4 gap-4 mt-6 flex-nowrap">
-            <x-ui.movie></x-ui.movie> <x-ui.movie></x-ui.movie> <x-ui.movie></x-ui.movie><x-ui.movie></x-ui.movie>
-                <div>
-                    <img src="https://api.lorem.space/image/game?w=256&h=400&hash=8B7BCDC2" class="w-60 h-24 rounded-lg" alt="...">
+                @for ($i = 0; $i < 60; $i++)
+                <div class="text-left font-bold text-lg text-gray-500 mt-10">
+                    <h1>
+                        Best Movies
+                    </h1>
+
                 </div>
-                <!-- ... -->
-                
-                <div>
-                    <img src="https://api.lorem.space/image/game?w=256&h=400&hash=8B7BCDC2" class="w-60 h-24 rounded-lg" alt="...">
-                </div>
-                <div>
-                    <img src="https://api.lorem.space/image/game?w=256&h=400&hash=8B7BCDC2" class="w-60 h-24 rounded-lg" alt="...">
-                </div>
-                <div>
-                    <img src="https://api.lorem.space/image/game?w=256&h=400&hash=8B7BCDC2" class="w-60 h-24 rounded-lg" alt="...">
-                </div>
-            </div>
-            <div class="grid grid-cols-4 gap-4 mt-6">
-                <div>
-                    <img src="https://api.lorem.space/image/game?w=256&h=400&hash=8B7BCDC2" class="w-60 h-40 rounded-lg" alt="...">
-                </div>
-                <!-- ... -->
-                <div>
-                    <img src="https://api.lorem.space/image/game?w=256&h=400&hash=8B7BCDC2" class="w-60 h-40 rounded-lg" alt="...">
-                </div>
-                <div>
-                    <img src="https://api.lorem.space/image/game?w=256&h=400&hash=8B7BCDC2" class="w-60 h-40 rounded-lg" alt="...">
-                </div>
-                <div>
-                    <img src="https://api.lorem.space/image/game?w=256&h=400&hash=8B7BCDC2" class="w-60 h-40 rounded-lg" alt="...">
-                </div>
-            </div>
+                @endfor
+                <x-ui.icon-button icon="fa-solid fa-angle-left" class="w-8 h-8 text-xl" />
+              
         </div>
     </div>
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
