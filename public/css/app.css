@@ -1054,6 +1054,14 @@ select {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
 }
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -1149,6 +1157,9 @@ select {
 }
 .-mt-px {
   margin-top: -1px;
+}
+.mr-0 {
+  margin-right: 0px;
 }
 .block {
   display: block;
@@ -1425,6 +1436,9 @@ select {
 .gap-5 {
   gap: 1.25rem;
 }
+.gap-3 {
+  gap: 0.75rem;
+}
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(2rem * var(--tw-space-x-reverse));
@@ -1636,6 +1650,12 @@ select {
 .p-2\.5 {
   padding: 0.625rem;
 }
+.p-0 {
+  padding: 0px;
+}
+.p-0\.5 {
+  padding: 0.125rem;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1699,6 +1719,18 @@ select {
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+}
+.py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+.px-0\.5 {
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
+}
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 .pt-6 {
   padding-top: 1.5rem;

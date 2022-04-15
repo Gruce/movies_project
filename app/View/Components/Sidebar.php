@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class Sidebar extends Component
 {
@@ -19,15 +20,15 @@ class Sidebar extends Component
         $this->tabs = [
             new Tab (
                 'Menu', [
-                    new TabItem('Home', 'fa-solid fa-archway', 'home', true),
                     new TabItem('Home', 'fa-solid fa-archway', 'home'),
+                    new TabItem('Movies', 'fa-solid fa-film', 'movies-all'),
                 ]
             ),
             new Tab (
                 'Settings', [
-                    new TabItem('Sign in', 'fa-solid fa-arrow-right-to-bracket', 'login', false, false),
-                    new TabItem('Sign up', 'fa-solid fa-user-plus', 'register', false, false),
-                    new TabItem('Sign out', 'fa-solid fa-user-plus', 'logout-get', false, true),
+                    new TabItem('Sign in', 'fa-solid fa-arrow-right-to-bracket', 'login', false),
+                    new TabItem('Sign up', 'fa-solid fa-user-plus', 'register', false),
+                    new TabItem('Sign out', 'fa-solid fa-user-minus', 'logout-get', true),
                 ]
             ),
         ];
@@ -64,11 +65,11 @@ class TabItem {
     public $active;
     public $auth;
 
-    public function __construct($title = 'Tab Item', $icon = 'fa-solid fa-archway', $route = 'home', $active = false, $auth = null){
+    public function __construct($title = 'Tab Item', $icon = 'fa-solid fa-archway', $route = 'home', $auth = null){
         $this->title = $title;
         $this->icon = $icon;
         $this->route = $route;
-        $this->active = $active;
+        $this->active = request()->routeIs($route . '*');
         $this->auth = $auth;
     }
 }

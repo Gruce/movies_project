@@ -19,7 +19,7 @@ class IconButton extends Component
     {
 
         // COLOR PROPERTIES
-        $this->default = 'flex items-center justify-center border hover:text-white focus:ring-4 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center aspect-square ';
+        $this->default = 'flex items-center justify-center border hover:text-white focus:ring-4 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center ';
 
         if ($this->color = $color) {
             switch ($this->color) {
