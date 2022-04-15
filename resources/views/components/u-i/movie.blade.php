@@ -10,10 +10,9 @@
                     @endforeach
                 </div>
                 <div class="flex gap-1 mt-3 invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300">
-                    <x-ui.button href="{{$url}}" color="error">Watch Now</x-ui.button>
+                    <x-ui.button href="{{$url}}" color="error">Watch Now!</x-ui.button>
                 </div>
             </div>
         </div>
-        <x-ui.icon-button icon="fa-solid fa-clock fa-2x" color="error" class="top-2 right-2 absolute" />
+        <x-ui.icon-button icon="fa-regular fa-clock fa-2x" color="light2" class="top-2 right-2 absolute" />
     </div>
-
