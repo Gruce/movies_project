@@ -15,7 +15,7 @@
                 <x-ui.small-cover class="my-2"></x-ui.small-cover>
                 <x-ui.small-cover></x-ui.small-cover>
                 <x-ui.small-cover></x-ui.small-cover>
-                
+
             </div>
             <x-ui.button class="w-50 mt-5 text-white" text="see more">
                     see more
