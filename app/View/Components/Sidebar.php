@@ -3,10 +3,11 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-
+use Illuminate\Support\Facades\Auth;
 class Sidebar extends Component
 {
     public $tabs;
+
     /**
      * Create a new component instance.
      *
@@ -18,17 +19,16 @@ class Sidebar extends Component
             'Menu' => [
                 [
                     'name' => 'Home',
-                    'route' => '#',
+                    'route' => 'home',
                     'icon' => 'fa-solid fa-archway',
                     'active' => true,
                 ],
 
                 [
                     'name' => 'Home',
-                    'route' => '#',
+                    'route' => 'home',
                     'icon' => 'fa-solid fa-archway',
                     'active' => false,
-
                 ],
 
             ],
@@ -39,6 +39,7 @@ class Sidebar extends Component
                     'route' => 'login',
                     'icon' => 'fa-solid fa-arrow-right-to-bracket',
                     'active' => false,
+                    'auth' => false,
                 ],
 
                 [
@@ -46,12 +47,35 @@ class Sidebar extends Component
                     'route' => 'register',
                     'icon' => 'fa-solid fa-user-plus',
                     'active' => false,
-
+                    'auth' => false,
                 ],
-               
+                [
+                    'name' => 'Logout',
+                    'route' => 'logout',
+                    'icon' => 'fa-solid fa-user-plus',
+                    'active' => false,
+                    'auth' => true,
+                ],
+
 
             ],
         ];
+        $this->tabs=collect($this->tabs);
+
+            $this->tabs=$this->tabs->filter(function ($tab, $key) {
+                $tab=collect($tab);
+                $tab->filter(function ($item, $key) {
+                    $item=collect($item);
+                    // if($item->has('auth')){
+                    //     if(Auth::check()){
+                    //         return $item->get('auth');
+                    //     }
+                    //     return false;
+                    // }
+                    return true;
+                });
+            });
+            dd($this->tabs);
 
     }
 

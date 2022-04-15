@@ -1,4 +1,4 @@
-<div>
+<div class="sticky top-0">
     <div class="p-4">
         <label for="search" class="sr-only">Search</label>
         <div class="relative mt-1">
@@ -18,7 +18,7 @@
                 see more
             </x-ui.button>
         </div>
-
+        @auth
         <div class="w-full md:w-1/2 px-2 mt-8">
             <h1 class=" text-left ml-3 text-gray-500 text-lg font-bold">Favourites</h1>
             <div class=""> الكارد الاول </div>
@@ -28,5 +28,6 @@
                 see more
             </x-ui.button>
         </div>
+        @endauth
     </div>
 </div>

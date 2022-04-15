@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Home;
+use App\Http\Livewire\Home\Home;
+use App\Http\Controllers\Logout;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +15,14 @@ use App\Http\Livewire\Home;
 |
 */
 
-Route::get('/', Home::class);
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+Route::get('/', Home::class)->name('home');
+Route::get('/logout', [Logout::class, 'logout'])->name('logout');
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });

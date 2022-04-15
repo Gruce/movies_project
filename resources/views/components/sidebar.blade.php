@@ -11,49 +11,54 @@
             </a>
         </div>
         @auth
-        <div class=" block p-6 mb-10 max-w-sm bg-gray-200 rounded-lg border border-gray-200  hover:bg-gray-100 " x-data="{ expanded: false }">
+            <div class=" block p-3 mb-10 max-w-sm bg-gray-200 rounded-lg border border-gray-200  hover:bg-gray-100 "
+                x-data="{ expanded: false }">
                 <button @click="expanded = ! expanded">
 
-                    <span class=" text-lg font-bold text-gray-800 ">Welcome {{auth()->user()->name}}
-                        <i class="ml-5 fa-solid fa-angle-down text-gray-800 group-hover:text-red-500 transition duration-75"></i>
+                    <span class=" text-lg  text-gray-800 ">Welcome {{ auth()->user()->name }}
+                        <i :class="expanded ? 'fa-angle-up' : 'fa-angle-down' "
+                            class="ml-5 fa-solid  text-gray-800 group-hover:text-red-500 transition duration-75"></i>
                     </span>
 
-            </button>
-                    <ul class="space-y-2  "  x-show="expanded" x-collapse>
-                        <li>
-                            <a href=""
+                </button>
+                <ul class="space-y-2 mt-5 " x-show="expanded" x-collapse>
+                    <li>
+                        <a href=""
                             class="flex  items-center py-2  px-4 text-base font-normal  text-gray-900    rounded-lg group hover:bg-gray-100 ">
-                            <i class=" fa-solid fa-archway   text-gray-500 group-hover:text-gray-900     transition duration-75   "></i>
-                                <span class="ml-3">Profile</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="space-y-2  "  x-show="expanded" x-collapse>
-                        <li>
-                            <a href=""
-                                class="flex  items-center py-2  px-4 text-base font-normal  text-gray-900    rounded-lg group hover:bg-gray-200 ">
-                                <i class=" fa-solid fa-archway   text-gray-500 group-hover:text-gray-900     transition duration-75   "></i>
-                                <span class="ml-3">Profile</span>
-                            </a>
-                        </li>
-                    </ul>
+                            <i
+                                class=" fa-solid fa-archway   text-gray-500 group-hover:text-gray-900     transition duration-75   "></i>
+                            <span class="ml-3">Profile</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="space-y-2  " x-show="expanded" x-collapse>
+                    <li>
+                        <a href=""
+                            class="flex  items-center py-2  px-4 text-base font-normal  text-gray-900    rounded-lg group hover:bg-gray-200 ">
+                            <i
+                                class=" fa-solid fa-archway   text-gray-500 group-hover:text-gray-900     transition duration-75   "></i>
+                            <span class="ml-3">Profile</span>
+                        </a>
+                    </li>
+                </ul>
 
             </div>
         @endauth
         @foreach ($tabs as $name => $tab)
-        <div class="mb-5 @if(!$loop->first) mt-10  @endif ml-3 text-left  text-gray-300  ">
-            {{$name}}
-        </div>
-            @foreach ($tab as $item)
-                <ul class="space-y-2 ml-3 ">
+            <div class="mb-5 @if (!$loop->first) mt-10 @endif ml-3 text-left  text-gray-300  ">
+                {{ $name }}
+            </div>
+            <ul class="space-y-2 ml-3 ">
+                @foreach ($tab as $item)
                     <li>
-                        <a href="{{$item['route']}}"
-                            class="flex  items-center py-2  px-4 text-base font-normal @if($item['active']) text-red-500 @else text-gray-900  @endif rounded-lg group hover:bg-gray-100 ">
-                            <i class=" {{$item['icon']}}  @if($item['active']) text-red-500 group-hover:text-red-500 @else text-gray-500 group-hover:text-gray-900  @endif transition duration-75   "></i>
-                            <span class="ml-3">{{$item['name']}}</span>
+                        <a href="{{ route($item['route']) }}"
+                            class="flex  items-center py-2  px-4 text-base font-normal @if ($item['active']) text-red-500 @else text-gray-900 @endif rounded-lg group hover:bg-gray-100 ">
+                            <i
+                                class=" {{ $item['icon'] }}  @if ($item['active']) text-red-500 group-hover:text-red-500 @else text-gray-500 group-hover:text-gray-900 @endif transition duration-75   "></i>
+                            <span class="ml-3">{{ $item['name'] }}</span>
                         </a>
                     </li>
-                </ul>
-            @endforeach
+                @endforeach
+            </ul>
         @endforeach
 </aside>
