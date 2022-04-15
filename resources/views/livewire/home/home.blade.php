@@ -1,4 +1,7 @@
 <div>
+    <div class="sticky mx-3 top-0 z-30">
+        <x-navbar />
+    </div>
     <div class="flex flex-col">
         <div id="animation-carousel" class="relative" data-carousel="static">
             <!-- Carousel wrapper -->

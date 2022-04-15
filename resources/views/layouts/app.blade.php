@@ -40,9 +40,6 @@
                     </div>
                     <div class="basis-4/6 w-4/6">
                         <div class="px-10">
-                            <div class="sticky mx-3 top-0 z-30">
-                                <x-navbar />
-                            </div>
                             <div class="container py-3">
                                 @isset($slot)
                                     {{ $slot }}
