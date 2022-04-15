@@ -4,31 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Navbar extends Component
+class Sidebar extends Component
 {
-    public $navs;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-
     public function __construct()
     {
-        $this->navs = [
-            [
-                'name' => 'Movies',
-                'route' => '#',
-                'active' => true,
-            ],
-
-            [
-                'name' => 'Series',
-                'route' => '#',
-                'active' => false,
-            ],
-        ];
-
+        //
     }
 
     /**
@@ -38,6 +23,6 @@ class Navbar extends Component
      */
     public function render()
     {
-        return view('components.navbar');
+        return view('components.sidebar');
     }
 }
