@@ -2,6 +2,7 @@
     <div class="sticky mx-3 top-0 z-30">
         <x-navbar />
     </div>
+    <x-ui.rating rating="9"><x-ui.rating>
     <div class="flex flex-col">
         <div id="animation-carousel" class="relative" data-carousel="static">
             <!-- Carousel wrapper -->
@@ -50,7 +51,7 @@
                 </span>
             </button>
         </div>
-
+        
 
         @if ($type == 'movies')
             <div>
