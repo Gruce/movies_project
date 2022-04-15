@@ -1,13 +1,25 @@
 <div>
     <div class="p-3 bg-gray-100 rounded-lg">
         <div class="flex flex-row">
-            <div class="basis-1/4 flex justify-center items-center w-1/4 ">
+            <div class="basis-1/4 flex flex-col justify-center items-center w-1/4 ">
                 <img class="rounded-lg h-45 basis-1/3" src="/img/inv.jpg" />
+                <x-ui.button color="error" class="mt-3 text-white block " href="#">
+                    WATCH NOW
+                </x-ui.button>
             </div>
             <div class="basis-3/4 w-3/4">
                 <div class="flex flex-col gap-5 p-5">
-                    <div class="mt-9 text-left font-semibold ">
-                        <span class="text-xl">Title</span>
+                    <div class="mt-9 text-left font-semibold flex justify-between ">
+                        <div>
+                            <span class="text-xl">Title</span>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-star "></i>
+                            <i class="fa-solid fa-star "></i>
+                            <i class="fa-solid fa-star "></i>
+                            <i class="fa-solid fa-star "></i>
+                            <i class="fa-solid fa-star "></i>
+                        </div>
                     </div>
 
                     <div class="flex-row justify-around text-left ">
@@ -33,7 +45,5 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
