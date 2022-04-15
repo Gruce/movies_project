@@ -21,7 +21,7 @@ class Button extends Component
 
         switch ($this->color){
             case "primary":
-                $this->default .= 'bg-blue-700 hover:bg-blue-800 focus:ring-blue-300';
+                $this->default .= 'bg-red-500 hover:bg-red-800 focus:ring-red-300';
                 break;
             case "secondary":
                 $this->default .= 'bg-gray-700 hover:bg-gray-800 focus:ring-gray-300';
