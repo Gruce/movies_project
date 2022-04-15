@@ -50,7 +50,7 @@
                     </span>
                 </button>
             </div>
-            
+
             <div class="flex justify-between mt-10 mb-5">
                 <div class="font-bold text-lg text-gray-500">
                     <h1>
@@ -59,14 +59,14 @@
 
                 </div>
                 <div>
-                    <x-ui.icon-button icon="fa-solid fa-angle-left" class="w-8 h-8 text-xl"/>
+                    <x-ui.icon-button  icon="fa-solid fa-angle-left" class="w-8 h-8 text-xl"/>
                     <x-ui.icon-button icon="fa-solid fa-angle-right" class="w-8 h-8 text-xl" />
                 </div>
 
             </div>
-            
 
-            
+
+
             @livewire('home.best-movies')
 
 

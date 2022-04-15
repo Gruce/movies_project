@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home\Home;
 use App\Http\Controllers\Logout;
-
+use App\Http\Livewire\Movies\ShowMovie;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +17,8 @@ use App\Http\Controllers\Logout;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/logout', [Logout::class, 'logout'])->name('logout-get');
+
+Route::get('/show-movie', ShowMovie::class)->name('show-movie');
 // Route::middleware([
 //     'auth:sanctum',
 //     config('jetstream.auth_session'),
