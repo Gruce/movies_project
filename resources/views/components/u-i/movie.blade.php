@@ -14,8 +14,8 @@
                 </div>
             </div>
         </div>
-        <x-ui.button color="secondary" class="top-0 left-0 absolute text-2xs py-3 px-3 text-white flex items-center" href="#">
+        <x-ui.icon-button color="secondary" class="top-0 left-0 absolute" href="#">
             <i class="fa-solid fa-clock fa-2x"></i>
-        </x-ui.button>
+        </x-ui.icon-button>
     </div>
 
