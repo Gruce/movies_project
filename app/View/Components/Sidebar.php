@@ -27,7 +27,7 @@ class Sidebar extends Component
                 'Settings', [
                     new TabItem('Sign in', 'fa-solid fa-arrow-right-to-bracket', 'login', false, false),
                     new TabItem('Sign up', 'fa-solid fa-user-plus', 'register', false, false),
-                    new TabItem('Sign out', 'fa-solid fa-user-plus', 'logout', false, true),
+                    new TabItem('Sign out', 'fa-solid fa-user-plus', 'logout-get', false, true),
                 ]
             ),
         ];

@@ -65,11 +65,11 @@
 
             </div>
             
-            <div class="flex flex-nowrap gap-5">
-                @for ($i = 0; $i < 3; $i++)
-                    @livewire('home.best-movies')
-                @endfor
-            </div>
+
+            
+            @livewire('home.best-movies')
+
+
             <div class="flex justify-between mt-10 mb-5">
                 <div class="text-left font-bold text-lg text-gray-500 ">
                     <h1>
