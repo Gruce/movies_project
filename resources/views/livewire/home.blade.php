@@ -52,10 +52,12 @@
             </div>
             <h1 class="text-left mt-5 text-lg text-white">Top Moveis</h1>
             <div class="grid grid-cols-4 gap-4 mt-6 flex-nowrap">
+            <x-ui.movie></x-ui.movie> <x-ui.movie></x-ui.movie> <x-ui.movie></x-ui.movie><x-ui.movie></x-ui.movie>
                 <div>
                     <img src="https://api.lorem.space/image/game?w=256&h=400&hash=8B7BCDC2" class="w-60 h-24 rounded-lg" alt="...">
                 </div>
                 <!-- ... -->
+                
                 <div>
                     <img src="https://api.lorem.space/image/game?w=256&h=400&hash=8B7BCDC2" class="w-60 h-24 rounded-lg" alt="...">
                 </div>
