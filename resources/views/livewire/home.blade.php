@@ -47,7 +47,7 @@
 
                 </div>
                 @endfor
-                <x-ui.icon-button icon="fa-solid fa-angle-left" class="w-8 h-8 text-xl" />
+                <x-ui.icon-button class="w-8 h-8 text-xl" />
               
         </div>
     </div>

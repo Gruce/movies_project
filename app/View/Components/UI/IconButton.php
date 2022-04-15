@@ -12,9 +12,12 @@ class IconButton extends Component
      *
      * @return void
      */
-    public function __construct($icon)
+    public function __construct($icon = null)
     {
-        $this->icon = $icon;
+        if ($icon)
+            $this->icon = $icon;
+        else
+            $this->icon = "fa-solid fa-circle-xmark";
     }
 
     /**
