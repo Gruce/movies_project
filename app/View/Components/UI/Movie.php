@@ -16,7 +16,7 @@ class Movie extends Component
     public function __construct($name, $rating, $imgUrl, $url)
     {
         $this->name = $name;
-        $this->rating = $rating;
+        $this->rating = round($rating/2);
         $this->imgUrl = $imgUrl;
         $this->url = $url;
     }

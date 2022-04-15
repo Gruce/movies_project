@@ -29,17 +29,17 @@
     <body class="font-sans antialiased bg-gray-200">
             <div class="container mx-auto">
                 <div class="my-4 gap-4 ">
-                    <div class="p-6 text-center bg-white rounded-lg border border-gray-200  dark:bg-gray-800 dark:border-gray-700">
+                    <div class="p-6 text-center bg-white rounded-lg border border-gray-200">
                         <div class="flex flex-row">
                             <div class="basis-1/6">
                                 <x-sidebar />
                             </div>
                             <div class="block basis-4/6 ">
                                 <div class="flex flex-col">
-                                    <div class=" sticky mx-3  top-0 z-30">
+                                    <div class="sticky mx-3 top-0 z-30">
                                         <x-navbar />
                                     </div>
-                                    <div class="container ">
+                                    <div class="container p-5">
                                         @isset($slot)
                                         {{ $slot }}
                                         @endisset
