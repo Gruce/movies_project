@@ -1,13 +1,11 @@
 <?php
-
+// calling a button use <x-ui.icon-button/>
 namespace App\View\Components\UI;
 
 use Illuminate\View\Component;
 
 class IconButton extends Component
 {
-    // public $color;
-    // public $default;
     public $icon;
     public $default;
     /**
@@ -19,7 +17,7 @@ class IconButton extends Component
     {
 
         // COLOR PROPERTIES
-        $this->default = 'flex items-center justify-center border hover:text-white focus:ring-4 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center aspect-square ';
+        $this->default = 'flex items-center justify-center hover:text-white focus:ring-2 focus:outline-none font-medium rounded-full text-sm p-0 text-center inline-flex items-center aspect-square ';
 
         if ($this->color = $color) {
             switch ($this->color) {
@@ -58,8 +56,4 @@ class IconButton extends Component
     {
         return view('components.u-i.icon-button');
     }
-    //     public function render()
-    //     {
-    //     return view('components.u-i.button');
-    //     }
 }

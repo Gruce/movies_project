@@ -1,4 +1,5 @@
 <div>
+    <x-ui.icon-button color="error"/>
     <div id="animation-carousel" class="relative" data-carousel="static">
         <!-- Carousel wrapper -->
         <div class="overflow-hidden relative h-48 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
@@ -57,8 +58,8 @@
 
         </div>
         <div>
-            <x-ui.icon-button icon="fa-solid fa-angle-left" class="w-8 h-8 text-xl" />
-            <x-ui.icon-button icon="fa-solid fa-angle-right" class="w-8 h-8 text-xl" />
+            <x-ui.icon-button icon="fa-solid fa-angle-left" class="w-8 h-8 text-xl"/>
+            <x-ui.icon-button icon="fa-solid fa-angle-right" class="w-8 h-8 text-xl"/>
         </div>
 
     </div>
