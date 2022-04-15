@@ -67,7 +67,7 @@
             
             <div class="flex flex-nowrap gap-5">
                 @for ($i = 0; $i < 3; $i++)
-                    @livewire('best-movies')
+                    @livewire('home.best-movies')
                 @endfor
             </div>
             <div class="flex justify-between mt-10 mb-5">
@@ -83,7 +83,7 @@
             </div>
             <div class="flex flex-nowrap gap-5">
                 @for ($i=0;$i<3;$i++)
-                @livewire('best-series')
+                @livewire('home.best-series')
                 @endfor
             </div>
 
