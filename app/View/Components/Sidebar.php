@@ -6,6 +6,7 @@ use Illuminate\View\Component;
 
 class Sidebar extends Component
 {
+    public $tabs;
     /**
      * Create a new component instance.
      *
@@ -13,7 +14,42 @@ class Sidebar extends Component
      */
     public function __construct()
     {
-        //
+        $this->tabs = [
+            'Menu' => [
+                [
+                    'name' => 'Home',
+                    'route' => '#',
+                    'icon' => 'fa-solid fa-archway',
+                    'active' => true,
+                ],
+
+                [
+                    'name' => 'Home',
+                    'route' => '#',
+                    'icon' => 'fa-solid fa-archway',
+                    'active' => false,
+
+                ],
+
+            ],
+            'Settings' => [
+                [
+                    'name' => 'Sign in',
+                    'route' => '#',
+                    'icon' => 'fa-solid fa-arrow-right-to-bracket',
+                    'active' => true,
+                ],
+
+                [
+                    'name' => 'Sign up',
+                    'route' => '#',
+                    'icon' => 'fa-solid fa-user-plus',
+                    'active' => false,
+
+                ],
+            ],
+        ];
+
     }
 
     /**
