@@ -16,7 +16,7 @@ use App\Http\Controllers\Logout;
 */
 
 Route::get('/', Home::class)->name('home');
-Route::get('/logout', [Logout::class, 'logout'])->name('logout');
+Route::get('/logout', [Logout::class, 'logout'])->name('logout-get');
 // Route::middleware([
 //     'auth:sanctum',
 //     config('jetstream.auth_session'),
