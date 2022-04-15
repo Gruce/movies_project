@@ -1,6 +1,6 @@
 <a href="#" class="max-w-sm bg-white rounded-lg p-2 flex mt-3 hover:bg-gray-100">
-         <img class="rounded-lg h-24 basis-1/3" src="/img/inv.jpg" />
-    <div class="px-2 w-full flex flex-col items-start basis-2/3">
+         <img class="rounded-lg h-28 basis-1/3 w-1/3" src="/img/inv.jpg" />
+    <div class="px-2 flex flex-col items-start basis-2/3 w-2/3">
             <h1 class="font-semibold text-left">Avangers Avangers </h1>
             <p class="text-xs text-gray-500">Action , Drama</p>
             <div class="flex mt-1">

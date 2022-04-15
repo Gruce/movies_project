@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Illuminate\Http\Request;
 
 class Navbar extends Component
 {
@@ -13,22 +14,21 @@ class Navbar extends Component
      * @return void
      */
 
-    public function __construct()
-    {
+    public function __construct(Request $request){
+        $type = $request->query('type');
+
         $this->navs = [
             [
                 'name' => 'Movies',
-                'route' => '#',
-                'active' => true,
+                'route' => 'movies',
+                'active' => $type == 'movies',
             ],
-
             [
                 'name' => 'Series',
-                'route' => '#',
-                'active' => false,
+                'route' => 'series',
+                'active' => $type == 'series',
             ],
         ];
-
     }
 
     /**

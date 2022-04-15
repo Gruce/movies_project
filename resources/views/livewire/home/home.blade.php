@@ -52,15 +52,15 @@
         </div>
 
 
-
-        <div>
-            @livewire('home.best-movies')
-        </div>
-
-        <div>
-            @livewire('home.best-series')
-        </div>
-
+        @if ($type == 'movies')
+            <div>
+                @livewire('home.best-movies')
+            </div>
+        @else
+            <div>
+                @livewire('home.best-series')
+            </div>
+        @endif
     </div>
 
 </div>

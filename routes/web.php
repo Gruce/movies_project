@@ -6,8 +6,8 @@ use App\Http\Controllers\Logout;
 use App\Http\Livewire\Home\Home;
 
 use App\Http\Livewire\Movies\{
-    ShowMovie,
-    Show as ShowMovies,
+    Show as ShowMovie,
+    All as AllMovies,
 };
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +27,9 @@ Route::get('/', Home::class)->name('home');
 Route::get('/logout', [Logout::class, 'logout'])->name('logout-get');
 
 Route::prefix('movies')->group(function (){
-    Route::get('/show-movie/{id?}', ShowMovie::class)->name('show-movie');
-    Route::get('/show', ShowMovies::class)->name('show');
+    Route::get('/', AllMovies::class)->name('movies-all');
+    
+    Route::get('/show/{id?}', ShowMovie::class)->name('movies-show');
 });
 
 
