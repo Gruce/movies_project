@@ -10,48 +10,21 @@
                 <span class="ml-3 font-bold">Dashboard</span>
             </a>
         </div>
+        @foreach ($tabs as $name => $tab)
+        <div class="mb-5 @if(!$loop->first) mt-10  @endif ml-3 text-left  text-gray-300  ">
+            {{$name}}
+        </div>
+            @foreach ($tab as $item)
+                <ul class="space-y-2 ml-3 ">
+                    <li>
+                        <a href="{{$item['route']}}"
+                            class="flex  items-center py-2  px-4 text-base font-normal @if($item['active']) text-red-500 @else text-gray-900  @endif rounded-lg group hover:bg-gray-100 ">
+                            <i class=" {{$item['icon']}}  @if($item['active']) text-red-500 group-hover:text-red-500 @else text-gray-500 group-hover:text-gray-900  @endif transition duration-75   "></i>
+                            <span class="ml-3">{{$item['name']}}</span>
+                        </a>
+                    </li>
 
-        <div class="mb-5 ml-3 text-left  text-gray-300  ">
-            Menu
-        </div>
-        <ul class="space-y-2 ml-3 ">
-            <li>
-                <a href="#"
-                    class="flex  items-center py-2  px-4 text-base font-normal text-red-500 rounded-lg group hover:bg-gray-100 ">
-                    <i
-                        class=" text-red-500 transition duration-75  group-hover:text-red-500 "></i>
-                    <span class="ml-3">Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="#"
-                    class="flex  items-center py-2 px-4 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100 ">
-                    <i
-                        class="fa-solid fa-archway  text-gray-500 transition duration-75  group-hover:text-gray-900 "></i>
-                    <span class="ml-3">Home</span>
-                </a>
-            </li>
-        </ul>
-         <div class="mb-5 mt-10 ml-3 text-left  text-gray-300  ">
-            Settings
-        </div>
-        <ul class="space-y-2 ml-3 ">
-            <li>
-                <a href="#"
-                    class="flex  items-center py-2 px-4 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100  ">
-                    <i
-                        class="  text-gray-500 transition duration-75  group-hover:text-gray-900"></i>
-                    <span class="ml-3">Login</span>
-                </a>
-            </li>
-            <li>
-                <a href="#"
-                    class="flex  items-center py-2 px-4 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100 ">
-                    <i
-                        class="fa-solid fa-user-plus  text-gray-500 transition duration-75  group-hover:text-gray-900 "></i>
-                    <span class="ml-3">Register</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+                </ul>
+            @endforeach
+        @endforeach
 </aside>

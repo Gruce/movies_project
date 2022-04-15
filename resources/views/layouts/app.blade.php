@@ -54,21 +54,6 @@
                 </div>
             </div>
 
-        {{-- <div class="flex flex-col md:flex-row">
-            <div class="w-full md:w-1/2 ">
-            @include('includes.sidebar')
-            </div>
-            <div class="w-full md:w-1/2 ">
-                <div class="container mx-auto ">
-                    @yield('content')
-                    @isset($slot)
-                    {{ $slot }}
-                    @endisset
-
-                </div>
-            </div>
-        </div> --}}
-
         @stack('modals')
 
         @livewireScripts
