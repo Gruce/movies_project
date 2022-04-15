@@ -7,5 +7,6 @@
                 <span class="bg-yellow-300   text-gray-800 text-2xs   mr-1 px-1 py-0.25 rounded ">IMDB</span>
                 <p class="text-xs"> 7.2 </p>
             </div>
+            <x-ui.icon-button icon="fa-regular fa-clock" class="w-4 h-4 text-xl mt-2"/>
     </div>
 </a>
