@@ -1,9 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Home\Home;
 use App\Http\Controllers\Logout;
-use App\Http\Livewire\Movies\ShowMovie;
+
+use App\Http\Livewire\Home\Home;
+
+use App\Http\Livewire\Movies\{
+    ShowMovie,
+    Show as ShowMovies,
+};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,10 +20,18 @@ use App\Http\Livewire\Movies\ShowMovie;
 |
 */
 
+
+
 Route::get('/', Home::class)->name('home');
+
 Route::get('/logout', [Logout::class, 'logout'])->name('logout-get');
 
-Route::get('/show-movie', ShowMovie::class)->name('show-movie');
+Route::prefix('movies')->group(function (){
+    Route::get('/show-movie/{id?}', ShowMovie::class)->name('show-movie');
+    Route::get('/show', ShowMovies::class)->name('show');
+});
+
+
 // Route::middleware([
 //     'auth:sanctum',
 //     config('jetstream.auth_session'),
