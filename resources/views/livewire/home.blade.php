@@ -33,22 +33,21 @@
                         </span>
                     </button>
                 </div>
-                <div class="text-left font-bold text-lg text-gray-500 mt-10">
-                    <h1>
-                        Best Movies
-                    </h1>
+                <div class="col justify-around">
+                    <div class="mb-5 text-left font-bold text-lg text-gray-500 mt-10">
+                        <h1>
+                            Best Movies
+                        </h1>
+                    </div>
 
                 </div>
-                @for ($i = 0; $i < 60; $i++)
-                <div class="text-left font-bold text-lg text-gray-500 mt-10">
-                    <h1>
-                        Best Movies
-                    </h1>
+                
+                <div class="flex flex-nowrap gap-5">
+                    @for ($i=0;$i<3;$i++)
+                    @livewire('best-movies')
+                    @endfor
+                  </div>
 
-                </div>
-                @endfor
-                <x-ui.icon-button class="w-8 h-8 text-xl" />
-              
         </div>
     </div>
 </div>
