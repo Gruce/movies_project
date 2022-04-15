@@ -1,4 +1,6 @@
 <div>
+    <x-ui.icon-button  class="w-8 h-8 text-xl" />
+                <x-ui.button color="" class="w-25 h-10 text-sm"> Hello!</x-ui.button>
     <div class="container ">
         <div class="my-4 mr-16 ml-16">
                 <div id="animation-carousel" class="relative" data-carousel="static">
@@ -47,8 +49,7 @@
 
                 </div>
                 @endfor
-                <x-ui.icon-button class="w-8 h-8 text-xl" />
-                <x-ui.button color="primary " class="w-25 h-10 text-sm"> Hello!</x-ui.button>
+                
         </div>
     </div>
 </div>
