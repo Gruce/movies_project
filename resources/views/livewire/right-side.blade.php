@@ -14,9 +14,9 @@
             <div class=""> الكارد الاول </div>
             <div class=""> الكارد الثاني </div>
             <div class=""> الكارد الثالث </div>
-            <button class=" mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                See More
-            </button>
+            <x-ui.button class="w-50 mt-5 text-white" text="see more">
+                see more
+            </x-ui.button>
         </div>
 
         <div class="w-full md:w-1/2 px-2 mt-8">
@@ -24,9 +24,9 @@
             <div class=""> الكارد الاول </div>
             <div class=""> الكارد الثاني </div>
             <div class=""> الكارد الثالث </div>
-            <button class=" mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                See More
-            </button>
+            <x-ui.button class="w-50 mt-5 text-white" text="see more">
+                see more
+            </x-ui.button>
         </div>
     </div>
 </div>
