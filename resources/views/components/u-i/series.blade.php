@@ -1,4 +1,4 @@
-    <div class="w-52 h-80 bg-cover flex items-end justify-center rounded-lg relative group transition ease-in-out duration-300"
+<div class="w-52 h-80 bg-cover flex items-end justify-center rounded-lg relative group transition ease-in-out duration-300"
         style="background-image: url('{{$imgUrl}}')">
         <div class="w-full h-full absolute bg-gradient-to-b  to-gray-800 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300"></div>
             <div class="z-10 -mb-3 text-center group-hover:mb-5 group-hover:duration-300 ">
@@ -17,7 +17,7 @@
         <div class="opacity-0 group-hover:opacity-100 group-hover:duration-300">
             <x-ui.icon-button icon="fa-regular fa-clock fa-2x" color="light2" class="top-2 right-2 absolute" />
         </div>
-        <div  class="top-0 left-0 absolute  text-white bg-gradient-to-tl to-red-500 from-red-700  px-5 py-0.5 rounded-tl-[8px] rounded-br-[15px]" >
-            <i class="fa-solid fa-film"></i>
+        <div  class="top-0 left-0 absolute  text-white bg-gradient-to-tl to-red-500 from-red-700  px-4 py-0.5 rounded-tl-[8px] rounded-br-[15px]" >
+            <i class="fa-solid fa-tv"></i>
         </div>    
     </div>
