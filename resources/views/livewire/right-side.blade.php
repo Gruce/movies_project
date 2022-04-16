@@ -15,28 +15,39 @@
                 placeholder="Search" />
         </div>
     </div>
-    <div class="flex flex-col">
-        <div>
-            <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Movies</h1>
-            <div class="flex flex-col">
-                <x-ui.small-cover name="Avengers" rating="10" imgUrl="/img/inv.jpg" category="Action , Drama" url="#"></x-ui.small-cover>
-            </div>
 
-            <x-ui.button color="error" class="mt-3 text-white block" href="#">
-                SEE MORE
-            </x-ui.button>
-        </div>
-        @auth
-            <div class="w-full">
-                <hr class="my-5" />
-                <h1 class=" text-left text-gray-500 text-lg font-bold">Favourites</h1>
+    @if (Request::is('series*'))
+        <div class="flex flex-col">
+            <div>
+                <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Series</h1>
                 <div class="flex flex-col">
-                    
+                    <x-ui.small-cover name="Avengers" rating="10" imgUrl="/img/inv.jpg" category="Action , Drama" url="#"></x-ui.small-cover>
                 </div>
+
                 <x-ui.button color="error" class="mt-3 text-white block" href="#">
                     SEE MORE
                 </x-ui.button>
             </div>
-        @endauth
-    </div>
+            @auth
+               @livewire('series.favourites')
+            @endauth
+        </div>
+        @else
+        <div class="flex flex-col">
+            <div>
+                <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Movies</h1>
+                <div class="flex flex-col">
+                    <x-ui.small-cover name="Avengers" rating="10" imgUrl="/img/inv.jpg" category="Action , Drama" url="#"></x-ui.small-cover>
+                </div>
+
+                <x-ui.button color="error" class="mt-3 text-white block" href="#">
+                    SEE MORE
+                </x-ui.button>
+            </div>
+            @auth
+                @livewire('movies.favourites')
+            @endauth
+        </div>
+    @endif
+
 </div>
