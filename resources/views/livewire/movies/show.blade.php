@@ -2,49 +2,46 @@
     <div class="p-3 bg-gray-100 rounded-lg">
         <div class="flex flex-row">
             <div class="basis-1/4 flex flex-col justify-center items-center w-1/4 ">
-                <img class="rounded-lg h-45 basis-1/3" src="/img/inv.jpg" />
+                <img class="rounded-lg h-45 basis-1/3" src="{{$movie->cover->url}}" />
                 <div class="flex items-center mt-3 justify-between w-full">
                     <x-ui.button color="error" class="text-white block " href="#">
                         WATCH NOW
                     </x-ui.button>
                     <div class="flex justify-center">
-                        <x-ui.icon-button icon="fa-solid fa-thumbs-up" color="secondary" class="w-8 h-8 text-xl" />
-                        <x-ui.icon-button icon="fa-solid fa-thumbs-down" color="secondary" class="w-8 h-8 text-xl" />
+                        <x-ui.icon-button wire:click="like(true)" icon="fa-solid fa-thumbs-up" :color="$movie->liked(true) ? 'error' : 'secondary'"
+                            class="w-8 h-8 text-xl" />
+
+                        <x-ui.icon-button wire:click="like(false)" icon="fa-solid fa-thumbs-down" :color="$movie->liked(false) ? 'error' : 'secondary'"
+                            class="w-8 h-8 text-xl" />
                     </div>
                 </div>
             </div>
             <div class="basis-3/4 w-3/4">
-                <div class="flex flex-col gap-5 p-5">
+                <div class="flex flex-col gap-2 p-5">
                     <div class="mt-5 text-left font-semibold flex justify-between ">
                         <div>
-                            <span class="text-xl">Title</span>
+                            <span class="text-xl">{{ $movie->name }}</span>
                         </div>
-                        <div>
-                            <i class="fa-solid fa-star "></i>
-                            <i class="fa-solid fa-star "></i>
-                            <i class="fa-solid fa-star "></i>
-                            <i class="fa-solid fa-star "></i>
-                            <i class="fa-solid fa-star "></i>
+                        <div class="flex gap-5 items-center">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                                <span class="text-sm">{{ $movie->likes_count }}</span>
+                                <i class="fa-solid fa-thumbs-down"></i>
+                                <span class="text-sm">{{ $movie->dislikes_count }}</span>
+                            </div>
+                            <x-ui.rating :rating="$movie->rating" />
                         </div>
                     </div>
-
                     <div class="flex-row justify-around text-left ">
-                        <a href="#" class="text-gray-500 text-sm border border-gray-300 p-1 rounded-lg mr-2">
-                            action
-                        </a>
-                        <a href="#" class="text-gray-500 text-sm border border-gray-300 p-1 rounded-lg mr-2">
-                            action
-                        </a>
-                        <a href="#" class="text-gray-500 text-sm border border-gray-300 p-1 rounded-lg mr-2">
-                            action
-                        </a>
-                        <a href="#" class="text-gray-500 text-sm border border-gray-300 p-1 rounded-lg mr-2">
-                            action
-                        </a>
+                        @foreach ($movie->genres as $item)
+                            <span class="text-gray-500 text-sm   border-gray-400   mr-2">
+                                {{ $item->name }}
+                            </span>
+                        @endforeach
                     </div>
-                    <div class="text-left">
+                    <div class="text-left mt-5">
                         <span>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                            {{ $movie->description }}
                         </span>
                     </div>
 

@@ -35,7 +35,7 @@ Route::get('/logout', [Logout::class, 'logout'])->name('logout-get');
 Route::prefix('movies')->group(function (){
     Route::get('/', AllMovies::class)->name('movies-all');
 
-    Route::get('/show/{id?}', ShowMovie::class)->name('movies-show');
+    Route::get('/show/{movie}', ShowMovie::class)->name('movie-show');
 });
 
 
