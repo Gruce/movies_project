@@ -14,8 +14,8 @@
                 </div>
             </div>
         </div>
-        <div class="opacity-0 group-hover:opacity-100 group-hover:duration-300">
-            <x-ui.icon-button icon="fa-regular fa-clock fa-2x" color="light2" class="top-2 right-2 absolute" />
+        <div class="top-2 right-2 absolute flex flex-col gap-1">
+        <x-ui.icon-button icon="fa-regular fa-clock" color="light2" class="text-lg invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+        <x-ui.icon-button icon="fa-solid fa-bookmark" color="light2" class="text-lg invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
         </div>
-        <div  class="top-0 left-0 absolute  text-white bg-red-700   rounded-lg  text-sm px-5 py-1 mr-2 mb-2 "><i class="fa-solid fa-film"></i></div>    
     </div>
