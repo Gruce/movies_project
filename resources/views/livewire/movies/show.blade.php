@@ -8,10 +8,10 @@
                         WATCH NOW
                     </x-ui.button>
                     <div class="flex justify-center">
-                        <x-ui.icon-button wire:click="like()" icon="fa-solid fa-thumbs-up" color="secondary"
+                        <x-ui.icon-button wire:click="like(true)" icon="fa-solid fa-thumbs-up" :color="$movie->liked(true) ? 'error' : 'secondary'"
                             class="w-8 h-8 text-xl" />
 
-                        <x-ui.icon-button wire:click="dislike()" icon="fa-solid fa-thumbs-down" color="secondary"
+                        <x-ui.icon-button wire:click="like(false)" icon="fa-solid fa-thumbs-down" :color="$movie->liked(false) ? 'error' : 'secondary'"
                             class="w-8 h-8 text-xl" />
                     </div>
                 </div>

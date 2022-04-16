@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Movies;
 
 use Livewire\Component;
 use App\Models\Movie;
+
 class Show extends Component
 {
     public function mount(Movie $movie)
@@ -11,14 +12,9 @@ class Show extends Component
         $this->movie = $movie;
     }
 
-    public function like()
+    public function like($type)
     {
-        $this->movie->like();
-    }
-
-    public function dislike()
-    {
-        $this->movie->dislike();
+        $this->movie->like($type);
     }
 
     public function render()
