@@ -51,7 +51,7 @@
 <div class="grid grid-cols-4 gap-4 mt-8">
     @for ($i = 0; $i < 12; $i++)
         <div class="mr-5">
-            <livewire:ui.movie name="Avengers {{ $i + 1 }}" rating="10" imgUrl="/img/inv.jpg" movie_id="1" />
+            <livewire:ui.movie movie="1" />
         </div>
     @endfor
 </div>

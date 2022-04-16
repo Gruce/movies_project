@@ -114,9 +114,7 @@ class Movie extends Model
         }
     }
 
-    public function scopeLiked($query, $state){
-        return $query->whereHas('likes', function ($query) use ($state){
-            $query->where('type', $state)->where('user_id', auth()->id());
-        })->exists();
+    public function liked($state){
+        return $this->likes()->where('user_id', auth()->id())->where('type', $state)->exists();
     }
 }
