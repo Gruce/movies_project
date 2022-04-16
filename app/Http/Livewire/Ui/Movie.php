@@ -15,8 +15,8 @@ class Movie extends Component
         
     }
 
-    public function favourite(){
-        $this->movie->favourite();
+    public function favourite($state){
+        $this->movie->favourite($state);
     }
 
     public function render()

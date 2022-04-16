@@ -19,8 +19,13 @@
             <x-ui.icon-button wire:click="watch_later()" icon="fa-solid fa-clock" color="light2"
                 class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
 
-            <x-ui.icon-button wire:click="favourite()" icon="fa-solid fa-heart" color="light2"
-                class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+            @if (!$movie->favourited())
+                <x-ui.icon-button wire:click="favourite(true)" icon="fa-solid fa-heart" color="light2"
+                    class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+            @else
+                <x-ui.icon-button wire:click="favourite(false)" icon="fa-solid fa-heart" color="error"
+                    class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+            @endif
         @endauth
     </div>
     <div

@@ -85,11 +85,15 @@ class Movie extends Model
         $movie->cover()->save($cover);
     }
 
-    public function favourite(){
-        $favourite = new Favourite;
-        $favourite->user_id = auth()->id();
-
-        $this->favourites()->save($favourite);
+    public function favourite($state){
+        if (!$state) {
+            $this->favourites()->where('user_id', auth()->id())->detach();
+        } else {
+            $favourite = new Favourite;
+            $favourite->user_id = auth()->id();
+    
+            $this->favourites()->save($favourite);
+        }
     }
 
     public function like($state = true)
@@ -116,5 +120,9 @@ class Movie extends Model
 
     public function liked($state){
         return $this->likes()->where('user_id', auth()->id())->where('type', $state)->exists();
+    }
+
+    public function favourited(){
+        return $this->favourites()->where('user_id', auth()->id())->exists();
     }
 }
