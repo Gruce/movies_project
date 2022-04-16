@@ -4,7 +4,7 @@
     <div class="flex flex-col">
 
     </div>
-    <x-ui.button color="error" class="mt-3 text-white block" href="#">
+    <x-ui.button color="error" class="mt-3 text-white block" href="{{route('favourites')}}">
         SEE MORE
     </x-ui.button>
 </div>

@@ -12,6 +12,7 @@ use App\Http\Livewire\Movies\{
     Show as ShowMovie,
     All as AllMovies,
 };
+use App\Http\Livewire\Favourites\Favourites;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +45,7 @@ Route::prefix('series')->group(function (){
     // Route::get('/show/{id?}', ShowMovie::class)->name('movies-show');
 });
 
+Route::get('/favourites', Favourites::class)->name('favourites');
 
 // Route::middleware([
 //     'auth:sanctum',
