@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('movies', function (Blueprint $table) {
+        Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->float('rating')->default(0.0);
-            $table->integer('duration')->default(0);
-            $table->string('release_date');
-
+            $table->boolean('type')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('SET NULL');
+            $table->integer('likeable_id');
+            $table->string('likeable_type');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movies');
+        Schema::dropIfExists('likes');
     }
 };
