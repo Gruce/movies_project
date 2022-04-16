@@ -28,4 +28,16 @@ class Movie extends Model
         return $this->morphToMany(Favourite::class, 'favouriteables');
     }
 
+
+    //function
+
+    public function like()
+    {
+        $this->increment('likes');
+    }
+
+    public function dislike()
+    {
+        $this->increment('dislikes');
+    }
 }
