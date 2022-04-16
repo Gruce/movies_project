@@ -40,7 +40,7 @@ class IconButton extends Component
                     $this->default .= 'text-white border-gray-600 hover:bg-gray-900 focus:ring-gray-300';
                     break;
                 case "light2":
-                    $this->default .= 'text-gray-200 border-gray-700 hover:bg-gray-700 focus:ring-gray-300';
+                    $this->default .= 'text-gray-200 border-gray-700 focus:ring-gray-300';
                     break;
             }
         } else $this->default .= 'text-red-500 border-red-500 hover:bg-red-500 focus:ring-red-300';
