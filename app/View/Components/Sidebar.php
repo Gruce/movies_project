@@ -20,13 +20,13 @@ class Sidebar extends Component
         $this->tabs = [
             new Tab (
                 'Menu', [
-                    new TabItem('Home', 'fa-solid fa-archway', 'home'),
+                    new TabItem('Home', 'fa-solid fa-home', 'home'),
                     new TabItem('Movies', 'fa-solid fa-film', 'movies-all'),
                 ]
             ),
             new Tab (
                 'Settings', [
-                    new TabItem('Sign in', 'fa-solid fa-arrow-right-to-bracket', 'login', false),
+                    new TabItem('Sign in', 'fa-solid fa-right-to-bracket', 'login', false),
                     new TabItem('Sign up', 'fa-solid fa-user-plus', 'register', false),
                     new TabItem('Sign out', 'fa-solid fa-user-minus', 'logout-get', true),
                 ]
