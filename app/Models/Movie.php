@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Models\{
     Like,
     File,
-    Cover
+    Cover,
+    Favourite
 };
 
 class Movie extends Model
@@ -82,6 +83,13 @@ class Movie extends Model
         $cover = new Cover;
         $cover->url = $data['cover'];
         $movie->cover()->save($cover);
+    }
+
+    public function favourite(){
+        $favourite = new Favourite;
+        $favourite->user_id = auth()->id();
+
+        $this->favourites()->save($favourite);
     }
 
     public function like($state = true)
