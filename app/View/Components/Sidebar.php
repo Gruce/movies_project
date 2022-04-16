@@ -22,6 +22,8 @@ class Sidebar extends Component
                 'Menu', [
                     new TabItem('Home', 'fa-solid fa-home', 'home'),
                     new TabItem('Movies', 'fa-solid fa-film', 'movies-all'),
+                    new TabItem('Series', 'fa-solid fa-tv', 'series-all'),
+                    new TabItem('Favourites', 'fa-solid fa-heart', 'favourites'),
                 ]
             ),
             new Tab (
