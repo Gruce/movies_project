@@ -14,7 +14,6 @@
                         aria-current="page">{{$nav['name']}}</a>
                 </li>
                 @endforeach
-
             </ul>
         </div>
     </div>
