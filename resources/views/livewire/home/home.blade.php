@@ -51,7 +51,7 @@
             </button>
         </div>
 
-
+        <x-ui.series name="Vikings" rating="8.7" imgUrl="/img/Vik.jpg" url="#" />
         @if ($type == 'movies')
             <div>
                 @livewire('home.best-movies')
