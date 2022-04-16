@@ -59,5 +59,17 @@ class GenreSeeder extends Seeder
         Genre::create([
             'name' => 'Animation',
         ]);
+        // ID 12
+        Genre::create([
+            'name' => 'War',
+        ]);
+        // ID 13
+        Genre::create([
+            'name' => 'History',
+        ]);
+        // ID 14
+        Genre::create([
+            'name' => 'Biography',
+        ]);
     }
 }
