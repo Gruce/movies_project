@@ -15,12 +15,17 @@
     </div>
     <div class="top-2 right-2 absolute flex flex-col gap-2">
         <x-ui.icon-button icon="fa-solid fa-clock" color="light2"
-            class="text-lg invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+            class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300"/>
         <x-ui.icon-button icon="fa-solid fa-bookmark" color="light2"
-            class="text-lg invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+            class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300"/>
     </div>
     <div
         class="top-0 left-0 absolute text-white bg-gradient-to-tl to-red-500 from-red-700  px-5 py-0.5 rounded-tl-[8px] rounded-br-[15px]">
-        <i class="fa-solid fa-film"></i>
+        <button data-tooltip-target="tooltip-default" type="button" class="fa-solid fa-film"></button>
+<div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+    Movie
+    <div class="tooltip-arrow" data-popper-arrow></div>
+</div>
+        
     </div>
 </div>
