@@ -23,9 +23,9 @@
                         <div class="flex gap-5 items-center">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-thumbs-up"></i>
-                                <span class="text-sm">{{$movie->likes}}</span>
+                                <span class="text-sm">{{$movie->likes_count}}</span>
                                 <i class="fa-solid fa-thumbs-down"></i>
-                                <span class="text-sm">{{$movie->dislikes}}</span>
+                                <span class="text-sm">{{$movie->dislikes_count}}</span>
                             </div>
                             <x-ui.rating :rating="$movie->rating" />
                         </div>

@@ -28,4 +28,10 @@ class Episode extends Model
     {
         return $this->morphToMany(Favourite::class, 'favouriteables');
     }
+
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likeable');
+    }
+    
 }
