@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('favourite_id')->nullable()->constrained('favourites')->onDelete('SET NULL');
 
-            $table->integer('favouriteable_id');
-            $table->string('favouriteable_type');
+            $table->integer('favouriteables_id');
+            $table->string('favouriteables_type');
 
             $table->timestamps();
         });

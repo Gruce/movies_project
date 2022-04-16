@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Models\{
     Like,
     File,
-    Cover
+    Cover,
+    Favourite
 };
 
 class Movie extends Model
@@ -84,6 +85,17 @@ class Movie extends Model
         $movie->cover()->save($cover);
     }
 
+    public function favourite($state){
+        if (!$state) {
+            $this->favourites()->where('user_id', auth()->id())->detach();
+        } else {
+            $favourite = new Favourite;
+            $favourite->user_id = auth()->id();
+    
+            $this->favourites()->save($favourite);
+        }
+    }
+
     public function like($state = true)
     {
         // USER HAS LIKE ON THIS MOVIE
@@ -106,9 +118,11 @@ class Movie extends Model
         }
     }
 
-    public function scopeLiked($query, $state){
-        return $query->whereHas('likes', function ($query) use ($state){
-            $query->where('type', $state)->where('user_id', auth()->id());
-        })->exists();
+    public function liked($state){
+        return $this->likes()->where('user_id', auth()->id())->where('type', $state)->exists();
+    }
+
+    public function favourited(){
+        return $this->favourites()->where('user_id', auth()->id())->exists();
     }
 }
