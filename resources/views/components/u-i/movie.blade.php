@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="top-2 right-2 absolute flex flex-col gap-1">
-        <x-ui.icon-button icon="fa-regular fa-clock" color="light2" class="text-lg invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
-        <x-ui.icon-button icon="fa-solid fa-bookmark" color="light2" class="text-lg invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+        <x-ui.icon-button icon="fa-regular fa-clock" color="light2" class="text-lg invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300"/>
+        <x-ui.icon-button icon="fa-regular fa-bookmark" color="light2" class="text-lg invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300"/>
         </div>
     </div>
