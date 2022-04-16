@@ -62,6 +62,7 @@ class Movie extends Model
             return $query->where('user_id', auth()->id());
         });
         if ($likes->count() <= 0) {
+            dd($likes->get());
             if ($likes->likes()->first()->type) {
                 if ($state) {
                     $likes->likes()->first()->delete();
