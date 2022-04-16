@@ -13,5 +13,14 @@
             </div>
         </div>
     </div>
-    <x-ui.icon-button icon="fa-regular fa-clock fa-2x" color="light2" class="top-2 right-2 absolute" />
+    <div class="top-2 right-2 absolute flex flex-col gap-2">
+        <x-ui.icon-button icon="fa-solid fa-clock" color="light2"
+            class="text-lg invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+        <x-ui.icon-button icon="fa-solid fa-bookmark" color="light2"
+            class="text-lg invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+    </div>
+    <div
+        class="top-0 left-0 absolute text-white bg-gradient-to-tl to-red-500 from-red-700  px-5 py-0.5 rounded-tl-[8px] rounded-br-[15px]">
+        <i class="fa-solid fa-film"></i>
+    </div>
 </div>
