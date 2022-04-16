@@ -39,7 +39,7 @@
 <div class="grid grid-cols-4 gap-4 mt-8">
 @for ($i = 0; $i < 12; $i++)
             <div class="mr-5">
-                <x-ui.movie name="Avengers {{ $i+1 }}" rating="10" imgUrl="/img/inv.jpg" url="#" />
+                <livewire:ui.movie name="Avengers {{ $i+1 }}" rating="10" imgUrl="/img/inv.jpg" url="#" />
             </div>
         @endfor
 </div>
