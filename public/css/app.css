@@ -1165,6 +1165,9 @@ select {
 .mr-5 {
   margin-right: 1.25rem;
 }
+.-mt-px {
+  margin-top: -1px;
+}
 .mr-1 {
   margin-right: 0.25rem;
 }
@@ -1173,9 +1176,6 @@ select {
 }
 .ml-5 {
   margin-left: 1.25rem;
-}
-.-mt-px {
-  margin-top: -1px;
 }
 .block {
   display: block;
@@ -1327,6 +1327,9 @@ select {
 .flex-1 {
   flex: 1 1 0%;
 }
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
 .shrink-0 {
   flex-shrink: 0;
 }
@@ -1394,6 +1397,9 @@ select {
 }
 .cursor-pointer {
   cursor: pointer;
+}
+.snap-start {
+  scroll-snap-align: start;
 }
 .list-inside {
   list-style-position: inside;
@@ -1647,6 +1653,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(253 224 71 / var(--tw-bg-opacity));
 }
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
 }
@@ -1807,14 +1817,14 @@ select {
 .pb-1 {
   padding-bottom: 0.25rem;
 }
+.pt-8 {
+  padding-top: 2rem;
+}
 .pl-10 {
   padding-left: 2.5rem;
 }
 .pt-3 {
   padding-top: 0.75rem;
-}
-.pt-8 {
-  padding-top: 2rem;
 }
 .text-left {
   text-align: left;
@@ -1854,6 +1864,10 @@ select {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 .font-medium {
   font-weight: 500;
@@ -1955,6 +1969,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
+.text-gray-200 {
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
+}
 .text-gray-300 {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
@@ -1962,10 +1980,6 @@ select {
 .text-yellow-300 {
   --tw-text-opacity: 1;
   color: rgb(253 224 71 / var(--tw-text-opacity));
-}
-.text-gray-200 {
-  --tw-text-opacity: 1;
-  color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -1986,6 +2000,9 @@ select {
 }
 .opacity-50 {
   opacity: 0.5;
+}
+.opacity-25 {
+  opacity: 0.25;
 }
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -2648,4 +2665,5 @@ select {
     height: 24rem;
   }
 }
+
 
