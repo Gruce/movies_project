@@ -63,6 +63,10 @@ class User extends Authenticatable
         return $this->hasMany(Favourite::class);
     }
 
+    public function queues(){
+        return $this->hasMany(Queue::class);
+    }
+
     public function likes(){
         return $this->hasMany(Like::class);
     }

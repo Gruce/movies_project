@@ -24,6 +24,7 @@ class Sidebar extends Component
                     new TabItem('Movies', 'fa-solid fa-film', 'movies-all'),
                     new TabItem('Series', 'fa-solid fa-tv', 'series-all'),
                     new TabItem('Favourites', 'fa-solid fa-heart', 'favourites', true),
+                    new TabItem('Watch Later', 'fa-solid fa-clock', 'watch-later-all', true),
                 ]
             ),
             new Tab (

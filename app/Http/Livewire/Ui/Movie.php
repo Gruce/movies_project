@@ -7,16 +7,19 @@ use App\Models\Movie as MovieModel;
 
 class Movie extends Component
 {
+    
     public function mount(MovieModel $movie){
         $this->movie = $movie;
     }
 
-    public function watch_later(){
-
+    public function watch_later($state){
+        $this->movie->queue($state);
+        $this->emitUp('$refresh');
     }
 
     public function favourite($state){
         $this->movie->favourite($state);
+        $this->emitUp('$refresh');
     }
 
     public function render()
