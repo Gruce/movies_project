@@ -11,7 +11,6 @@
                     <img class="h-full" src="https://cnth2.shabakaty.com/cover-images/5EB2C14F-B5BC-7855-1D82-C665128E6811_cover.jpg"
                         class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
                 </div>
-
                 <!-- Item 2 -->
                 <div class="hidden duration-200 ease-linear" data-carousel-item>
                     <img class="h-full" src="https://cnth2.shabakaty.com/cover-images/710BA908-B35F-F422-9324-CF9628A10739_cover.jpg"
@@ -24,30 +23,18 @@
                 </div>
             </div>
             <div class="flex flex-col gap-2">
-                <div class=" absolute top-9 left-2 bottom-0 z-30 text-white font-bold">
+                <div class=" absolute top-9 left-6 bottom-0 z-30 text-white font-bold">
                     <span class="text-xl" >Name</span>
                 </div>
-                <div class="absolute top-12 left-2 bottom-0 z-30 text-white font-bold">
+                <div class="absolute top-16 left-6 bottom-0 z-30 text-white font-bold">
                     <span>
-                        sssss
+                        description
                     </span>
                 </div>
-                <div class="flex absolute top-1/3 right-2 z-30 justify-center items-center px-4 h-full cursor-pointer group rounded-lg">
+                <div class="flex absolute top-1/4 right-6 z-30 justify-center items-center px-4 h-full cursor-pointer group rounded-lg">
                     <x-ui.button color="error">Watch Now!</x-ui.button>
                 </div>
             </div>
-
-            {{-- <div class="flex absolute top-6 left-2 bottom-0 z-30 text-white font-bold ">
-                <span class="text-xl">Name</span>
-        </div>
-            <div class="flex absolute z-30 text-gray-400  ">
-                <span>
-                    sssss
-                </span>
-            </div>
-            <div class="flex absolute top-1/3 right-2 z-30 justify-center items-center px-4 h-full cursor-pointer group rounded-lg">
-                <x-ui.button color="error">Watch Now!</x-ui.button>
-            </div> --}}
 
             <!-- Slider controls -->
             <button type="button"

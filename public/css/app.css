@@ -1123,6 +1123,21 @@ select {
 .top-12 {
   top: 3rem;
 }
+.top-16 {
+  top: 4rem;
+}
+.top-60 {
+  top: 15rem;
+}
+.top-80 {
+  top: 20rem;
+}
+.left-6 {
+  left: 1.5rem;
+}
+.right-6 {
+  right: 1.5rem;
+}
 .z-0 {
   z-index: 0;
 }
@@ -1137,6 +1152,9 @@ select {
 }
 .z-20 {
   z-index: 20;
+}
+.z-40 {
+  z-index: 40;
 }
 .col-span-6 {
   grid-column: span 6 / span 6;

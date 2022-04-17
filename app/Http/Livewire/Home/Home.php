@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Home;
 
 use Livewire\Component;
 use Illuminate\Http\Request;
-
+use App\Models\Movie;
 class Home extends Component
 {
 
@@ -18,6 +18,6 @@ class Home extends Component
     }
 
     public function render(){
-        return view('livewire.home.home');
+        return view('livewire.home.home',);
     }
 }
