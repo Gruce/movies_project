@@ -6,7 +6,7 @@
     </div>
 
     <div class="flex overflow-x-hidden overflow-y-hidden flex-nowrap" x-ref="slider">
-        @for ($i = 0; $i < 10; $i++)
+        @for ($i = 0; $i < 4; $i++)
             <div x-ref="slide_item" class="mr-5">
                 <livewire:ui.movie movie="1" />
             </div>
