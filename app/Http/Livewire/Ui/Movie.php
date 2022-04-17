@@ -9,7 +9,6 @@ class Movie extends Component
 {
     public function mount(MovieModel $movie){
         $this->movie = $movie;
-       
     }
 
     public function watch_later(){
