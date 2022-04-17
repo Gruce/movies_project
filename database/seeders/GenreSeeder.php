@@ -21,31 +21,31 @@ class GenreSeeder extends Seeder
         ]);
         // ID 2
         Genre::create([
-           'name' => 'Comedy',
+            'name' => 'Comedy',
         ]);
         // ID 3
         Genre::create([
-           'name' => 'Drama',
+            'name' => 'Drama',
         ]);
         // ID 4
         Genre::create([
-           'name' => 'Fantasy',
+            'name' => 'Fantasy',
         ]);
         // ID 5
         Genre::create([
-           'name' => 'Horror',
+            'name' => 'Horror',
         ]);
         // ID 6
         Genre::create([
-           'name' => 'Mystery',
+            'name' => 'Mystery',
         ]);
         // ID 7
         Genre::create([
-           'name' => 'Romance',
+            'name' => 'Romance',
         ]);
         // ID 8
         Genre::create([
-           'name' => 'Thriller',
+            'name' => 'Thriller',
         ]);
         // ID 9
         Genre::create([
