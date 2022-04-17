@@ -1051,6 +1051,10 @@ select {
   margin-left: auto;
   margin-right: auto;
 }
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -1058,10 +1062,6 @@ select {
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
-}
-.my-5 {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
 }
 .ml-3 {
   margin-left: 0.75rem;
@@ -1273,6 +1273,9 @@ select {
 .w-4\/6 {
   width: 66.666667%;
 }
+.w-1\/4 {
+  width: 25%;
+}
 .w-64 {
   width: 16rem;
 }
@@ -1284,9 +1287,6 @@ select {
 }
 .w-2\/3 {
   width: 66.666667%;
-}
-.w-1\/4 {
-  width: 25%;
 }
 .min-w-0 {
   min-width: 0px;
@@ -1318,17 +1318,17 @@ select {
 .basis-4\/6 {
   flex-basis: 66.666667%;
 }
-.basis-1\/3 {
-  flex-basis: 33.333333%;
-}
-.basis-2\/3 {
-  flex-basis: 66.666667%;
-}
 .basis-1\/4 {
   flex-basis: 25%;
 }
+.basis-1\/3 {
+  flex-basis: 33.333333%;
+}
 .basis-3\/4 {
   flex-basis: 75%;
+}
+.basis-2\/3 {
+  flex-basis: 66.666667%;
 }
 .origin-top-left {
   transform-origin: top left;
@@ -1668,17 +1668,17 @@ select {
 .p-6 {
   padding: 1.5rem;
 }
-.p-2\.5 {
-  padding: 0.625rem;
-}
-.p-0 {
-  padding: 0px;
-}
 .p-3 {
   padding: 0.75rem;
 }
 .p-5 {
   padding: 1.25rem;
+}
+.p-2\.5 {
+  padding: 0.625rem;
+}
+.p-0 {
+  padding: 0px;
 }
 .px-4 {
   padding-left: 1rem;
