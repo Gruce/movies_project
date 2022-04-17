@@ -6,24 +6,18 @@
         <div id="animation-carousel" class="relative" data-carousel="static">
             <!-- Carousel wrapper -->
             <div class="overflow-hidden relative h-48 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
-                 <!-- Item 1 -->
-                 <div class="snap-start w-full h-full flex items-center  justify-center  text-white  font-bold flex-shrink-0 bg-black "  data-carousel-item>
-                    <img src="https://cnth2.shabakaty.com/cover-images/5EB2C14F-B5BC-7855-1D82-C665128E6811_cover.jpg" class="h-full w-full object-cover absolute inset-0 z-10 opacity-25">
-                    <x-ui.button class=" z-20 top-2" href="#" color="error">Watch Now!
-                    </x-ui.button>
-                  </div>
-                <!-- Item 2 -->
-                <div class="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black "  data-carousel-item>
-                    <img src="https://cnth2.shabakaty.com/cover-images/710BA908-B35F-F422-9324-CF9628A10739_cover.jpg" class="h-full w-full object-cover absolute inset-0 z-10 opacity-25">
-                    <x-ui.button class=" z-20 top-2" href="#" color="error">Watch Now!
-                    </x-ui.button>
-                  </div>
-                <!-- Item 3 -->
-                <div class="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black "  data-carousel-item>
-                    <img src="https://cnth2.shabakaty.com/cover-images/FD6F3C97-03B6-7D5B-50CA-9ADDA1A79E15_cover.jpg" class="h-full w-full object-cover absolute inset-0 z-10 opacity-25">
-                    <x-ui.button class=" z-20 top-2" href="#" color="error">Watch Now!
-                    </x-ui.button>
-                  </div>
+
+                @foreach ([
+                    'https://cnth2.shabakaty.com/cover-images/5EB2C14F-B5BC-7855-1D82-C665128E6811_cover.jpg',
+                    'https://cnth2.shabakaty.com/cover-images/710BA908-B35F-F422-9324-CF9628A10739_cover.jpg',
+                    'https://cnth2.shabakaty.com/cover-images/FD6F3C97-03B6-7D5B-50CA-9ADDA1A79E15_cover.jpg'
+                ] as $k => $item)
+                    <div class="snap-start w-full h-full flex items-center  justify-center  text-white  font-bold flex-shrink-0 bg-black"  data-carousel-item>
+                        <img src="{{$item}}" class="h-full w-full object-cover absolute inset-0 z-10 opacity-25">
+                        <x-ui.button class=" z-20 top-2" href="{{route('movie-show', ['movie' => ($k+1)])}}" color="error">Watch Now!
+                        </x-ui.button>
+                    </div>
+                @endforeach
             </div>
             <!-- Slider controls -->
             <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
