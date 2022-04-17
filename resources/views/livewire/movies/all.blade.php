@@ -49,9 +49,13 @@
     </div>
 </div>
 <div class="grid grid-cols-4 gap-4 mt-8">
-    @for ($i = 0; $i < 12; $i++)
+    @forelse ($movies as $movie)
         <div class="mr-5">
-            <livewire:ui.movie movie="1" />
+            <livewire:ui.movie :movie="$movie->id" />
         </div>
-    @endfor
+    @empty
+        <div class="text-center">
+            <h1 class="text-gray-500 text-xl">No movies found</h1>
+        </div>
+    @endforelse
 </div>

@@ -9,8 +9,8 @@
             <x-ui.rating :rating="$movie->rating" />
             <div
                 class="flex gap-1 mt-3 invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300">
-                <x-ui.button href="{{ route('movie-show', ['movie' => $movie->id]) }}" color="error">Watch Now!
-                </x-ui.button>
+            <x-ui.button href="{{ route('movie-show', ['movie' => $movie->id]) }}" color="error">Watch Now!
+            </x-ui.button>
             </div>
         </div>
     </div>
