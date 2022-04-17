@@ -10,8 +10,14 @@
     </div>
 
     <div class="flex overflow-x-hidden overflow-y-hidden flex-nowrap" x-ref="slider">
+        @forelse ($series as $series)
             <div x-ref="slide_item" class="mr-5">
-                <livewire:ui.series name="Avengers" rating="6.8" imgUrl="/img/inv.jpg" url="#" />
+                {{-- <livewire:ui.series :episode="$series->seasons->first()->episodes->first()->id" :wire:key="$series->id" /> --}}
             </div>
+        @empty
+            <div class="text-center text-gray-500">
+                <span class="text-xl">No Series</span>
+            </div>
+        @endforelse
     </div>
 </div>

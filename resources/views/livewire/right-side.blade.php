@@ -15,7 +15,7 @@
                 placeholder="Search" />
         </div>
     </div>
-    @if (Request::is('series*'))
+    @if (Request::is('series*') || Request::query('type') == 'series')
         <div class="flex flex-col">
             <div>
                 <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Series</h1>

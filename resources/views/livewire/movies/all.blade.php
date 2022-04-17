@@ -16,8 +16,10 @@
         </select>
 
         <div class="relative pt-1">
-            <!-- <label for="customRange3" class="form-label">Example range</label> -->
-            <input type="range"
+            <label for="customRange3" class="form-label">
+                <x-ui.rating :rating="$rating*2" />    
+            </label>
+            <input wire:model="rating" type="range"
                 class="form-range w-full h-6 p-0 bg-transparent focus:outline-none focus:ring-3 focus:shadow-none"
                 min="1" max="5" step="1" id="customRange3" />
         </div>

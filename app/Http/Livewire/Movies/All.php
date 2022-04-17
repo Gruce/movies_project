@@ -11,6 +11,7 @@ use App\Models\{
 class All extends Component
 {
     public $genre_id;
+    public $rating = null;
 
     public function render()
     {
@@ -21,7 +22,7 @@ class All extends Component
             'id',
             'name'
         ]);
-        
+
         return view('livewire.movies.all');
     }
 }
