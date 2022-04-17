@@ -16,6 +16,10 @@ class Movie extends Model
 {
     use HasFactory;
 
+    /****************************************************/
+    /******************* RELATIONSHIPS ******************/
+    /****************************************************/
+
     public function genres()
     {
         return $this->belongsToMany(Genre::class);
@@ -43,18 +47,21 @@ class Movie extends Model
 
 
 
-    //accessor and mutator
+    /***********************************************************/
+    /******************* ACCESSOR AND MUTATOR ******************/
+    /***********************************************************/
 
     protected function likesCount(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->likes()->where('type',true)->count(),
+            get: fn () => $this->likes()->where('type', true)->count(),
         );
     }
+
     protected function dislikesCount(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->likes()->where('type',false)->count(),
+            get: fn () => $this->likes()->where('type', false)->count(),
         );
     }
 
@@ -71,7 +78,7 @@ class Movie extends Model
             'duration' => $data['duration'],
             'release_date' => $data['release_date'],
         ]);
-
+        
         $movie->genres()->attach($data['genres']);
 
         foreach ($data['files'] as $file_path){

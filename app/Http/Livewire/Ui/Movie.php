@@ -12,7 +12,7 @@ class Movie extends Component
     }
 
     public function watch_later(){
-        
+
     }
 
     public function favourite($state){
