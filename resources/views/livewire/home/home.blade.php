@@ -11,6 +11,7 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUIBgVeuD_lC5UPPa2bf95LVeyukQcEDFVoQ&usqp=CAU"
                         class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
                 </div>
+
                 <!-- Item 2 -->
                 <div class="hidden duration-200 ease-linear" data-carousel-item>
                     <img src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
@@ -22,10 +23,37 @@
                         class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
                 </div>
             </div>
+            <div class="flex flex-col gap-2">
+                <div class=" absolute top-9 left-2 bottom-0 z-30 text-white font-bold">
+                    <span class="text-xl" >Name</span>
+                </div>
+                <div class="absolute top-12 left-2 bottom-0 z-30 text-white font-bold">
+                    <span>
+                        sssss
+                    </span>
+                </div>
+                <div class="flex absolute top-1/3 right-2 z-30 justify-center items-center px-4 h-full cursor-pointer group rounded-lg">
+                    <x-ui.button color="error">Watch Now!</x-ui.button>
+                </div>
+            </div>
+
+            {{-- <div class="flex absolute top-6 left-2 bottom-0 z-30 text-white font-bold ">
+                <span class="text-xl">Name</span>
+        </div>
+            <div class="flex absolute z-30 text-gray-400  ">
+                <span>
+                    sssss
+                </span>
+            </div>
+            <div class="flex absolute top-1/3 right-2 z-30 justify-center items-center px-4 h-full cursor-pointer group rounded-lg">
+                <x-ui.button color="error">Watch Now!</x-ui.button>
+            </div> --}}
+
             <!-- Slider controls -->
             <button type="button"
-                class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-                data-carousel-prev>
+                        class="flex absolute top-4 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                        data-carousel-prev>
+                        </button>
                 <span
                     class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                     <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor"
