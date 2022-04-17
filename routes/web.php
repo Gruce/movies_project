@@ -7,7 +7,6 @@ use App\Http\Livewire\Home\Home;
 use App\Http\Livewire\Series\{
     Show as ShowEpisode,
     All as AllSeries,
-
 };
 use App\Http\Livewire\Movies\{
     Show as ShowMovie,
