@@ -30,7 +30,7 @@
 </head>
 
 <body class="font-sans antialiased bg-gray-200">
-    
+
     <div class="container mx-auto">
         <div class="my-4 gap-4 ">
             <div class="p-6 text-center bg-white rounded-lg border border-gray-200">
@@ -56,10 +56,10 @@
     </div>
 
     @stack('modals')
-    
+
     @livewireScripts
     {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
-    
+
 </body>
 
 </html>
