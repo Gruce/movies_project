@@ -21,8 +21,12 @@
             <div>
                 <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Series</h1>
                 <div class="flex flex-col">
-                    <livewire:ui.small-series name="Avengers" rating="10" category="Action , Drama"
+                    @foreach ($series as $item )
+
+
+                    <livewire:ui.small-series name="{{$item->name}}" rating="{{$item->rating}}" imgUrl="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk" category="Action , Drama"
                         url="#" />
+                        @endforeach
                 </div>
 
                 <x-ui.button color="error" class="mt-3 text-white block" href="#">

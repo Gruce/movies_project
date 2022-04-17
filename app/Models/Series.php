@@ -16,4 +16,18 @@ class Series extends Model
     public function seasons(){
         return $this->hasMany(Season::class);
     }
+    public function add($data){
+        $series = Series::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'rating' => $data['rating'],
+
+        ]);
+
+        $series->genres()->attach($data['genres']);
+
+
+
+       
+    }
 }
