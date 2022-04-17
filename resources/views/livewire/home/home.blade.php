@@ -22,10 +22,25 @@
                         class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
                 </div>
             </div>
+            <div class="flex flex-col gap-2">
+                <div class=" absolute top-9 left-6 bottom-0 z-30 text-white font-bold">
+                    <span class="text-xl" >Name</span>
+                </div>
+                <div class="absolute top-16 left-6 bottom-0 z-30 text-white font-bold">
+                    <span>
+                        description
+                    </span>
+                </div>
+                <div class="flex absolute top-1/4 right-6 z-30 justify-center items-center px-4 h-full cursor-pointer group rounded-lg">
+                    <x-ui.button color="error">Watch Now!</x-ui.button>
+                </div>
+            </div>
+
             <!-- Slider controls -->
             <button type="button"
-                class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-                data-carousel-prev>
+                        class="flex absolute top-4 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                        data-carousel-prev>
+                        </button>
                 <span
                     class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                     <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor"
