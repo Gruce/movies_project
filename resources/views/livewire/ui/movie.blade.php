@@ -9,16 +9,20 @@
             <x-ui.rating :rating="$movie->rating" />
             <div
                 class="flex gap-1 mt-3 invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300">
-            <x-ui.button href="{{ route('movie-show', ['movie' => $movie->id]) }}" color="error">Watch Now!
-            </x-ui.button>
+                <x-ui.button href="{{ route('movie-show', ['movie' => $movie->id]) }}" color="error">Watch Now!
+                </x-ui.button>
             </div>
         </div>
     </div>
     <div class="top-2 right-2 absolute flex flex-col gap-2">
         @auth
-            <x-ui.icon-button wire:click="watch_later()" icon="fa-solid fa-clock" color="light2"
-                class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
-
+            @if (!$movie->queued())
+                <x-ui.icon-button wire:click="watch_later(true)" icon="fa-solid fa-clock" color="light2"
+                    class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+            @else
+                <x-ui.icon-button wire:click="watch_later(false)" icon="fa-solid fa-clock" color="error"
+                    class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+            @endif
             @if (!$movie->favourited())
                 <x-ui.icon-button wire:click="favourite(true)" icon="fa-solid fa-heart" color="light2"
                     class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />

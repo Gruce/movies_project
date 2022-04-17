@@ -28,10 +28,15 @@ class Episode extends Model
     {
         return $this->morphToMany(Favourite::class, 'favouriteables');
     }
+    
+    public function queues()
+    {
+        return $this->morphToMany(Queue::class, 'queuetables');
+    }
 
     public function likes()
     {
         return $this->morphMany(Like::class, 'likeable');
     }
-    
+
 }
