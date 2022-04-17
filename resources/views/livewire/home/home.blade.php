@@ -8,18 +8,18 @@
             <div class="overflow-hidden relative h-48 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
                 <!-- Item 1 -->
                 <div class="hidden duration-200 ease-linear" data-carousel-item>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUIBgVeuD_lC5UPPa2bf95LVeyukQcEDFVoQ&usqp=CAU"
+                    <img class="h-full" src="https://cnth2.shabakaty.com/cover-images/5EB2C14F-B5BC-7855-1D82-C665128E6811_cover.jpg"
                         class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
                 </div>
 
                 <!-- Item 2 -->
                 <div class="hidden duration-200 ease-linear" data-carousel-item>
-                    <img src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
+                    <img class="h-full" src="https://cnth2.shabakaty.com/cover-images/710BA908-B35F-F422-9324-CF9628A10739_cover.jpg"
                         class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
                 </div>
                 <!-- Item 3 -->
                 <div class="hidden duration-200 ease-linear" data-carousel-item="active">
-                    <img src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
+                    <img class="h-full" src="https://cnth2.shabakaty.com/cover-images/FD6F3C97-03B6-7D5B-50CA-9ADDA1A79E15_cover.jpg"
                         class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
                 </div>
             </div>

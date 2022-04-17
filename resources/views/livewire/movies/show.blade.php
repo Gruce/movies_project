@@ -3,17 +3,19 @@
         <div class="flex flex-row">
             <div class="basis-1/4 flex flex-col justify-center items-center w-1/4 ">
                 <img class="rounded-lg h-45 basis-1/3" src="{{$movie->cover->url}}" />
-                <div class="flex items-center mt-3 justify-between w-full">
-                    <x-ui.button color="error" class="text-white block " href="#">
+                <div class="flex items-center mt-3 justify-between w-full gap-6">
+                    <x-ui.button color="error" class="text-white block grow" href="#">
                         WATCH NOW
                     </x-ui.button>
-                    <div class="flex justify-center">
-                        <x-ui.icon-button wire:click="like()" icon="fa-solid fa-thumbs-up" color="secondary"
-                            class="w-8 h-8 text-xl" />
+                    @auth
+                        <div class="flex justify-center">
+                            <x-ui.icon-button wire:click="like(true)" icon="fa-solid fa-thumbs-up" :color="$movie->liked(true) ? 'error' : 'secondary'"
+                                class="w-8 h-8 text-xl" />
 
-                        <x-ui.icon-button wire:click="dislike()" icon="fa-solid fa-thumbs-down" color="secondary"
-                            class="w-8 h-8 text-xl" />
-                    </div>
+                            <x-ui.icon-button wire:click="like(false)" icon="fa-solid fa-thumbs-down" :color="$movie->liked(false) ? 'error' : 'secondary'"
+                                class="w-8 h-8 text-xl" />
+                        </div>
+                    @endauth
                 </div>
             </div>
             <div class="basis-3/4 w-3/4">
