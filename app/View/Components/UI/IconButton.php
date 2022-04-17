@@ -25,7 +25,7 @@ class IconButton extends Component
                     $this->default .= 'text-red-500 border-red-500 hover:bg-red-500 focus:ring-red-300';
                     break;
                 case "secondary":
-                    $this->default .= 'text-gray-700 border-gray-700 hover:bg-gray-700 focus:ring-gray-300';
+                    $this->default .= 'text-gray-400 border-gray-400 hover:bg-gray-700 focus:ring-gray-300';
                     break;
                 case "success":
                     $this->default .= 'text-green-700 border-green-700 hover:bg-green-800 focus:ring-green-300';
