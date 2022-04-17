@@ -9,6 +9,7 @@ use App\Models\{
 
 class Favourites extends Component
 {
+
     public function render()
     {
 
