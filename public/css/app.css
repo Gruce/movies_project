@@ -2037,9 +2037,6 @@ select {
 .opacity-80 {
   opacity: 0.8;
 }
-.opacity-90 {
-  opacity: 0.9;
-}
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
@@ -2100,9 +2097,6 @@ select {
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}
-.delay-150 {
-  transition-delay: 150ms;
 }
 .duration-150 {
   transition-duration: 150ms;
@@ -2367,9 +2361,6 @@ select {
 }
 .group:hover .group-hover\:opacity-100 {
   opacity: 1;
-}
-.group:hover .group-hover\:opacity-50 {
-  opacity: 0.5;
 }
 .group:hover .group-hover\:duration-300 {
   transition-duration: 300ms;
