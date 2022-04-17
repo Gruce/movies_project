@@ -11,7 +11,7 @@ class Favourites extends Component
     protected $listeners = [
         '$refresh'
     ];
-    
+
     public function render()
     {
         $this->movies = Movie::with('cover')->whereHas('favourites')->get();
