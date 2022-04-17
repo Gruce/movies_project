@@ -9,7 +9,8 @@ use App\Models\{
     Like,
     File,
     Cover,
-    Favourite
+    Favourite,
+    Queue,
 };
 
 class Movie extends Model
@@ -38,6 +39,11 @@ class Movie extends Model
     public function favourites()
     {
         return $this->morphToMany(Favourite::class, 'favouriteables');
+    }
+
+    public function queues()
+    {
+        return $this->morphToMany(Queue::class, 'queuetables');
     }
 
     public function likes()
@@ -78,7 +84,7 @@ class Movie extends Model
             'duration' => $data['duration'],
             'release_date' => $data['release_date'],
         ]);
-        
+
         $movie->genres()->attach($data['genres']);
 
         foreach ($data['files'] as $file_path){
@@ -98,8 +104,19 @@ class Movie extends Model
         } else {
             $favourite = new Favourite;
             $favourite->user_id = auth()->id();
-    
+
             $this->favourites()->save($favourite);
+        }
+    }
+
+    public function queue($state){
+        if (!$state) {
+            $this->queues()->where('user_id', auth()->id())->detach();
+        } else {
+            $queue = new Queue;
+            $queue->user_id = auth()->id();
+
+            $this->queues()->save($queue);
         }
     }
 
@@ -131,5 +148,8 @@ class Movie extends Model
 
     public function favourited(){
         return $this->favourites()->where('user_id', auth()->id())->exists();
+    }
+    public function queued(){
+        return $this->queues()->where('user_id', auth()->id())->exists();
     }
 }

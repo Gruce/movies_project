@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('favouriteables', function (Blueprint $table) {
+        Schema::create('queuetables', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('favourite_id')->nullable()->constrained('favourites')->onDelete('SET NULL');
-            $table->integer('favouriteables_id');
-            $table->string('favouriteables_type');
+            $table->foreignId('queue_id')->nullable()->constrained('queues')->onDelete('SET NULL');
+            $table->integer('queuetables_id');
+            $table->string('queuetables_type');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favouriteables');
+        Schema::dropIfExists('queuetables');
     }
 };
