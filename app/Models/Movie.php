@@ -76,7 +76,8 @@ class Movie extends Model
     /******************* FUNCTIONS ******************/
     /************************************************/
 
-    public function add($data){
+    public function add($data)
+    {
         $movie = Movie::create([
             'name' => $data['name'],
             'description' => $data['description'],
@@ -87,7 +88,7 @@ class Movie extends Model
 
         $movie->genres()->attach($data['genres']);
 
-        foreach ($data['files'] as $file_path){
+        foreach ($data['files'] as $file_path) {
             $file = new File;
             $file->path = $file_path;
             $movie->files()->save($file);
@@ -98,7 +99,8 @@ class Movie extends Model
         $movie->cover()->save($cover);
     }
 
-    public function favourite($state){
+    public function favourite($state)
+    {
         if (!$state) {
             $this->favourites()->where('user_id', auth()->id())->detach();
         } else {
@@ -109,7 +111,8 @@ class Movie extends Model
         }
     }
 
-    public function queue($state){
+    public function queue($state)
+    {
         if (!$state) {
             $this->queues()->where('user_id', auth()->id())->detach();
         } else {
@@ -124,9 +127,9 @@ class Movie extends Model
     {
         // USER HAS LIKE ON THIS MOVIE
         $like = $this->likes()->where('user_id', auth()->id());
-        if ($like->exists()){
+        if ($like->exists()) {
             // HAS LIKE
-            if ($like->first()->type == $state){
+            if ($like->first()->type == $state) {
                 // IF LIKE IS THE SAME
                 $like->delete();
             } else {
@@ -142,14 +145,31 @@ class Movie extends Model
         }
     }
 
-    public function liked($state){
+    public function liked($state)
+    {
         return $this->likes()->where('user_id', auth()->id())->where('type', $state)->exists();
     }
 
-    public function favourited(){
+    public function favourited()
+    {
         return $this->favourites()->where('user_id', auth()->id())->exists();
     }
-    public function queued(){
+    public function queued()
+    {
         return $this->queues()->where('user_id', auth()->id())->exists();
+    }
+
+
+    /****************************************************/
+    /******************* SCOPES *************************/
+    /****************************************************/
+
+    public function scopeGenre($query, $genre_id)
+    {
+        if ($genre_id == null)
+            return $query;
+        return $query->whereHas('genres', function ($query) use ($genre_id) {
+            $query->where('genre_id', $genre_id);
+        });
     }
 }

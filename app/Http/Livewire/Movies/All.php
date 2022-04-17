@@ -10,25 +10,18 @@ use App\Models\{
 
 class All extends Component
 {
-    // public $genre_id=null;
+    public $genre_id;
 
-    public function render(){
+    public function render()
+    {
 
-        $genre_id=2;
-        // if($genre_id) dd($genre_id);
-        $this->movies = Movie::with(
-        [
-            'genres'=>function($genre) use($genre_id){
-                $genre->where('id',$genre_id)->select('id','name');
-            },
+        $this->movies = Movie::genre($this->genre_id)->get()->append('likes_count')->sortByDesc('likes_count');
 
-        ]
-        )->get()->append('likes_count')->sortByDesc('likes_count');
-       dd($this->movies->toArray());
-        $this->genres= Genre::get([
+        $this->genres = Genre::get([
             'id',
             'name'
         ]);
+        
         return view('livewire.movies.all');
     }
 }
