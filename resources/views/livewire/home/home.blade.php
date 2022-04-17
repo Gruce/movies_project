@@ -50,7 +50,7 @@
                 </span>
             </button>
         </div>
-
+        
         @if ($type == 'movies')
             <div>
                 @livewire('home.best-movies')
@@ -61,5 +61,4 @@
             </div>
         @endif
     </div>
-
 </div>

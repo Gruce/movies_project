@@ -37,7 +37,8 @@
             <div>
                 <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Movies</h1>
                 <div class="flex flex-col">
-                    <x-ui.small-cover name="Avengers" rating="10" imgUrl="/img/inv.jpg" category="Action , Drama" url="#"></x-ui.small-cover>
+                    <x-ui.small-cover name="Avengers" rating="9" imgUrl="/img/inv.jpg" category="Action , Drama" url="#"></x-ui.small-cover>
+                    <x-ui.small-cover name="Avengers" rating="7.2" imgUrl="/img/inv.jpg" category="Action , Drama" url="#"></x-ui.small-cover>
                 </div>
 
                 <x-ui.button color="error" class="mt-3 text-white block" href="#">
