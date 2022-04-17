@@ -13,7 +13,7 @@ class Favourites extends Component
     {
 
         $this->movies = Movie::with('cover')->whereHas('favourites')->get();
-
+        
         return view('livewire.movies.favourites');
     }
 }
