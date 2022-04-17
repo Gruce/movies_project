@@ -1219,6 +1219,9 @@ select {
 .h-screen {
   height: 100vh;
 }
+.h-32 {
+  height: 8rem;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1287,6 +1290,9 @@ select {
 }
 .w-1\/4 {
   width: 25%;
+}
+.w-24 {
+  width: 6rem;
 }
 .min-w-0 {
   min-width: 0px;
@@ -1923,6 +1929,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(253 224 71 / var(--tw-text-opacity));
 }
+.text-gray-200 {
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
+}
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -2082,6 +2092,9 @@ select {
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+.hover\:opacity-25:hover {
+  opacity: 0.25;
 }
 .focus\:z-10:focus {
   z-index: 10;
