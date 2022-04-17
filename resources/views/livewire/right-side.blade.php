@@ -15,15 +15,13 @@
                 placeholder="Search" />
         </div>
     </div>
-
-    {{-- @if (Request::is('series*'))
+    @if (Request::is('series*'))
         <div class="flex flex-col">
             <div>
                 <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Series</h1>
                 <div class="flex flex-col">
-                    <livewire:ui.small-movie name="Avengers" rating="10" imgUrl="/img/inv.jpg" category="Action , Drama" url="#" />
+                    <livewire:ui.small-series name="Avengers" rating="10" imgUrl="https://cnth2.shabakaty.com/cover-images/5EB2C14F-B5BC-7855-1D82-C665128E6811_cover.jpg" category="Action , Drama" url="#" />
                 </div>
-
                 <x-ui.button color="error" class="mt-3 text-white block" href="#">
                     SEE MORE
                 </x-ui.button>
@@ -32,7 +30,7 @@
                @livewire('series.favourites')
             @endauth
         </div>
-        @else --}}
+        @else
         <div class="flex flex-col">
             <div>
                 <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Movies</h1>
@@ -50,6 +48,6 @@
                 @livewire('movies.favourites')
             @endauth
         </div>
-    {{-- @endif --}}
+    @endif
 
 </div>
