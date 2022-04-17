@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    @if (Request::is('series*'))
+    {{-- @if (Request::is('series*'))
         <div class="flex flex-col">
             <div>
                 <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Series</h1>
@@ -32,7 +32,7 @@
                @livewire('series.favourites')
             @endauth
         </div>
-        @else
+        @else --}}
         <div class="flex flex-col">
             <div>
                 <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Movies</h1>
@@ -50,6 +50,6 @@
                 @livewire('movies.favourites')
             @endauth
         </div>
-    @endif
+    {{-- @endif --}}
 
 </div>

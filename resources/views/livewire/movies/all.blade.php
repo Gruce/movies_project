@@ -12,33 +12,6 @@
             <li>
                 <a href="#" class="block py-2 px-4 hover:bg-gray-200">Action</a>
             </li>
-            <li>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-200">Animation</a>
-            </li>
-            <li>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-200">Comedy</a>
-            </li>
-            <li>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-200">Drama</a>
-            </li>
-            <li>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-200">Fantasy</a>
-            </li>
-            <li>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-200">Horror</a>
-            </li>
-            <li>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-200">Mystery</a>
-            </li>
-            <li>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-200">Romance</a>
-            </li>
-            <li>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-200">Thriller</a>
-            </li>
-            <li>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-200">Western</a>
-            </li>
         </ul>
     </div>
     <div class="relative pt-1">
