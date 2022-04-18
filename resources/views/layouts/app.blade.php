@@ -39,7 +39,7 @@
                     <div class="basis-1/6 w-1/6">
                         <x-sidebar />
                     </div>
-                    <div class="basis-4/6 w-4/6">
+                    <div class="basis-4/6 w-4/6 grow">
                         <div class="px-10">
                             <div class="container py-3">
                                 @isset($slot)
@@ -48,9 +48,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="basis-1/6 w-1/6">
-                        @livewire('right-side')
-                    </div>
+                    @if (Route::is('home*') || Route::is('movies*') || Route::is('series*'))
+                        <div class="basis-1/6 w-1/6">
+                            @livewire('right-side')
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

@@ -8,6 +8,10 @@ use App\Models\Movie as MovieModel;
 class Movie extends Component
 {
 
+    protected $listeners = [
+        'watchLaterUpdated' => '$refresh',
+    ];
+    
     public function mount(MovieModel $movie){
         $this->movie = $movie;
     }
