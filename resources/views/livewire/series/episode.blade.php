@@ -1,5 +1,5 @@
 <div>
-    <a href="#" class="flex h-40 w-28 rounded-lg static bg-black">
+    <a href="#" class="flex h-40 w-28 rounded-lg static">
         <div class="flex ">
                 <div class="absolute items-end text-sm pt-24">
                     <h3 class="text-xl text-white font-semibold pl-4">E:1</h3>
