@@ -1,4 +1,4 @@
-<div>
+<div wire:loading.class="opacity-50">
     <h1 class="text-left py-2 pr-4 pl-3 text-gray-700 text-lg font-bold ">Movies</h1>
     <div class="flex gap-2">
         <!-- Dropdown menu -->
