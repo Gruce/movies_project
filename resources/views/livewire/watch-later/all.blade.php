@@ -6,14 +6,18 @@
     </div>
 
     <div class="flex overflow-x-hidden overflow-y-hidden flex-nowrap" x-ref="slider">
-        @forelse ($movies as $movie)
-        <div x-ref="slide_item" class="mr-5">
-            <livewire:ui.movie :movie="$movie->id" :wire:key="'Watch-Later-' . $movie->id" />
-        </div>
-    @empty
-        <div class="text-center text-gray-500">
-            <span class="text-xl">No Movies</span>
-        </div>
-    @endforelse
+        @foreach ($movies  as $movie)
+            <div x-ref="slide_item" class="mr-5">
+                <livewire:ui.movie :movie="$movie->id" :wire:key="$movie->id" />
+
+            </div>
+        @endforeach
+
+        @foreach ($episodes  as $item)
+            <div x-ref="slide_item" class="mr-5">
+                <livewire:ui.series :episode="$item->id" :wire:key="$item->id" />
+
+            </div>
+        @endforeach
     </div>
 </div>

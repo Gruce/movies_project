@@ -15,7 +15,8 @@ class All extends Component
     public $rating = null;
 
     protected $listeners = [
-        'ratingUpdated' => 'rating_updated'
+        'ratingUpdated' => 'rating_updated',
+        'watchLaterUpdated' => '$refresh',
     ];
 
     public function rating_updated($item){
@@ -34,7 +35,7 @@ class All extends Component
     {
 
         $this->movies = Movie::genre($this->genre_id)
-                                
+
                                 ->get()
                                 ->append('likes_count')->sortByDesc('likes_count');
 

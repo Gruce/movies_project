@@ -21,9 +21,20 @@
                 href="{{ route('series-show', ['episode' => $episode->id]) }}">
                 Watch
             </x-ui.button>
-            <x-ui.button color="secondary" class="text-2xs py-0.5 px-1 text-white" href="#">
-                <i class="fa-solid fa-clock"></i>
-            </x-ui.button>
+            @auth
+                @if (!$episode->queued())
+                    <x-ui.button wire:click="watch_later(true)" color="secondary" class="text-2xs py-0.5 px-1 text-white"
+                        href="#">
+                        <i class="fa-solid fa-clock"></i>
+                    </x-ui.button>
+                @else
+                    <x-ui.button wire:click="watch_later(false)" color="warning" class="text-2xs py-0.5 px-1 text-white"
+                        href="#">
+                        <i class="fa-solid fa-clock"></i>
+                    </x-ui.button>
+                @endif
+            @endauth
+
         </div>
     </div>
 </div>

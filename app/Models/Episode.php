@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Models\{
     Like,
+    
 };
 
 
@@ -33,7 +34,7 @@ class Episode extends Model
     {
         return $this->morphToMany(Favourite::class, 'favouriteables');
     }
-    
+
     public function queues()
     {
         return $this->morphToMany(Queue::class, 'queuetables');
@@ -45,7 +46,7 @@ class Episode extends Model
     }
 
 
-    
+
     /***********************************************************/
     /******************* ACCESSOR AND MUTATOR ******************/
     /***********************************************************/
@@ -67,6 +68,33 @@ class Episode extends Model
     /************************************************/
     /******************* FUNCTIONS ******************/
     /************************************************/
+
+    public function favourite($state)
+    {
+        if (!$state) {
+            $this->favourites()->where('user_id', auth()->id())->detach();
+        } else {
+            $favourite = new Favourite;
+            $favourite->user_id = auth()->id();
+
+            $this->favourites()->save($favourite);
+        }
+    }
+
+    public function queue($state)
+    {
+        if (!$state) {
+            $this->queues()->where('user_id', auth()->id())->detach();
+        } else {
+            $queue = new Queue;
+            $queue->user_id = auth()->id();
+
+            $this->queues()->save($queue);
+        }
+    }
+
+
+
 
     public function like($state = true)
     {
@@ -90,9 +118,20 @@ class Episode extends Model
         }
     }
 
+
     public function liked($state)
     {
         return $this->likes()->where('user_id', auth()->id())->where('type', $state)->exists();
+    }
+
+
+    public function favourited()
+    {
+        return $this->favourites()->where('user_id', auth()->id())->exists();
+    }
+    public function queued()
+    {
+        return $this->queues()->where('user_id', auth()->id())->exists();
     }
 }
 
