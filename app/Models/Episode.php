@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Models\{
+    Like,
+};
+
 
 class Episode extends Model
 {
@@ -39,4 +44,55 @@ class Episode extends Model
         return $this->morphMany(Like::class, 'likeable');
     }
 
+
+    
+    /***********************************************************/
+    /******************* ACCESSOR AND MUTATOR ******************/
+    /***********************************************************/
+
+    protected function likesCount(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->likes()->where('type', true)->count(),
+        );
+    }
+
+    protected function dislikesCount(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->likes()->where('type', false)->count(),
+        );
+    }
+
+    /************************************************/
+    /******************* FUNCTIONS ******************/
+    /************************************************/
+
+    public function like($state = true)
+    {
+        // USER HAS LIKE ON THIS MOVIE
+        $like = $this->likes()->where('user_id', auth()->id());
+        if ($like->exists()) {
+            // HAS LIKE
+            if ($like->first()->type == $state) {
+                // IF LIKE IS THE SAME
+                $like->delete();
+            } else {
+                // IF LIKE IS DIFFERENT
+                $like->update(['type' => $state]);
+            }
+        } else {
+            // HAS NO LIKE
+            $like = new Like();
+            $like->user_id = auth()->id();
+            $like->type = $state;
+            $this->likes()->save($like);
+        }
+    }
+
+    public function liked($state)
+    {
+        return $this->likes()->where('user_id', auth()->id())->where('type', $state)->exists();
+    }
 }
+
