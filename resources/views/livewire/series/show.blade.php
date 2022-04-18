@@ -49,6 +49,5 @@
     </div>
     <div>
         {{-- @livewire('movies.similar') --}}
-        aaa
     </div>
 </div>

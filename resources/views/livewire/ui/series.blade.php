@@ -4,12 +4,12 @@
         class="w-full h-full absolute bg-gradient-to-b  to-gray-800 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300">
     </div>
     <div class="z-10 -mb-3 text-center group-hover:mb-5 group-hover:duration-300">
-        <h1 class="text-white text-x1 font-semibold tracking-tight">{{ $episode->name }}</h1>
+        <h1 class="text-white text-x1 font-semibold tracking-tight">{{ $episode->season->series->name }}</h1>
         <div class="flex items-center flex-col mt-1 mb-2">
             <livewire:ui.rating :rating="$episode->season->series->rating" wire:key="{{ now() }}" />
             <div
                 class="flex gap-1 mt-3 invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300">
-                <x-ui.button href="{{ route('movie-show', ['movie' => $episode->id]) }}" color="error">
+                <x-ui.button href="{{ route('series-show', ['episode' => $episode->id]) }}" color="error">
                     Watch Now!
                 </x-ui.button>
             </div>

@@ -55,7 +55,7 @@ class SeriesSeeder extends Seeder
                 'https://www.youtube.com/watch?v=7QKqQY-_zj8'
             ],
 
-            'cover' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg'
+            'cover' => 'https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg'
         ]);
 
         // ID 3
@@ -76,7 +76,7 @@ class SeriesSeeder extends Seeder
                 'https://www.youtube.com/watch?v=7QKqQY-_zj8'
             ],
 
-            'cover' => 'https://m.media-amazon.com/images/M/MV5BMTQwNTU3MzY4MF5BMl5BanBnXkFtZTcwMjg4ODQzMw@@._V1_QL75_UX380_CR0,0,380,562_.jpg'
+            'cover' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcScQ3SvxqLuT1el0OmUisC1YiBpUhRVJQk8OeBW7LM-fpE5I4UQ'
         ]);
 
         // ID 4
@@ -98,7 +98,7 @@ class SeriesSeeder extends Seeder
                 'https://www.youtube.com/watch?v=7QKqQY-_zj8'
             ],
 
-            'cover' => 'https://m.media-amazon.com/images/M/MV5BMTQwNTU3MzY4MF5BMl5BanBnXkFtZTcwMjg4ODQzMw@@._V1_QL75_UX380_CR0,0,380,562_.jpg'
+            'cover' => 'https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg'
         ]);
 
     }
