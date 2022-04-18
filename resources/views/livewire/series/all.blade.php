@@ -1,4 +1,3 @@
 <div>
-   <livewire:series.episode />
-   <livewire:ui.series />
+   <livewire:ui.series/>
 </div>
