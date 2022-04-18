@@ -17,19 +17,9 @@
     </div>
     @if (Request::is('series*') || Request::query('type') == 'series')
         <div class="flex flex-col">
-            <div>
-                <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Series</h1>
-                <div class="flex flex-col">
-                    @foreach ($series as $item)
-                        <livewire:ui.small-series episode="1" />
-                    @endforeach
-                </div>
-                <x-ui.button color="error" class="mt-3 text-white block" href="#">
-                    SEE MORE
-                </x-ui.button>
-            </div>
+            <livewire:series.popular-series />
             @auth
-                @livewire('series.favourites')
+                <livewire:series.favourites />
             @endauth
         </div>
     @else

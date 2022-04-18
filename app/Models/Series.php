@@ -28,12 +28,19 @@ class Series extends Model
     /******************* ACCESSOR AND MUTATOR ******************/
     /***********************************************************/
 
-        protected function ratingFive(): Attribute
-        {
-            return Attribute::make(
-                get: fn () => round($this->rating / 2),
-            );
-        }
+    protected function ratingFive(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => round($this->rating / 2),
+        );
+    }
+
+    protected function firstSeason(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->seasons->first(),
+        );
+    }
 
 
 
@@ -59,6 +66,7 @@ class Series extends Model
             'season_number' => $data['season_number'],
 
             'episode_name' => $data['episode_name'],
+            'episode_number' => $data['episode_number'],
             'episode_release_date' => $data['episode_release_date'],
 
             'files' => $data['files'],
@@ -98,6 +106,7 @@ class Series extends Model
         $episode = Episode::create([
             'season_id' => $season->id,
             'name' => $data['episode_name'],
+            'number' => $data['episode_number'],
             'release_date' => $data['episode_release_date'],
         ]);
 
@@ -125,4 +134,6 @@ class Series extends Model
             $query->where('genre_id', $genre_id);
         });
     }
+
+
 }

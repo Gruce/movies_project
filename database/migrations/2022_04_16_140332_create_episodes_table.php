@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('number');
             $table->string('release_date');
 
             $table->foreignId('season_id')->nullable()->constrained('seasons')->onDelete('SET NULL');
