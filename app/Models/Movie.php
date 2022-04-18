@@ -17,7 +17,7 @@ class Movie extends Model
 {
     use HasFactory;
 
-    protected $appends = ['rating_five'];
+    protected $appends = ['rating_five', 'likes_count', 'dislikes_count'];
 
     /****************************************************/
     /******************* RELATIONSHIPS ******************/

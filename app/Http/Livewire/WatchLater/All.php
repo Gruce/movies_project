@@ -4,7 +4,8 @@ namespace App\Http\Livewire\WatchLater;
 
 use Livewire\Component;
 use App\Models\{
-    Movie
+    Movie,
+    Episode,
 };
 
 class All extends Component
@@ -16,6 +17,7 @@ class All extends Component
     public function render()
     {
         $this->movies = Movie::whereHas('queues')->get();
+        $this->episodes = Episode::whereHas('queues')->get();
         return view('livewire.watch-later.all');
     }
 }
