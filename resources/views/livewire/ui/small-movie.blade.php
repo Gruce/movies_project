@@ -10,15 +10,20 @@
                 <p class="text-xs"> {{ $movie->rating }} </p>
             </div>
         </div>
-
         <div
             class="flex justify-between gap-1 invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300">
             <x-ui.button color="error" class="text-2xs py-0.5 px-1 text-white" href="{{route('movie-show', ['movie' => $movie->id])}}">
                 Watch
             </x-ui.button>
-            <x-ui.button color="secondary" class="text-2xs py-0.5 px-1 text-white" href="#">
+            @if (!$movie->queued())
+            <x-ui.button wire:click="watch_later(true)" color="secondary" class="text-2xs py-0.5 px-1 text-white" href="#">
                 <i class="fa-solid fa-clock"></i>
             </x-ui.button>
+            @else
+            <x-ui.button wire:click="watch_later(false)" color="warning" class="text-2xs py-0.5 px-1 text-white" href="#">
+                <i class="fa-solid fa-clock"></i>
+            </x-ui.button>
+            @endif
         </div>
     </div>
 </div>
