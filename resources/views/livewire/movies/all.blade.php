@@ -23,7 +23,7 @@
                     @foreach ($genres as $genre)
                         <li>
                             <a wire:click="select_genres({{$genre->id}}, '{{$genre->name}}')" href="#"
-                                class="block py-1 px-4 hover:bg-gray-100 hover:text-gray-700">
+                                class="block py-1 px-4 @if ($genre->id == $genre_id) bg-gray-200 text-red-500 @endif hover:bg-gray-100 hover:text-gray-700">
                                 {{ $genre->name }}
                             </a>
                         </li>
