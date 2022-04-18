@@ -28,6 +28,7 @@ class SeriesSeeder extends Seeder
             'season_number' => 1,
 
             'episode_name' => 'The Fall of Shiganshina',
+            'episode_number' => '1',
             'episode_release_date' => '2013',
 
             'files' => [
@@ -49,6 +50,7 @@ class SeriesSeeder extends Seeder
             'season_number' => 1,
 
             'episode_name' => 'The Phantom Note',
+            'episode_number' => '1',
             'episode_release_date' => '2006',
 
             'files' => [
@@ -70,6 +72,7 @@ class SeriesSeeder extends Seeder
             'season_number' => 1,
 
             'episode_name' => 'The Philosopher\'s Stone',
+            'episode_number' => '1',
             'episode_release_date' => '2009',
 
             'files' => [
@@ -77,6 +80,20 @@ class SeriesSeeder extends Seeder
             ],
 
             'cover' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcScQ3SvxqLuT1el0OmUisC1YiBpUhRVJQk8OeBW7LM-fpE5I4UQ'
+        ]);
+        $series->add([
+            'series_id' => 3,
+            'season_id' => 3,
+
+            'episode_name' => 'To Challenge the Sun',
+            'episode_number' => '2',
+            'episode_release_date' => '2009',
+
+            'files' => [
+                'https://www.youtube.com/watch?v=7QKqQY-_zj8'
+            ],
+
+            'cover' => 'https://m.media-amazon.com/images/M/MV5BMjIxNzU1MDg2OF5BMl5BanBnXkFtZTgwOTQwMzQ2MjE@._V1_UX224_CR0,0,224,126_AL_.jpg'
         ]);
 
         // ID 4
@@ -92,6 +109,7 @@ class SeriesSeeder extends Seeder
             'season_number' => 1,
 
             'episode_name' => 'The Hokage\'s Secret',
+            'episode_number' => '1',
             'episode_release_date' => '2009',
 
             'files' => [
