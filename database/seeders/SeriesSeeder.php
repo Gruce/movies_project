@@ -15,7 +15,7 @@ class SeriesSeeder extends Seeder
      */
     public function run()
     {
-        
+
         // ID 1
         $series = new Series;
         $series->add([
@@ -36,6 +36,70 @@ class SeriesSeeder extends Seeder
 
             'cover' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg'
         ]);
-        
+
+        // ID 2
+        $series = new Series;
+        $series->add([
+            'series_name' => 'Death Note',
+            'series_description' => 'The story of Light Yagami, a high school student who uses a notebook to kill people.',
+            'series_rating' => 8.9,
+            'series_genres' => [1, 10, 11],
+
+            'season_name' => 'Season 1',
+            'season_number' => 1,
+
+            'episode_name' => 'The Phantom Note',
+            'episode_release_date' => '2006',
+
+            'files' => [
+                'https://www.youtube.com/watch?v=7QKqQY-_zj8'
+            ],
+
+            'cover' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg'
+        ]);
+
+        // ID 3
+        $series = new Series;
+        $series->add([
+            'series_name' => 'Fullmetal Alchemist',
+            'series_description' => 'Alchemy is a magical world where humans and monsters coexist. When an accident leads to the birth of a child who is discovered to be the descendant of an alchemist, he must leave home and embark on a journey to find his family and restore peace to the world.',
+            'series_rating' => 9.1,
+            'series_genres' => [1, 10, 11],
+
+            'season_name' => 'Season 1',
+            'season_number' => 1,
+
+            'episode_name' => 'The Philosopher\'s Stone',
+            'episode_release_date' => '2009',
+
+            'files' => [
+                'https://www.youtube.com/watch?v=7QKqQY-_zj8'
+            ],
+
+            'cover' => 'https://m.media-amazon.com/images/M/MV5BMTQwNTU3MzY4MF5BMl5BanBnXkFtZTcwMjg4ODQzMw@@._V1_QL75_UX380_CR0,0,380,562_.jpg'
+        ]);
+
+        // ID 4
+
+        $series = new Series;
+        $series->add([
+            'series_name' => 'Naruto',
+            'series_description' => 'Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto. The story follows the adventures of the shinobi, who are clones of the original ninja, who are chosen by their village to become Hokage, the village\'s leader. The story takes place in Naruto\'s village, Konoha, and the main character, Naruto, is named after the ninja who is chosen by Konoha\'s village to be Hokage.',
+            'series_rating' => 9.1,
+            'series_genres' => [1, 10, 11],
+
+            'season_name' => 'Season 1',
+            'season_number' => 1,
+
+            'episode_name' => 'The Hokage\'s Secret',
+            'episode_release_date' => '2009',
+
+            'files' => [
+                'https://www.youtube.com/watch?v=7QKqQY-_zj8'
+            ],
+
+            'cover' => 'https://m.media-amazon.com/images/M/MV5BMTQwNTU3MzY4MF5BMl5BanBnXkFtZTcwMjg4ODQzMw@@._V1_QL75_UX380_CR0,0,380,562_.jpg'
+        ]);
+
     }
 }
