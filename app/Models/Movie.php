@@ -17,6 +17,8 @@ class Movie extends Model
 {
     use HasFactory;
 
+    protected $appends = ['rating_five'];
+
     /****************************************************/
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
@@ -68,6 +70,13 @@ class Movie extends Model
     {
         return Attribute::make(
             get: fn () => $this->likes()->where('type', false)->count(),
+        );
+    }
+
+    protected function ratingFive(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => round($this->rating/2),
         );
     }
 

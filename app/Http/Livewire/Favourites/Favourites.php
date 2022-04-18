@@ -8,9 +8,7 @@ use App\Models\{
 };
 class Favourites extends Component
 {
-    protected $listeners = [
-        '$refresh'
-    ];
+    protected $listeners = ['favouriteUpdated' => '$refresh'];
 
     public function render()
     {

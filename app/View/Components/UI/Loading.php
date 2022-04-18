@@ -4,17 +4,16 @@ namespace App\View\Components\UI;
 
 use Illuminate\View\Component;
 
-class Rating extends Component
+class Loading extends Component
 {
-    public $rating;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($rating)
+    public function __construct()
     {
-        $this->rating = round($rating/2);
+        //
     }
 
     /**
@@ -24,6 +23,6 @@ class Rating extends Component
      */
     public function render()
     {
-        return view('components.u-i.rating');
+        return view('components.u-i.loading');
     }
 }

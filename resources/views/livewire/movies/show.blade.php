@@ -1,4 +1,4 @@
-<div>
+<div wire:loading.class="opacity-50">
     <div class="p-3 bg-gray-100 rounded-lg">
         <div class="flex flex-row">
             <div class="basis-1/4 flex flex-col justify-center items-center w-1/4 ">
@@ -31,7 +31,7 @@
                                 <i class="fa-solid fa-thumbs-down"></i>
                                 <span class="text-sm">{{ $movie->dislikes_count }}</span>
                             </div>
-                            <x-ui.rating :rating="$movie->rating" />
+                            <livewire:ui.rating :rating="$movie->rating" />
                         </div>
                     </div>
                     <div class="flex-row justify-around text-left ">

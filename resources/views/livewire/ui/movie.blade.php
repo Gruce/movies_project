@@ -1,15 +1,16 @@
-<div class="w-52 h-80 bg-cover flex items-end justify-center rounded-lg relative group transition ease-in-out duration-300"
+<div wire:loading.class="opacity-50" class="w-52 h-80 bg-cover flex items-end justify-center rounded-lg relative group transition ease-in-out duration-300"
     style="background-image: url('{{ $movie->cover->url }}')">
     <div
         class="w-full h-full absolute bg-gradient-to-b  to-gray-800 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300">
     </div>
-    <div class="z-10 -mb-3 text-center group-hover:mb-5 group-hover:duration-300 ">
+    <div class="z-10 -mb-3 text-center group-hover:mb-5 group-hover:duration-300">
         <h1 class="text-white text-x1 font-semibold tracking-tight">{{ $movie->name }}</h1>
         <div class="flex items-center flex-col mt-1 mb-2">
-            <x-ui.rating :rating="$movie->rating" />
+            <livewire:ui.rating :rating="$movie->rating" wire:key="{{ now() }}" />
             <div
                 class="flex gap-1 mt-3 invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300">
-                <x-ui.button href="{{ route('movie-show', ['movie' => $movie->id]) }}" color="error">Watch Now!
+                <x-ui.button href="{{ route('movie-show', ['movie' => $movie->id]) }}" color="error">
+                    Watch Now!
                 </x-ui.button>
             </div>
         </div>

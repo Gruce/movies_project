@@ -1,27 +1,45 @@
-<div>
+<div wire:loading.class="opacity-50">
     <h1 class="text-left py-2 pr-4 pl-3 text-gray-700 text-lg font-bold ">Movies</h1>
-    <div class="flex gap-2">
+    <div class="flex mb-10 border p-2 rounded-lg border-gray-200  px-4">
         <!-- Dropdown menu -->
+        <div class="block">
 
-        <select wire:model="genre_id" class="py-1 text-sm text-gray-900 dark:text-gray-200"
-            aria-labelledby="dropdownDefault">
-            <option value="{{ null }}" selected class="block py-2 px-4 hover:bg-gray-200">
-                All
-            </option>
-            @foreach ($genres as $genre)
-                <option value="{{ $genre->id }}" class="block py-2 px-4 hover:bg-gray-200">
-                    {{ $genre->name }}
-                </option>
-            @endforeach
-        </select>
+            <button id="dropdownSmallButton" data-dropdown-toggle="dropdownSmall"
+                class="inline-flex items-center py-2 px-3 mr-3 mb-3 text-sm font-medium text-center text-black bg-gray-100 rounded-lg md:mb-0 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:text-red-500"
+                type="button">{{$genre_name}}<svg class="ml-2 w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg></button>
 
-        <div class="relative pt-1">
+            <!-- Dropdown menu -->
+            <div id="dropdownSmall"
+                class="hidden z-30 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+
+                <div class="py-1">
+                    <a href="#" wire:click="select_genres()" selected
+                        class="block py-1 px-4 hover:bg-gray-200 hover:text-gray-700" x-show="expanded" x-collapse>All Genres</a>
+                </div>
+                <ul class="py-1 text-sm text-gray-500 dark:text-gray-200" aria-labelledby="dropdownSmallButton">
+                    @foreach ($genres as $genre)
+                        <li>
+                            <a wire:click="select_genres({{$genre->id}}, '{{$genre->name}}')" href="#"
+                                class="block py-1 px-4 @if ($genre->id == $genre_id) bg-gray-200 text-red-500 @endif hover:bg-gray-100 hover:text-gray-700">
+                                {{ $genre->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+
+            </div>
+
+        </div>
+        <div class="pt-1 flex items-center">
             <label for="customRange3" class="form-label">
-                <x-ui.rating :rating="$rating*2" />    
+                <livewire:ui.rating :rating="$rating * 2" :listen="true" wire:key="{{ now() }}" />
             </label>
-            <input wire:model="rating" type="range"
+            {{-- <input wire:model="rating" type="range"
                 class="form-range w-full h-6 p-0 bg-transparent focus:outline-none focus:ring-3 focus:shadow-none"
-                min="1" max="5" step="1" id="customRange3" />
+                min="1" max="5" step="1" id="customRange3" /> --}}
         </div>
     </div>
     <div class="grid grid-cols-4 gap-4 mt-8">

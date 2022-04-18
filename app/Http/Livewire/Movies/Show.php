@@ -15,6 +15,7 @@ class Show extends Component
     public function like($type)
     {
         $this->movie->like($type);
+        $this->emit('likesUpdated');
     }
 
     public function render()
