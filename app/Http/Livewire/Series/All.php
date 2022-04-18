@@ -34,7 +34,17 @@ class All extends Component
     }
     public function render()
     {
-        $this->series = Series::get();
+        $this->series = Series::genre($this->genre_id)
+
+            ->get()
+            // Sort by first episode with first season of each series in descending order
+            ->sortByDesc(function ($single_series){
+                return $single_series->seasons->first()->episodes->first()->likes_count;
+            });
+
+        if ($this->rating)
+            $this->series = $this->series->where('rating_five', $this->rating);
+
 
         $this->genres = Genre::get([
             'id',

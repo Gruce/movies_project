@@ -11,6 +11,9 @@ class Series extends Model
 {
     use HasFactory;
 
+    protected $appends = ['rating_five'];
+
+
     public function genres()
     {
         return $this->belongsToMany(Genre::class);
@@ -107,5 +110,19 @@ class Series extends Model
         $cover = new Cover;
         $cover->url = $data['cover'];
         $episode->cover()->save($cover);
+    }
+
+
+    /****************************************************/
+    /******************* SCOPES *************************/
+    /****************************************************/
+
+    public function scopeGenre($query, $genre_id)
+    {
+        if ($genre_id == null)
+            return $query;
+        return $query->whereHas('genres', function ($query) use ($genre_id) {
+            $query->where('genre_id', $genre_id);
+        });
     }
 }

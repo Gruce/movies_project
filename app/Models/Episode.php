@@ -15,6 +15,9 @@ class Episode extends Model
 {
     use HasFactory;
 
+    protected $appends = ['likes_count', 'dislikes_count'];
+
+
     public function season()
     {
         return $this->belongsTo(Season::class);

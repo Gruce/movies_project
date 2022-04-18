@@ -9,6 +9,10 @@ use App\Models\{
 
 class Series extends Component
 {
+    protected $listeners = [
+        'watchLaterUpdated' => '$refresh',
+    ];
+    
     public function mount(Episode $episode)
     {
         $this->episode = $episode;
