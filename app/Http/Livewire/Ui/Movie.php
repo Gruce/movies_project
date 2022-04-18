@@ -7,7 +7,7 @@ use App\Models\Movie as MovieModel;
 
 class Movie extends Component
 {
-    
+
     public function mount(MovieModel $movie){
         $this->movie = $movie;
     }

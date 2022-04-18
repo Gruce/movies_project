@@ -12,7 +12,7 @@ class All extends Component
     protected $listeners = [
         '$refresh'
     ];
-    
+
     public function render()
     {
         $this->movies = Movie::whereHas('queues')->get();

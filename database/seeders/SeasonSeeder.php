@@ -15,11 +15,6 @@ class SeasonSeeder extends Seeder
      */
     public function run()
     {
-        // ID 1
-        Season::create([
-            'number' => 1,
-            'name' => 'Season 1',
-            'series_id' => 1,
-        ]);
+        
     }
 }

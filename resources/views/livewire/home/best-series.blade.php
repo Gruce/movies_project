@@ -4,14 +4,20 @@
             <span>Best Series</span>
         </div>
         <div>
-            <x-ui.icon-button icon="fa-solid fa-angle-left" class="w-8 h-8 text-xl" @click="$refs.slider.scrollLeft -= 2*$refs.slider.firstElementChild.offsetWidth" />
-            <x-ui.icon-button icon="fa-solid fa-angle-right" class="w-8 h-8 text-xl" @click="$refs.slider.scrollLeft += 2*$refs.slider.firstElementChild.offsetWidth" />
+            <x-ui.icon-button color="error" icon="fa-solid fa-angle-left" class="w-8 h-8 text-xl" @click="$refs.slider.scrollLeft -= 2*$refs.slider.firstElementChild.offsetWidth" />
+            <x-ui.icon-button color="error" icon="fa-solid fa-angle-right" class="w-8 h-8 text-xl" @click="$refs.slider.scrollLeft += 2*$refs.slider.firstElementChild.offsetWidth" />
         </div>
     </div>
 
-    <div class="flex overflow-x-hidden overflow-y-hidden flex-nowrap" x-ref="slider">
+    <div class="flex overflow-y-hidden flex-nowrap pb-2 rounded-lg" x-ref="slider">
+        @forelse ($series as $series)
             <div x-ref="slide_item" class="mr-5">
-                <livewire:ui.series name="Avengers" rating="6.8" imgUrl="/img/inv.jpg" url="#" />
+                {{-- <livewire:ui.series :episode="$series->seasons->first()->episodes->first()->id" :wire:key="$series->id" /> --}}
             </div>
+        @empty
+            <div class="text-center text-gray-500">
+                <span class="text-xl">No Series</span>
+            </div>
+        @endforelse
     </div>
 </div>

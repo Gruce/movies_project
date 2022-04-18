@@ -5,13 +5,14 @@ use App\Http\Controllers\Logout;
 
 use App\Http\Livewire\Home\Home;
 use App\Http\Livewire\Series\{
+    Show as ShowEpisode,
     All as AllSeries,
-    show as SeriesShow,
 };
 use App\Http\Livewire\Movies\{
     Show as ShowMovie,
     All as AllMovies,
 };
+
 use App\Http\Livewire\Favourites\Favourites;
 
 use App\Http\Livewire\WatchLater\{
@@ -45,10 +46,11 @@ Route::prefix('movies')->group(function (){
 });
 
 
-//
+
 Route::prefix('series')->group(function (){
     Route::get('/', AllSeries::class)->name('series-all');
-    // Route::get('/show/{id?}', ShowMovie::class)->name('movies-show');
+
+    Route::get('/show/{episode}', ShowEpisode::class)->name('series-show');
 });
 
 Route::prefix('favourites')->group(function (){

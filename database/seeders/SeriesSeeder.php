@@ -15,37 +15,27 @@ class SeriesSeeder extends Seeder
      */
     public function run()
     {
+        
         // ID 1
-        $series = Series::create([
-            'name' => 'Attack on Titan',
-            'description' => 'After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.',
-            'rating' => 9.1,
-        ]);
+        $series = new Series;
+        $series->add([
+            'series_name' => 'Attack on Titan',
+            'series_description' => 'After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.',
+            'series_rating' => 9.1,
+            'series_genres' => [1, 10, 11],
 
-        $series->genres()->attach([1, 10, 11]);
-        // ID 2
-        $series = Series::create([
-            'name' => 'Breaking bad',
-            'description' => 'After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.',
-            'rating' => 10.0,
-        ]);
+            'season_name' => 'Season 1',
+            'season_number' => 1,
 
-        $series->genres()->attach([1, 10, 11]);
-        // ID 3
-        $series = Series::create([
-            'name' => 'GOT',
-            'description' => 'After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.',
-            'rating' => 5.1,
-        ]);
+            'episode_name' => 'The Fall of Shiganshina',
+            'episode_release_date' => '2013',
 
-        $series->genres()->attach([1, 10, 11]);
-        // ID 4
-        $series = Series::create([
-            'name' => 'Forever',
-            'description' => 'After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.',
-            'rating' => 7.1,
-        ]);
+            'files' => [
+                'https://www.youtube.com/watch?v=7QKqQY-_zj8'
+            ],
 
-        $series->genres()->attach([1, 10, 11]);
+            'cover' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg'
+        ]);
+        
     }
 }

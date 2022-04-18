@@ -7,10 +7,10 @@ use App\Models\Episode;
 
 class SmallSeries extends Component
 {
-    public $series;
+    public $episode;
 
-    public function mount(Series $series){
-        $this->series = $series;
+    public function mount(Episode $episode){
+        $this->episode = $episode;
     }
 
     public function render()

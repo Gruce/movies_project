@@ -18,8 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->float('rating')->default(0.0);
-            $table->integer('likes')->default(0);
-            $table->integer('dislikes')->default(0);
 
             $table->timestamps();
         });
