@@ -9,8 +9,17 @@ class SmallSeries extends Component
 {
     public $episode;
 
+    protected $listeners = [
+        'watchLaterUpdated' => '$refresh',
+    ];
+
     public function mount(Episode $episode){
         $this->episode = $episode;
+    }
+
+    public function watch_later($state){
+        $this->episode->queue($state);
+        $this->emit('watchLaterUpdated');
     }
 
     public function render()
