@@ -1,3 +1,3 @@
 <div>
-   dfdfdf
+   <livewire:ui.series />
 </div>
