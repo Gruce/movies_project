@@ -10,9 +10,9 @@ class SmallMovie extends Component
     public $movie;
 
     protected $listeners = [
-        'watchLaterUpdated' => '$refresh'
+        'watchLaterUpdated' => '$refresh',
     ];
-    
+
     public function mount(Movie $movie){
         $this->movie = $movie;
     }

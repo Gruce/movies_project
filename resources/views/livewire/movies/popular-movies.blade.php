@@ -1,4 +1,4 @@
-<div>
+<div wire:loading.class="opacity-50">
     <h1 class="text-left text-gray-500 text-lg font-bold">
         Popular Movies
     </h1>
