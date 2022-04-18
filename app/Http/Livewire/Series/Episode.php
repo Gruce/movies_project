@@ -4,10 +4,10 @@ namespace App\Http\Livewire\Series;
 
 use Livewire\Component;
 
-class All extends Component
+class Episode extends Component
 {
     public function render()
     {
-        return view('livewire.series.all');
+        return view('livewire.series.episode');
     }
 }

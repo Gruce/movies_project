@@ -3,11 +3,12 @@
 namespace App\Http\Livewire\Series;
 
 use Livewire\Component;
+use App\Models\Series;
 
-class All extends Component
+class Show extends Component
 {
     public function render()
     {
-        return view('livewire.series.all');
+        return view('livewire.series.show');
     }
 }

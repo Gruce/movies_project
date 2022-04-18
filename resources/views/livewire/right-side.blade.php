@@ -15,30 +15,30 @@
                 placeholder="Search" />
         </div>
     </div>
-
-    @if (Request::is('series*'))
+    @if (Request::is('series*') || Request::query('type') == 'series')
         <div class="flex flex-col">
             <div>
                 <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Series</h1>
                 <div class="flex flex-col">
-                    <livewire:ui.small-movie name="Avengers" rating="10" imgUrl="/img/inv.jpg" category="Action , Drama" url="#" />
+                    @foreach ($series as $item)
+                        <livewire:ui.small-series episode="1" />
+                    @endforeach
                 </div>
-
                 <x-ui.button color="error" class="mt-3 text-white block" href="#">
                     SEE MORE
                 </x-ui.button>
             </div>
             @auth
-               @livewire('series.favourites')
+                @livewire('series.favourites')
             @endauth
         </div>
-        @else
+    @else
         <div class="flex flex-col">
             <div>
                 <h1 class="text-left text-gray-500 text-lg font-bold"> Popular Movies</h1>
                 <div class="flex flex-col">
                     @foreach ($movies as $movie)
-                        <livewire:ui.small-movie :movie="$movie->id" />
+                        <livewire:ui.small-movie :movie="$movie->id" :wire:key="$movie->id" />
                     @endforeach
                 </div>
 

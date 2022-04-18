@@ -5,14 +5,21 @@ use App\Http\Controllers\Logout;
 
 use App\Http\Livewire\Home\Home;
 use App\Http\Livewire\Series\{
+    Show as ShowEpisode,
     All as AllSeries,
-    show as SeriesShow,
 };
 use App\Http\Livewire\Movies\{
     Show as ShowMovie,
     All as AllMovies,
 };
+
 use App\Http\Livewire\Favourites\Favourites;
+
+use App\Http\Livewire\WatchLater\{
+
+    All as AllWatchLater
+};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,13 +46,21 @@ Route::prefix('movies')->group(function (){
 });
 
 
-//
+
 Route::prefix('series')->group(function (){
-    Route::get('/series', AllSeries::class)->name('series-all');
-    // Route::get('/show/{id?}', ShowMovie::class)->name('movies-show');
+    Route::get('/', AllSeries::class)->name('series-all');
+
+    Route::get('/show/{episode}', ShowEpisode::class)->name('series-show');
 });
 
-Route::get('/favourites', Favourites::class)->name('favourites');
+Route::prefix('favourites')->group(function (){
+    Route::get('/', Favourites::class)->name('favourites');
+});
+
+Route::prefix('watchlater')->group(function (){
+    Route::get('/', AllWatchLater::class)->name('watch-later-all');
+});
+
 
 // Route::middleware([
 //     'auth:sanctum',

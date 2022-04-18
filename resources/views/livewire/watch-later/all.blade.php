@@ -1,7 +1,7 @@
 <div x-data>
     <div class="flex justify-between mt-10 mb-5">
         <div class="font-bold text-lg text-gray-500">
-            <span>Favourites</span>
+            <span>Watch Later</span>
         </div>
     </div>
 

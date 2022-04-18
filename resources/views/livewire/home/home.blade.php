@@ -12,9 +12,10 @@
                     'https://cnth2.shabakaty.com/cover-images/710BA908-B35F-F422-9324-CF9628A10739_cover.jpg',
                     'https://cnth2.shabakaty.com/cover-images/FD6F3C97-03B6-7D5B-50CA-9ADDA1A79E15_cover.jpg'
                 ] as $k => $item)
-                    <div class="snap-start w-full h-full flex items-center  justify-center  text-white  font-bold flex-shrink-0 bg-black"  data-carousel-item>
-                        <img src="{{$item}}" class="h-full w-full object-cover absolute inset-0 z-10 opacity-25">
-                        <x-ui.button class=" z-20 top-2" href="{{route('movie-show', ['movie' => ($k+1)])}}" color="error">Watch Now!
+                    <div class="snap-start group w-full h-full flex items-center  justify-center  text-white  font-bold flex-shrink-0 bg-black"  data-carousel-item>
+                        <img src="{{$item}}" class="h-full w-full object-cover relative inset-0 z-10 opacity-80 transition duration-300 group-hover:opacity-100">
+
+                        <x-ui.button class="absolute z-20 bottom-10" href="{{route('movie-show', ['movie' => ($k+1)])}}" color="error">Watch Now!
                         </x-ui.button>
                     </div>
                 @endforeach
