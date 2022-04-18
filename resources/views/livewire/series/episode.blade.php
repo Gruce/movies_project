@@ -1,11 +1,11 @@
 <div>
-    <a href="#" class="flex h-40 w-28 rounded-lg static">
-        <div class="flex ">
-                <div class="absolute items-end text-sm pt-24">
-                    <h3 class="text-xl text-white font-semibold pl-4">E:1</h3>
-                    <p class="text-lg text-gray-300 pl-6">24:50</p>
+    <a href="#" class="flex h-28 w-40 rounded-lg static">
+        <div class="flex sticky">
+                <div class="absolute items-end text-sm">
+                    <h3 class="text-xl text-white font-semibold">E:1</h3>
+                    <p class="text-lg text-gray-300">24:50</p>
                 </div>
-            <img class="hover:opacity-25 rounded-lg overflow-hidden object-fill h-40 w-28"src="https://cdn.anime-planet.com/anime/primary/naruto-shippuden-1.jpg?t=1625766494" alt="Episode Cover"/>
+            <img class=" hover:opacity-25 rounded-lg overflow-hidden object-fill h-28 w-40"src="https://sportshub.cbsistatic.com/i/2022/02/11/e846e44c-5072-4043-890c-0600774e34f8/naruto-shippuden.jpg?width=1200" alt="Cover"/>
         </div>
     </a>
 </div>

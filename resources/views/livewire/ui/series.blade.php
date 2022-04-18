@@ -16,12 +16,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="top-2 right-2 absolute flex flex-col gap-2">
-                    <x-ui.icon-button icon="fa-solid fa-clock" color="light2"
-                        class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
-                    <x-ui.icon-button icon="fa-solid fa-bookmark" color="light2"
-                        class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
-                </div>
+                {{-- <div class="top-2 right-2 absolute flex flex-col gap-2">
+                    @auth
+                        @if (!$movie->queued())
+                            <x-ui.icon-button wire:click="watch_later(true)" icon="fa-solid fa-clock" color="light2"
+                                class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+                        @else
+                            <x-ui.icon-button wire:click="watch_later(false)" icon="fa-solid fa-clock" color="warning"
+                                class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+                        @endif
+                        @if (!$movie->favourited())
+                            <x-ui.icon-button wire:click="favourite(true)" icon="fa-solid fa-heart" color="light2"
+                                class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+                        @else
+                            <x-ui.icon-button wire:click="favourite(false)" icon="fa-solid fa-heart" color="error"
+                                class="text-2xl invisible opacity-0 group-hover:opacity-100 hover:bg-tr group-hover:visible group-hover:duration-300" />
+                        @endif
+                    @endauth
+                </div> --}}
                 <div
                     class="top-0 left-0 absolute text-white bg-gradient-to-tl to-red-500 from-red-700  px-5 py-0.5 rounded-tl-[8px] rounded-br-[15px]">
                     <button data-tooltip-target="tooltip-default" type="button" class="fa-solid fa-tv"></button>
@@ -34,5 +46,6 @@
                 </div>
             </div>
         @endforeach
+        <livewire:series.episode/>
     </div>
 </div>
