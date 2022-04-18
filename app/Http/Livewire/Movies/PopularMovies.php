@@ -9,10 +9,10 @@ use App\Models\{
 class PopularMovies extends Component
 {
     protected $listeners = ['likesUpdated' => '$refresh'];
-    
+
     public function render()
     {
-        $this->movies = Movie::get()->append('likes_count')->sortByDesc('likes_count')->take(3);
+        $this->movies = Movie::get()->sortByDesc('likes_count')->take(3);
 
         return view('livewire.movies.popular-movies');
     }
