@@ -4,7 +4,7 @@
     </h1>
     <div class="flex flex-col">
         @foreach ($movies as $movie)
-            <livewire:ui.small-movie :movie="$movie->id" :wire:key="$movie->id" />
+            <livewire:ui.small-movie :movie="$movie->id" :wire:key="'popular-movies-' . $movie->id" />
         @endforeach
     </div>
 
