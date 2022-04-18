@@ -10,7 +10,7 @@ use App\Models\{
 class All extends Component
 {
     protected $listeners = [
-        '$refresh'
+        'watchLaterUpdated' => '$refresh'
     ];
 
     public function render()

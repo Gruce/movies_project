@@ -8,7 +8,6 @@ use App\Models\{
 };
 class PopularMovies extends Component
 {
-    
     public function render()
     {
         $this->movies = Movie::get()->take(3);

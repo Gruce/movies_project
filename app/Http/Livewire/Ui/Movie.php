@@ -14,12 +14,12 @@ class Movie extends Component
 
     public function watch_later($state){
         $this->movie->queue($state);
-        $this->emit('$refresh');
+        $this->emit('watchLaterUpdated');
     }
 
     public function favourite($state){
         $this->movie->favourite($state);
-        $this->emit('$refresh');
+        $this->emit('favouriteUpdated');
     }
 
     public function render()

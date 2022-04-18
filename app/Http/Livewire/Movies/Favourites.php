@@ -9,8 +9,8 @@ use App\Models\{
 
 class Favourites extends Component
 {
+    protected $listeners = ['favouriteUpdated' => '$refresh'];
 
-    protected $listeners = ['$refresh'];
     public function render()
     {
         $this->movies = Movie::with('cover')->whereHas('favourites')->get()->take(3);

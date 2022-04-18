@@ -34,9 +34,9 @@
         </div>
     @else
         <div class="flex flex-col">
-            @livewire('movies.popular-movies')
+            <livewire:movies.popular-movies />
             @auth
-                @livewire('movies.favourites')
+                <livewire:movies.favourites />
             @endauth
         </div>
     @endif
