@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('covers', function (Blueprint $table) {
             $table->id();
             $table->string('url');
+            $table->string('url_slider');
 
             $table->integer('coverable_id');
             $table->string('coverable_type');

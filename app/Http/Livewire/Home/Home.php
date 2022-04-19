@@ -19,36 +19,36 @@ class Home extends Component
         $this->last = null;
 
         if($this->type === 'movies'){
-            $this->last = Movie::with('cover')->get(['id']);
+            $this->last = Movie::with('cover')->take(3)->get(['id']);
             // dd($this->last->toArray());
         }
 
-        elseif($this->type==='series'){
-            $this->last = Series::with(
-                [
-                    'seasons' => function($season){
-                        return $season->with(
-                            [
-                                'episodes' => function($episode){
-                                    return $episode->with(
-                                        [
-                                            'cover' => function($cover){
-                                                return $cover->latest()->take(1);
-                                            }
-                                        ]
-                                        );
-                                }
-                            ]
-                        );
-                    }
-                ]
-                )->get(['id']);
-            dd($this->last->toArray());
-        }
+        // elseif($this->type==='series'){
+        //     $this->last = Series::with(
+        //         [
+        //             'seasons' => function($season){
+        //                 return $season->with(
+        //                     [
+        //                         'episodes' => function($episode){
+        //                             return $episode->with(
+        //                                 [
+        //                                     'cover' => function($cover){
+        //                                         return $cover->latest()->take(1);
+        //                                     }
+        //                                 ]
+        //                                 );
+        //                         }
+        //                     ]
+        //                 );
+        //             }
+        //         ]
+        //         )->get(['id']);
+        //     dd($this->last->toArray());
+        // }
 
-        else{
-            abort(404);
-        }
+        // else{
+        //     abort(404);
+        // }
 
         if (!request()->query('type')){
             return redirect()->route('home', ['type' => 'movies']);

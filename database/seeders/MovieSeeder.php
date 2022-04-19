@@ -28,6 +28,7 @@ class MovieSeeder extends Seeder
 
             'genres' => [5, 3, 10],
             'cover' => 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
             'files' => [
                 'https://www.youtube.com/watch?v=7QKqQY-_zj8'
             ],
@@ -43,6 +44,7 @@ class MovieSeeder extends Seeder
 
             'genres' => [6, 3, 12],
             'cover' => 'https://m.media-amazon.com/images/M/MV5BMjA4MDU0NTUyN15BMl5BanBnXkFtZTgwMzQxMzY4MjE@._V1_.jpg',
+            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
             'files' => [
                 'https://youtu.be/SKu5lGfRBxc'
             ],
@@ -58,6 +60,8 @@ class MovieSeeder extends Seeder
 
             'genres' => [3, 13, 12],
             'cover' => 'https://cnth2.shabakaty.com/poster-images/4B38A194-B47E-4AF5-6202-411A0E4ED649_poster_medium_thumb.jpg',
+            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+        
             'files' => [
                 'https://youtu.be/sslCRVx7nPQ'
             ],
@@ -73,6 +77,8 @@ class MovieSeeder extends Seeder
 
             'genres' => [1, 8, 14],
             'cover' => 'https://cnth2.shabakaty.com/poster-images/4D6C5193-8540-BF02-01BF-E36340A9AB27_poster_medium_thumb.png',
+            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            
             'files' => [
                 'https://youtu.be/RK8xHq6dfAo'
             ],
@@ -88,6 +94,8 @@ class MovieSeeder extends Seeder
 
             'genres' => [1, 4, 10],
             'cover' => 'https://cnth2.shabakaty.com/poster-images/1EF4E9FB-EAAF-3FCA-9E69-CB5C1DB5A8FA_poster_medium_thumb.jpg',
+            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            
             'files' => [
                 'https://www.youtube.com/watch?v=JfVOs4VSpmA'
             ],
@@ -103,6 +111,8 @@ class MovieSeeder extends Seeder
 
             'genres' => [1, 3, 10],
             'cover' => 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3d/The_Lion_King_poster.jpg/220px-The_Lion_King_poster.jpg',
+            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            
             'files' => [
                 'https://youtu.be/4Cbfb0eeN9E'
             ],
@@ -118,6 +128,8 @@ class MovieSeeder extends Seeder
 
             'genres' => [1, 4, 10],
             'cover' => 'https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/The_Secret_Life_of_Pets_2_%282019%29_Final_Poster.jpg/220px-The_Secret_Life_of_Pets_2_%282019%29_Final_Poster.jpg',
+            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            
             'files' => [
                 'https://youtu.be/4Cbfb0eeN9E'
             ],
@@ -133,6 +145,8 @@ class MovieSeeder extends Seeder
 
             'genres' => [1, 3, 10],
             'cover' => 'https://m.media-amazon.com/images/M/MV5BNWJiYmU4NTItZjAyZi00OGQxLTkwNmQtOGE5ODgyYTg0MzY1XkEyXkFqcGdeQXVyMTEzMjQzMDM1._V1_.jpg',
+            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            
             'files' => [
                 'https://youtu.be/4Cbfb0eeN9E'
             ],
@@ -149,6 +163,8 @@ class MovieSeeder extends Seeder
 
             'genres' => [1, 3, 12],
             'cover' => 'https://img.wattpad.com/cover/216342125-288-k170397.jpg',
+            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            
             'files' => [
                 'https://youtu.be/4Cbfb0eeN9E'
             ],
