@@ -10,10 +10,15 @@
     </div>
 
     <div class="flex overflow-x-hidden overflow-y-hidden flex-nowrap" x-ref="slider">
-        {{-- @for ($i = 0; $i < 10; $i++)
-            <div x-ref="slide_item" class="mr-5">
-                <livewire:ui.movie name="Avengers {{ $i+1 }}" rating="6.8" imgUrl="/img/inv.jpg" movie_id="1" />
+        @forelse ($movies as $movie)
+            <div class="mr-5">
+                <livewire:ui.movie :movie="$movie->id" :wire:key="$movie->id" />
             </div>
-        @endfor --}}
+        @empty
+            <div class="text-center">
+                <h1 class="text-gray-500 text-xl">No movies found</h1>
+            </div>
+        @endforelse
+        
     </div>
 </div>

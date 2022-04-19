@@ -51,6 +51,7 @@ Route::prefix('movies')->group(function (){
 
 });
 
+//Series
 Route::prefix('series')->group(function (){
     Route::get('/', AllSeries::class)->name('series-all');
 

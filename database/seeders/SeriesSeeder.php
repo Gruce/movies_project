@@ -35,7 +35,9 @@ class SeriesSeeder extends Seeder
                 'https://www.youtube.com/watch?v=7QKqQY-_zj8'
             ],
 
-            'cover' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg'
+            'cover' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg',
+            'url_slider' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg'
+            
         ]);
 
         // ID 2
@@ -57,7 +59,9 @@ class SeriesSeeder extends Seeder
                 'https://www.youtube.com/watch?v=7QKqQY-_zj8'
             ],
 
-            'cover' => 'https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg'
+            'cover' => 'https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg',
+            'url_slider' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg'
+
         ]);
 
         // ID 3
@@ -79,7 +83,9 @@ class SeriesSeeder extends Seeder
                 'https://www.youtube.com/watch?v=7QKqQY-_zj8'
             ],
 
-            'cover' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcScQ3SvxqLuT1el0OmUisC1YiBpUhRVJQk8OeBW7LM-fpE5I4UQ'
+            'cover' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcScQ3SvxqLuT1el0OmUisC1YiBpUhRVJQk8OeBW7LM-fpE5I4UQ',
+            'url_slider' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg'
+
         ]);
         $series->add([
             'series_id' => 3,
@@ -93,7 +99,9 @@ class SeriesSeeder extends Seeder
                 'https://www.youtube.com/watch?v=7QKqQY-_zj8'
             ],
 
-            'cover' => 'https://m.media-amazon.com/images/M/MV5BMjIxNzU1MDg2OF5BMl5BanBnXkFtZTgwOTQwMzQ2MjE@._V1_UX224_CR0,0,224,126_AL_.jpg'
+            'cover' => 'https://m.media-amazon.com/images/M/MV5BMjIxNzU1MDg2OF5BMl5BanBnXkFtZTgwOTQwMzQ2MjE@._V1_UX224_CR0,0,224,126_AL_.jpg',
+            'url_slider' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg'
+
         ]);
 
         // ID 4
@@ -116,7 +124,9 @@ class SeriesSeeder extends Seeder
                 'https://www.youtube.com/watch?v=7QKqQY-_zj8'
             ],
 
-            'cover' => 'https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg'
+            'cover' => 'https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg',
+            'url_slider' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg'
+
         ]);
 
     }
