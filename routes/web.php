@@ -7,10 +7,12 @@ use App\Http\Livewire\Home\Home;
 use App\Http\Livewire\Series\{
     Show as ShowEpisode,
     All as AllSeries,
+    AddSeries,
 };
 use App\Http\Livewire\Movies\{
     Show as ShowMovie,
     All as AllMovies,
+    AddMovie,
 };
 
 use App\Http\Livewire\Favourites\Favourites;
@@ -37,20 +39,23 @@ Route::get('/', Home::class)->name('home');
 
 Route::get('/logout', [Logout::class, 'logout'])->name('logout-get');
 
+Route::group(['prefix' => 'admin' , 'middleware' => 'admin'] ,function(){
+    Route::get('/add/movie', AddMovie::class)->name('add-movie');
+    Route::get('/add/series', AddSeries::class)->name('add-series');
+});
 
 //movies
 Route::prefix('movies')->group(function (){
     Route::get('/', AllMovies::class)->name('movies-all');
-
     Route::get('/show/{movie}', ShowMovie::class)->name('movie-show');
+
 });
-
-
 
 Route::prefix('series')->group(function (){
     Route::get('/', AllSeries::class)->name('series-all');
 
     Route::get('/show/{episode}', ShowEpisode::class)->name('series-show');
+
 });
 
 Route::prefix('favourites')->group(function (){
