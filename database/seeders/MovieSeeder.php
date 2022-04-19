@@ -28,7 +28,7 @@ class MovieSeeder extends Seeder
 
             'genres' => [5, 3, 10],
             'cover' => 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
-            'url_slider' =>'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPB--ccpqOtk37RGP2X0UCwg6m5QabZqO20Q&usqp=CAU',
+            'url_slider' =>'https://www.heavenofhorror.com/wp-content/uploads/2021/06/the-tomorrow-war-amazon-prime.jpg',
             'files' => [
                 'https://www.youtube.com/watch?v=7QKqQY-_zj8'
             ],
