@@ -105,6 +105,7 @@ class Movie extends Model
 
         $cover = new Cover;
         $cover->url = $data['cover'];
+        $cover->url_slider = $data['url_slider'];
         $movie->cover()->save($cover);
     }
 
