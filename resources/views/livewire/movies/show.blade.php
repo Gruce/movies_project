@@ -52,6 +52,6 @@
         </div>
     </div>
     <div>
-        @livewire('movies.similar')
+        @livewire('movies.similar', ['movie_id' => $movie->id])
     </div>
 </div>
