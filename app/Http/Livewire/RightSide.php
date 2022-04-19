@@ -9,6 +9,8 @@ class RightSide extends Component
 {
     public function render(){
         $this->series = Series::get()->take(3);
+        
+
         return view('livewire.right-side');
     }
 }
