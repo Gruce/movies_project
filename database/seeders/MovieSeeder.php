@@ -28,7 +28,7 @@ class MovieSeeder extends Seeder
 
             'genres' => [5, 3, 10],
             'cover' => 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
-            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            'url_slider' =>'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPB--ccpqOtk37RGP2X0UCwg6m5QabZqO20Q&usqp=CAU',
             'files' => [
                 'https://www.youtube.com/watch?v=7QKqQY-_zj8'
             ],
@@ -44,7 +44,7 @@ class MovieSeeder extends Seeder
 
             'genres' => [6, 3, 12],
             'cover' => 'https://m.media-amazon.com/images/M/MV5BMjA4MDU0NTUyN15BMl5BanBnXkFtZTgwMzQxMzY4MjE@._V1_.jpg',
-            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            'url_slider' =>'https://wallpaperaccess.com/full/1538850.jpg',
             'files' => [
                 'https://youtu.be/SKu5lGfRBxc'
             ],
@@ -60,7 +60,7 @@ class MovieSeeder extends Seeder
 
             'genres' => [3, 13, 12],
             'cover' => 'https://cnth2.shabakaty.com/poster-images/4B38A194-B47E-4AF5-6202-411A0E4ED649_poster_medium_thumb.jpg',
-            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            'url_slider' =>'https://s3.amazonaws.com/static.rogerebert.com/uploads/review/primary_image/reviews/hacksaw-ridge-2016/Hacksaw-Ridge-2016.jpg',
         
             'files' => [
                 'https://youtu.be/sslCRVx7nPQ'
