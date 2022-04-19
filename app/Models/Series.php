@@ -42,6 +42,13 @@ class Series extends Model
         );
     }
 
+    protected function lastSeason(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->seasons->last(),
+        );
+    }
+
 
 
 
@@ -118,6 +125,8 @@ class Series extends Model
 
         $cover = new Cover;
         $cover->url = $data['cover'];
+        $cover->url_slider = $data['url_slider'];
+
         $episode->cover()->save($cover);
     }
 
