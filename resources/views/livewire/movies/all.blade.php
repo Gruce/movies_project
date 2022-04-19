@@ -42,7 +42,7 @@
         </div>
     </div>
     <div class="grid grid-cols-4 gap-4 mt-8">
-        @forelse ($movies as $movie)
+        {{-- @forelse ($movies as $movie)
             <div class="mr-5">
                 <livewire:ui.movie :movie="$movie->id" :wire:key="$movie->id" />
             </div>
@@ -50,6 +50,6 @@
             <div class="text-center">
                 <h1 class="text-gray-500 text-xl">No movies found</h1>
             </div>
-        @endforelse
+        @endforelse --}}
     </div>
 </div>
