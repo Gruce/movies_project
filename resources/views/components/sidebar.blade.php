@@ -40,7 +40,7 @@
             </div>
         @endauth
 
-        
+
         @foreach ($tabs as $tab)
             <div class="mb-5 @if (!$loop->first) mt-10 @endif ml-3 text-left  text-gray-300  ">
                 {{ $tab->title }}
@@ -58,4 +58,27 @@
                 @endforeach
             </ul>
         @endforeach
+        @admin
+        <div class="mt-2 mb-5 ml-3 text-left  text-gray-300  ">
+            admin
+        </div>
+        <ul class="space-y-2 ml-3 ">
+            <li>
+                <a href="{{ route('add-movie') }}"
+                    class="flex  items-center py-2  px-4 text-base font-normal text-gray-900 rounded-lg group hover:bg-gray-100 ">
+                    <i
+                        class="fa-solid fa-circle-plus text-gray-500 group-hover:text-gray-900 "></i>
+                    <span class="ml-3">Add movie</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('add-series') }}"
+                    class="flex  items-center py-2  px-4 text-base font-normal text-gray-900 rounded-lg group hover:bg-gray-100 ">
+                    <i
+                        class="fa-solid fa-circle-plus text-gray-500 group-hover:text-gray-900 "></i>
+                    <span class="ml-3">Add series</span>
+                </a>
+            </li>
+        </ul>
+        @endadmin
 </aside>
