@@ -15,8 +15,6 @@ use App\Http\Livewire\Movies\{
     AddMovie,
 };
 
-use App\Http\Livewire\Add;
-
 use App\Http\Livewire\Favourites\Favourites;
 
 use App\Http\Livewire\WatchLater\{
@@ -44,7 +42,6 @@ Route::get('/logout', [Logout::class, 'logout'])->name('logout-get');
 Route::group(['prefix' => 'admin' , 'middleware' => 'admin'] ,function(){
     // Route::get('/add/movie', AddMovie::class)->name('add-movie');
     // Route::get('/add/series', AddSeries::class)->name('add-series');
-    Route::get('/add', AllMovies::class)->name('add');
 });
 
 //movies

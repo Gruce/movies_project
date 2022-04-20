@@ -15,13 +15,13 @@ class Home extends Component
     public $type;
     protected $queryString = ['type'];
 
-    
+
     public function mount(){
         $this->last = null;
-        
+
         if($this->type === 'movies'){
             $this->last = Movie::with('cover')->take(5)->get(['id', 'name', 'rating', 'description']);
-            
+
             // dd($this->last->toArray());
         }
 

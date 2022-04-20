@@ -60,8 +60,9 @@
             <div class="flex overflow-y-hidden flex-nowrap pb-2 rounded-lg">
                 @forelse ($seasons as $season)
                     <li class="mr-2" role="presentation">
-                        <button
-                            class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400 border-blue-600 dark:border-blue-500"
+                        <button style="border-color: red; 
+                        color: red;"
+                            class="inline-block p-4 rounded-t-lg border-b-2 border-red-600"
                             id="season-{{ $season->id }}-tab" data-tabs-target="#season-{{ $season->id }}"
                             type="button" role="tab" aria-controls="season-{{ $season->id }}"
                             aria-selected="true">{{ $season->name }}</button>
