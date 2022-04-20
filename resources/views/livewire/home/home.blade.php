@@ -10,16 +10,19 @@
                 @forelse ($last as $item)
                 <div class="snap-start group w-full h-full flex items-center  justify-center  text-white  font-bold flex-shrink-0 bg-black"  data-carousel-item>
                     <div
-                        class="w-full h-full opacity-90 z-20 hover:opacity-100 absolute bg-gradient-to-bl  to-gray-800 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300">
+                        class="w-full h-full  z-20 opacity-100 absolute bg-gradient-to-bl  to-gray-800 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300">
                     </div>
                     <img src="{{$item->cover->url_slider}}" class="h-full w-full object-cover relative inset-0 z-10 opacity-80 transition duration-300 group-hover:opacity-100">
 
                     <x-ui.button class="absolute z-20 bottom-10 right-20" href="{{route('movie-show', ['movie' => $item->id])}}" color="error">Watch Now!
                     </x-ui.button>
                     <div class="absolute text-left z-20 max-w-sm bottom-10 left-20">
-                        <span class="text-4xl font-serif">The Tomorrow</span>
-                        <span class="bg-yellow-300 rounded-lg ml-10 text-black px-2"><i class="fa-solid fa-star"></i>8.9</span> <br>
-                        <span class="font-normal">A family man is drafted to fight in a future war where the fate of humanity relies on his ability to confront the past.</span>
+                    <div class="flex">
+                        <span class="text-3xl">{{$item->name}}</span>
+                        <span class="bg-yellow-300 rounded-lg ml-5 my-2  text-black px-2"><i class="fa-solid fa-star"></i>{{$item->rating}}</span>
+                    </div>    
+                     
+                        <span class="font-normal text-xs">{{$item->description}}</span>
                     </div>
                     
                 </div>
