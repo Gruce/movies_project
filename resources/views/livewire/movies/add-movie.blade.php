@@ -11,7 +11,7 @@
                 <label for="name" class="text-left block mb-2 text-sm font-medium text-gray-900">movie
                     name</label>
                 <input wire:model="name" type="text" id="name"
-                    class="bg-transparent border-0 border-b-2 border-black text-gray-900 text-sm block w-full p-2.5 focus:ring-gray-300 focus:border-black"
+                    class="bg-transparent border-0 border-b-2 border-black text-gray-900 text-sm block w-full p-2.5 focus:ring-black-300 focus:border-black focus:outline-none focus:ring-0"
                     placeholder="name" >
                     @error('name') <span class="error text-red-600">{{ $message }}</span> @enderror
             </div>
