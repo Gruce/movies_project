@@ -4,13 +4,13 @@
             <h2 class="text-left card-title  pr-4"> Add Movie</h2>
         </div>
     </div>
-    <form>
+    <form wire:submit.prevent="add">
 
         <div class="grid grid-cols-2 gap-4">
             <div class="mb-6">
                 <label for="name" class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">movie
                     name</label>
-                <input type="text" id="name"
+                <input wire:model="name" type="text" id="name"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                     placeholder="name" required="">
             </div>
@@ -18,7 +18,7 @@
             <div class="mb-6">
                 <label for="rating" class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     rating</label>
-                <input type="number"
+                <input wire:model="rating" type="number"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                     placeholder="rating" required="">
             </div>
@@ -27,17 +27,17 @@
             <div class="mb-6">
                 <label for="name"
                     class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Duration</label>
-                <input type="number" id="name"
+                <input wire:model="duration" type="number"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                     placeholder="Duration" required="">
             </div>
             <!-- ... -->
             <div class="mb-6">
-                <label for="rating" class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label  class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Release Date</label>
-                <input type="number"
+                <input wire:model="release_date" type="date"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                    placeholder="Duration" required="">
+                    placeholder="Release Date" required="">
             </div>
 
         </div>
@@ -45,7 +45,7 @@
         <div class="mt-4 grid grid-cols-1 gap-4 ">
             <label for="message"
                 class="text-left block text-sm font-medium text-gray-900 dark:text-gray-400">Description</label>
-            <textarea id="message" rows="4"
+            <textarea wire:model="description" id="message" rows="4"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="description..."></textarea>
         </div>
@@ -74,8 +74,19 @@
                     " />
             </label>
         </div>
+        <div class="grid grid-cols-7 gap-4 mt-6">
+            @forelse ($genres as $genre )
+            <div class="flex items-center mb-4">
+                <input wire:model="genre" id="checkbox-1" aria-describedby="checkbox-1" value="{{$genre->id}}" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="checkbox-1" class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{{$genre->name}} </label>
+            </div>
+            @empty
+            <span> no genres </span>
+            @endforelse
 
-        <x-ui.button color="error" class="mt-4 btn-xs text-white block" href="#">
+        </div>
+
+        <x-ui.button type="submit" color="error" class="mt-4 btn-xs text-white block" href="#">
             Add
         </x-ui.button>
     </form>

@@ -18,6 +18,7 @@ class Movie extends Model
     use HasFactory;
 
     protected $appends = ['rating_five', 'likes_count', 'dislikes_count'];
+    protected $fillable = ['name','description','rating','duration', 'release_date' ];
 
     /****************************************************/
     /******************* RELATIONSHIPS ******************/
