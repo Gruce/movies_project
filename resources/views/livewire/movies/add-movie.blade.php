@@ -11,7 +11,7 @@
                 <label for="name" class="text-left block mb-2 text-sm font-medium text-gray-900">movie
                     name</label>
                 <input wire:model="name" type="text" id="name"
-                    class="bg-transparent border-0 border-b-2 border-black text-gray-900 text-sm block w-full p-2.5 focus:ring-gray-300 focus:border-black"
+                    class="bg-transparent border-0 border-b-2 border-gray-500 text-gray-900 text-sm block w-full p-2.5 focus:ring-gray-300 focus:border-gray-700"
                     placeholder="name" >
                     @error('name') <span class="error text-red-600">{{ $message }}</span> @enderror
             </div>
@@ -41,7 +41,7 @@
                 <select wire:model="release_date"
                     class="bg-transparent border-0 border-b-2 border-black-500 text-gray-900 text-sm focus:ring-blue-300 focus:border-blue-700 block w-full p-2.5">
                     <option selected value="" > select year </option>
-                    @for ($year = 1800; $year<=date('Y'); $year++)
+                    @for ($year = date('Y'); $year>=1900; $year--)
                     <option value ="{{$year}}" >{{$year}}</option>
                     @endfor
                 </select>
@@ -61,12 +61,12 @@
         <div class="grid grid-cols-2 gap-4">
             <label class="block mt-2 text-left">Choose Cover
                 <input type="file"
-                    class="mt-2 block w-full text-sm text-slate-500
+                    class="mt-2 block w-full px-5 text-sm text-c text-slate-500
                         file:mr-4 file:py-2 file:px-4
                         file:rounded-full file:border-0
                         file:text-sm file:font-semibold
                         file:bg-violet-50 file:text-violet-700
-                        hover:file:bg-violet-100
+                        hover:file:bg-violet-300
                     " />
 
             </label>
@@ -86,7 +86,7 @@
         <div class="grid grid-cols-7 gap-4 mt-6">
             @forelse ($genres as $genre)
                 <div class="flex items-center mb-4">
-                    <input wire:model="genre" id="checkbox-1" aria-describedby="checkbox-1" value="{{ $genre->id }}"
+                    <input wire:model="genre" id="checkbox-1" aria-describedby="{{ $genre->id }}" value="{{ $genre->id }}"
                         type="checkbox"
                         class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="checkbox-1"
