@@ -1,7 +1,7 @@
-<div class="hover:bg-black rounded-lg h-48 w-36">
+<div class="bg-black rounded-lg h-48 w-36 ">
     <a href="{{route('series-show', ['episode' => $episode->id])}}" class="flex relative w-40 rounded-lg">
         <div>
-            <img class="hover:opacity-50 rounded-lg overflow-hidden object-fill h-48 w-36"
+            <img class="border-2 hover:scale-105  opacity-80  hover:opacity-100 rounded-lg overflow-hidden object-fill h-48 w-36"
                 src="{{ $episode->cover->url }}" alt="Cover"/>
         </div>
         <div class="absolute bottom-0 w-36 flex justify-between mb-1">

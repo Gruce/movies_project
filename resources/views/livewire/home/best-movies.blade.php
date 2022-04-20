@@ -9,9 +9,9 @@
         </div>
     </div>
 
-    <div class="flex overflow-y-hidden flex-nowrap pb-2 rounded-lg" x-ref="slider">
+    <div class="flex overflow-y-hidden  flex-nowrap pb-2 rounded-lg" x-ref="slider">
         @forelse ($movies as $movie)
-            <div x-ref="slide_item" class="mr-5">
+            <div x-ref="slide_item" class="m-2">
                 <livewire:ui.movie :movie="$movie->id" :wire:key="$movie->id" />
             </div>
         @empty
