@@ -5,7 +5,7 @@
         </div>
     </div>
     <form wire:submit.prevent="add">
-
+        {{-- name --}}
         <div class="grid grid-cols-2 gap-4">
             <div class="mb-6">
                 <label for="name" class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">movie
@@ -15,7 +15,7 @@
                     placeholder="name" >
                     @error('name') <span class="error text-red-600">{{ $message }}</span> @enderror
             </div>
-            <!-- ... -->
+            <!-- rating -->
             <div class="mb-6">
                 <label for="rating" class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     rating</label>
@@ -34,7 +34,7 @@
                     placeholder="Duration">
                     @error('duration') <span class="error text-red-600">{{ $message }}</span> @enderror
             </div>
-            <!-- ... -->
+            <!-- Release Date -->
             <div class="mb-6">
                 <label class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Release Date</label>
@@ -83,10 +83,11 @@
                     " />
             </label>
         </div>
+        {{-- Genres --}}
         <div class="grid grid-cols-7 gap-4 mt-6">
             @forelse ($genres as $genre)
                 <div class="flex items-center mb-4">
-                    <input wire:model="genre" id="checkbox-1" aria-describedby="checkbox-1" value="{{ $genre->id }}"
+                    <input wire:model="genre"  id="checkbox-1" aria-describedby="checkbox-1" value="{{ $genre->id }}"
                         type="checkbox"
                         class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500">
                     <label for="checkbox-1"
