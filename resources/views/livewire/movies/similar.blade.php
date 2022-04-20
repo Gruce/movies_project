@@ -11,7 +11,7 @@
 
     <div class="flex flex-nowrap" x-ref="slider">
         @forelse ($movies as $movie)
-            <div class="mr-5">
+            <div class="mr-5 mt-5">
                 <livewire:ui.movie :movie="$movie->id" :wire:key="$movie->id" />
             </div>
         @empty
