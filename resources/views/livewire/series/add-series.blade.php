@@ -1,3 +1,3 @@
 <div>
-    yooo2
+    Add Series
 </div>

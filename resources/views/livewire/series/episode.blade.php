@@ -1,7 +1,7 @@
-<div class="bg-black rounded-lg h-48 w-36 hover:scale-105 duration-300 ">
+<div class="mr-2 bg-black rounded-lg h-48 w-36 hover:scale-105 duration-300 ">
     <a href="{{route('series-show', ['episode' => $episode->id])}}" class="flex relative w-40 rounded-lg">
-        <div>
-            <img class="border-2   opacity-90  hover:opacity-100 rounded-lg overflow-hidden object-fill h-48 w-36"
+        <div class="border-2 border-gray-600 hover:border-red-600 rounded-lg">
+            <img class="opacity-90 shadow-md hover:shadow-2xl hover:opacity-100 rounded-lg overflow-hidden object-fill h-48 w-36"
                 src="{{ $episode->cover->url }}" alt="Cover"/>
         </div>
         <div class="absolute bottom-0 w-36 flex justify-between mb-1">
@@ -11,4 +11,4 @@
         </div>
     </a>
 </div>
-{{-- use -> <livewire:series.episode/> --}}
+{{-- add space between  --}}

@@ -11,7 +11,7 @@
                 <label for="name" class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">movie
                     name</label>
                 <input wire:model="name" type="text" id="name"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
                     placeholder="name" >
                     @error('name') <span class="error text-red-600">{{ $message }}</span> @enderror
             </div>
@@ -19,8 +19,8 @@
             <div class="mb-6">
                 <label for="rating" class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     rating</label>
-                <input wire:model="rating" type="number"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                <input wire:model="rating" type="number" min="0" max="10" step="0.5" id="rating"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
                     placeholder="rating">
                     @error('rating') <span class="error text-red-600">{{ $message }}</span> @enderror
             </div>
@@ -30,7 +30,7 @@
                 <label for="name"
                     class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Duration</label>
                 <input wire:model="duration" type="number"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:shadow-sm-light"
                     placeholder="Duration">
                     @error('duration') <span class="error text-red-600">{{ $message }}</span> @enderror
             </div>
@@ -39,7 +39,7 @@
                 <label class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Release Date</label>
                 <select wire:model="release_date"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5">
                     <option selected value="" > select year </option>
                     @for ($year = 1800; $year<=date('Y'); $year++)
                     <option value ="{{$year}}" >{{$year}}</option>
@@ -53,7 +53,7 @@
             <label for="message"
                 class="text-left block text-sm font-medium text-gray-900 dark:text-gray-400">Description</label>
             <textarea wire:model="description" id="message" rows="4"
-                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:shadow-sm-light"
                 placeholder="description..."></textarea>
                 @error('description') <span class="error text-red-600">{{ $message }}</span> @enderror
         </div>
@@ -88,7 +88,7 @@
                 <div class="flex items-center mb-4">
                     <input wire:model="genre" id="checkbox-1" aria-describedby="checkbox-1" value="{{ $genre->id }}"
                         type="checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500">
                     <label for="checkbox-1"
                         class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $genre->name }} </label>
                 </div>
