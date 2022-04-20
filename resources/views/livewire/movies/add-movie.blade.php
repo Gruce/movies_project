@@ -13,7 +13,7 @@
                 <input wire:model="name" type="text" id="name"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                     placeholder="name" >
-                    @error('name') <span class="error text-red-600 text-left">{{ $message }}</span> @enderror
+                    @error('name') <span class="error text-red-600">{{ $message }}</span> @enderror
             </div>
             <!-- ... -->
             <div class="mb-6">
@@ -22,7 +22,7 @@
                 <input wire:model="rating" type="number"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                     placeholder="rating">
-                    @error('rating') <span class="error">{{ $message }}</span> @enderror
+                    @error('rating') <span class="error text-red-600">{{ $message }}</span> @enderror
             </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
@@ -32,7 +32,7 @@
                 <input wire:model="duration" type="number"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                     placeholder="Duration">
-                    @error('duration') <span class="error">{{ $message }}</span> @enderror
+                    @error('duration') <span class="error text-red-600">{{ $message }}</span> @enderror
             </div>
             <!-- ... -->
             <div class="mb-6">
@@ -45,7 +45,7 @@
                     <option value ="{{$year}}" >{{$year}}</option>
                     @endfor
                 </select>
-                @error('release_date') <span class="error">{{ $message }}</span> @enderror
+                @error('release_date') <span class="error text-red-600">{{ $message }}</span> @enderror
             </div>
         </div>
 
@@ -55,7 +55,7 @@
             <textarea wire:model="description" id="message" rows="4"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="description..."></textarea>
-                @error('description') <span class="error">{{ $message }}</span> @enderror
+                @error('description') <span class="error text-red-600">{{ $message }}</span> @enderror
         </div>
 
         <div class="grid grid-cols-2 gap-4">
