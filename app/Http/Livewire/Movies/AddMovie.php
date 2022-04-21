@@ -10,7 +10,7 @@ class AddMovie extends Component
 {
     use WithFileUploads;
 
-    public $name, $description, $rating, $duration, $release_date, $genre =[], $files=[], $cover, $url_slider;
+    public $name, $description, $rating, $duration, $release_date, $genres =[], $files=[], $cover, $url_slider;
 
     protected $rules = [
         'name' => 'required',
@@ -26,8 +26,12 @@ class AddMovie extends Component
 
     public function add()
     {
+
         $this->validate();
-        $genre_ids = array_keys($this->genre);
+
+        $genre_ids = collect($this->genres);
+        $genre_ids = array_keys($genre_ids->filter(fn($genre)=>$genre==true)->toArray());
+
         $cover_path = null;
 
         if($this->cover ){
@@ -75,7 +79,7 @@ class AddMovie extends Component
     }
     public function render()
     {
-        $genres = Genre::get();
-        return view('livewire.movies.add-movie', [ 'genres' => $genres ] );
+        $all_genres = Genre::get();
+        return view('livewire.movies.add-movie', [ 'all_genres' => $all_genres ] );
     }
 }

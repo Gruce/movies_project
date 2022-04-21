@@ -96,9 +96,9 @@
         </div>
         {{-- Genres --}}
         <div class="grid grid-cols-7 gap-4 mt-6">
-            @forelse ($genres as $genre)
+            @forelse ($all_genres as $genre)
                 <div class="flex items-center mb-4">
-                    <input wire:model="genre.{{$genre->id}}"  id="checkbox-{{$genre->id}}" aria-describedby="checkbox-{{$genre->id}}"
+                    <input wire:model="genres.{{$genre->id}}"  id="checkbox-{{$genre->id}}" aria-describedby="checkbox-{{$genre->id}}"
                         type="checkbox"
                         class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500">
                     <label for="checkbox-{{$genre->id}}"
