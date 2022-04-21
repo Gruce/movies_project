@@ -77,7 +77,7 @@ class MovieSeeder extends Seeder
 
             'genres' => [1, 8, 14],
             'cover' => 'https://cnth2.shabakaty.com/poster-images/4D6C5193-8540-BF02-01BF-E36340A9AB27_poster_medium_thumb.png',
-            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            'url_slider' =>'https://lumiere-a.akamaihd.net/v1/images/image_da658494.jpeg?region=0,0,1800,776',
             
             'files' => [
                 'https://youtu.be/RK8xHq6dfAo'
@@ -94,7 +94,7 @@ class MovieSeeder extends Seeder
 
             'genres' => [1, 4, 10],
             'cover' => 'https://cnth2.shabakaty.com/poster-images/1EF4E9FB-EAAF-3FCA-9E69-CB5C1DB5A8FA_poster_medium_thumb.jpg',
-            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            'url_slider' =>'https://s3images.zee5.com/wp-content/uploads/2021/08/spider_man__no_way_home__horizontal_subway__poster_by_iwasboredsoididthis_def70lw-fullview.jpg',
             
             'files' => [
                 'https://www.youtube.com/watch?v=JfVOs4VSpmA'

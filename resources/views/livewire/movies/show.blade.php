@@ -31,15 +31,21 @@
                                 <i class="fa-solid fa-thumbs-down"></i>
                                 <span class="text-sm">{{ $movie->dislikes_count }}</span>
                             </div>
-                            <livewire:ui.rating :rating="$movie->rating" />
                         </div>
                     </div>
+
+
                     <div class="flex-row justify-around text-left ">
                         @foreach ($movie->genres as $item)
                             <span class="text-gray-500 text-sm border-gray-400 mr-2">
                                 {{ $item->name }}
                             </span>
                         @endforeach
+                        <div class=" mt-2 flex items-center gap-1">
+                            <span class="bg-yellow-300 text-red-600  cursor-pointer text-gray-800 text-base font-semibold mr-1 px-1 py-0.25 rounded">IMDB</span>
+                            <i class="fa-solid text-yellow-300 fa-star text-lg"></i>
+                            <p class="text-lg">{{ $movie->rating }}</p>
+                        </div>
                     </div>
                     <div class="text-left mt-5">
                         <span>

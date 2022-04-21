@@ -32,11 +32,16 @@
                                 <i class="fa-solid fa-thumbs-down"></i>
                                 <span class="text-sm">{{ $episode->dislikes_count }}</span>
                             </div>
-                            <livewire:ui.rating :rating="$episode->season->series->rating" />
                         </div>
                     </div>
+                    
                     <div class="flex-row justify-around text-left ">
                         {{ implode(', ', $episode->season->series->genres->pluck('name')->toArray()) }}
+                        <div class="mt-2 flex items-center gap-1">
+                            <span class="bg-yellow-300 text-red-600  cursor-pointer text-gray-800 text-base font-semibold mr-1 px-1 py-0.25 rounded">IMDB</span>
+                            <i class="fa-solid text-yellow-300 fa-star text-lg"></i>
+                            <p class="text-lg">{{ $episode->season->series->rating }}</p>
+                        </div>
                     </div>
                     <div class="text-left mt-5">
                         <span>
