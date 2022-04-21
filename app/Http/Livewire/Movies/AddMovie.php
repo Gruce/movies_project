@@ -26,7 +26,7 @@ class AddMovie extends Component
 
     public function add()
     {
-        // $this->validate();
+        $this->validate();
         $genre_ids = array_keys($this->genre);
         $cover_path = null;
 
@@ -46,7 +46,7 @@ class AddMovie extends Component
             $this->url_slider->storeAs('public/' . $url_slider_path, $name);
             $url_slider_path .= $name;
         }
-        
+
         $files_path = [];
         if($this->files ){
             foreach ($this->files as $file) {
