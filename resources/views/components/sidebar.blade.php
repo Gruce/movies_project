@@ -58,7 +58,7 @@
                 @endforeach
             </ul>
         @endforeach
-        {{-- @admin
+        @admin
         <div class="mt-2 mb-5 ml-3 text-left  text-gray-300  ">
             admin
         </div>
@@ -80,5 +80,5 @@
                 </a>
             </li>
         </ul>
-        @endadmin --}}
+        @endadmin
 </aside>
