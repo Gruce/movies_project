@@ -2,7 +2,7 @@
     <div class="p-3 bg-gray-100 rounded-lg">
         <div class="flex flex-row">
             <div class="basis-1/4 flex flex-col justify-center items-start w-1/4 ">
-                <img class="h-full w-full rounded-lg h-45 basis-1/3" src="{{$movie->cover->url}}" />
+                <img class="h-full w-full rounded-lg h-45 basis-1/3" src="{{asset('storage/' . $movie->cover->url)}}" />
                 <div class="flex items-center mt-3 justify-between w-full gap-6">
                     <x-ui.button color="error" class="text-white block grow" href="#">
                         WATCH NOW

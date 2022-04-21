@@ -1,6 +1,6 @@
 <div wire:loading.class="opacity-50" class="w-52 h-80 bg-cover hover:scale-105 opacity-90 hover:opacity-100 flex items-end justify-center rounded-lg relative group transition ease-in-out duration-300"
-    style="background-image: url('{{ $movie->cover->url }}')">
-    
+    style="background-image: url('{{asset('storage/' . $movie->cover->url)}}')">
+
     <div class=" -mb-3 text-center group-hover:mb-5 group-hover:duration-300">
         <h1 class="text-white text-x1 font-semibold tracking-tight">{{ $movie->name }}</h1>
         <div class="flex items-center flex-col mt-1 mb-2">
