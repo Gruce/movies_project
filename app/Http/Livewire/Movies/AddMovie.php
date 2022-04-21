@@ -8,7 +8,8 @@ use Livewire\Component;
 
 class AddMovie extends Component
 {
-    public $name, $description, $rating, $duration, $release_date, $genre;
+    public $name, $description, $rating, $duration, $release_date, $genre =[];
+
     protected $rules = [
         'name' => 'required',
         'description' => 'required',
@@ -27,7 +28,9 @@ class AddMovie extends Component
             'duration' => $this->duration,
             'release_date' => $this->release_date,
 
+
         ];
+        // dd($this->genre);
 
         $movie = new Movie;
         $movie->add($data);
