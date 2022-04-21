@@ -41,8 +41,8 @@
                 <select wire:model="release_date"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5">
                     <option selected value="" > select year </option>
-                    @for ($year = 1800; $year<=date('Y'); $year++)
-                    <option value ="{{$year}}" >{{$year}}</option>
+                    @for ($year = 1900; $year<=date('Y'); $year++)
+                    <option value ="{{$year}}">{{$year}}</option>
                     @endfor
                 </select>
                 @error('release_date') <span class="error text-red-600">{{ $message }}</span> @enderror
