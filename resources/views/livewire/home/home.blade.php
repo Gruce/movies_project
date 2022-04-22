@@ -20,7 +20,7 @@
                             href="{{ route('movie-show', ['movie' => $item->id]) }}" color="error">Watch Now!
                         </x-ui.button>
                         <div class="absolute text-left z-20 max-w-sm bottom-10 left-20">
-                            <div class="flex">
+                            <div class="">
                                 <span class="text-3xl">{{ $item->name }}</span>
                                 <span class="bg-yellow-300 rounded-lg ml-5 my-2  text-black px-2"><i
                                         class="fa-solid fa-star"></i>{{ $item->rating }}</span>
