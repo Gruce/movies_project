@@ -19,7 +19,7 @@
             <div class="mb-6">
                 <label for="rating" class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     rating</label>
-                <input wire:model="rating" type="number" min="0" max="10" step="0.5" id="rating"
+                <input wire:model="rating" type="number" min="0" max="10" step="0.1" id="rating"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
                     placeholder="rating">
                     @error('rating') <span class="error text-red-600">{{ $message }}</span> @enderror
