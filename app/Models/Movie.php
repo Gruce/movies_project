@@ -17,7 +17,7 @@ class Movie extends Model
 {
     use HasFactory;
 
-    protected $appends = ['rating_five', 'likes_count', 'dislikes_count'];
+    protected $appends = ['rating_five', 'likes_count', 'dislikes_count', 'cover_url', 'slider_url'];
     protected $fillable = ['name','description','rating','duration', 'release_date' ];
 
     /****************************************************/
@@ -59,6 +59,30 @@ class Movie extends Model
     /***********************************************************/
     /******************* ACCESSOR AND MUTATOR ******************/
     /***********************************************************/
+
+    protected function coverUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                $url = $this->cover->url ?? null;
+                if(filter_var($url , FILTER_VALIDATE_URL))
+                    return $url;
+                return asset('storage/' . $this->cover->url);
+            }
+        );
+    }
+
+    protected function sliderUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                $url = $this->cover->url_slider ?? null;
+                if(filter_var($url , FILTER_VALIDATE_URL))
+                    return $url;
+                return asset('storage/' . $this->cover->url_slider);
+            }
+        );
+    }
 
     protected function likesCount(): Attribute
     {

@@ -48,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                    @if (Route::is('home*') || Route::is('movies*') || Route::is('series*'))
+                    @if (Route::is('home*') || Route::is('movies-all') || Route::is('series-all'))
                         <div class="basis-1/6 w-1/6">
                             @livewire('right-side')
                         </div>

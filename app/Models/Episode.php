@@ -15,7 +15,7 @@ class Episode extends Model
 {
     use HasFactory;
 
-    protected $appends = ['likes_count', 'dislikes_count'];
+    protected $appends = ['likes_count', 'dislikes_count', 'cover_url', 'slider_url'];
 
 
     public function season()
@@ -53,6 +53,30 @@ class Episode extends Model
     /***********************************************************/
     /******************* ACCESSOR AND MUTATOR ******************/
     /***********************************************************/
+
+    protected function coverUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                $url = $this->cover->url ?? null;
+                if(filter_var($url , FILTER_VALIDATE_URL))
+                    return $url;
+                return asset('storage/' . $this->cover->url);
+            }
+        );
+    }
+
+    protected function sliderUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                $url = $this->cover->url_slider ?? null;
+                if(filter_var($url , FILTER_VALIDATE_URL))
+                    return $url;
+                return asset('storage/' . $this->cover->url_slider);
+            }
+        );
+    }
 
     protected function likesCount(): Attribute
     {

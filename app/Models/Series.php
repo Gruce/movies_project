@@ -11,7 +11,7 @@ class Series extends Model
 {
     use HasFactory;
 
-    protected $appends = ['rating_five'];
+    protected $appends = ['rating_five', 'last_season'];
 
 
     public function genres()
