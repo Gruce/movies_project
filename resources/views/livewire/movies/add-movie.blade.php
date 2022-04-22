@@ -41,8 +41,8 @@
                 <select wire:model="release_date"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5">
                     <option selected value="" > select year </option>
-                    @for ($year = 1800; $year<=date('Y'); $year++)
-                    <option value ="{{$year}}" >{{$year}}</option>
+                    @for ($year = 1900; $year<=date('Y'); $year++)
+                    <option value ="{{$year}}">{{$year}}</option>
                     @endfor
                 </select>
                 @error('release_date') <span class="error text-red-600">{{ $message }}</span> @enderror
@@ -58,9 +58,20 @@
                 @error('description') <span class="error text-red-600">{{ $message }}</span> @enderror
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-3 gap-4">
             <label class="block mt-2 text-left">Choose Cover
-                <input type="file"
+                <input wire:model="cover" type="file"
+                    class="mt-2 block w-full text-sm text-slate-500
+                        file:mr-4 file:py-2 file:px-4
+                        file:rounded-full file:border-0
+                        file:text-sm file:font-semibold
+                        file:bg-violet-50 file:text-violet-700
+                        hover:file:bg-violet-100
+                    " />
+
+            </label>
+            <label class="block mt-2 text-left">Choose Slider
+                <input wire:model="url_slider" type="file"
                     class="mt-2 block w-full text-sm text-slate-500
                         file:mr-4 file:py-2 file:px-4
                         file:rounded-full file:border-0
@@ -73,7 +84,7 @@
             <!-- ... -->
 
             <label class="block mt-2 text-left">Choose File
-                <input type="file"
+                <input wire:model="files" type="file" data-multiple-caption="{count} files selected" multiple
                     class="mt-2 block w-full text-sm text-slate-500
                         file:mr-4 file:py-2 file:px-4
                         file:rounded-full file:border-0
@@ -85,12 +96,12 @@
         </div>
         {{-- Genres --}}
         <div class="grid grid-cols-7 gap-4 mt-6">
-            @forelse ($genres as $genre)
+            @forelse ($all_genres as $genre)
                 <div class="flex items-center mb-4">
-                    <input wire:model="genre"  id="checkbox-1" aria-describedby="checkbox-1" value="{{ $genre->id }}"
+                    <input wire:model="genres.{{$genre->id}}"  id="checkbox-{{$genre->id}}" aria-describedby="checkbox-{{$genre->id}}"
                         type="checkbox"
                         class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500">
-                    <label for="checkbox-1"
+                    <label for="checkbox-{{$genre->id}}"
                         class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $genre->name }} </label>
                 </div>
             @empty
