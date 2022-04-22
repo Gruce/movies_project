@@ -12,6 +12,10 @@ class Show extends Component
 {
     public $season_id = null;
 
+    protected $listeners = [
+        'watchLaterUpdated' => '$refresh',
+    ];
+
     public function mount(Episode $episode)
     {
         $this->episode = $episode;
@@ -22,6 +26,16 @@ class Show extends Component
     {
         $this->episode->like($type);
         $this->emit('likesUpdated');
+    }
+
+    public function watch_later($state){
+        $this->episode->queue($state);
+        $this->emit('watchLaterUpdated');
+    }
+
+    public function favourite($state){
+        $this->episode->favourite($state);
+        $this->emit('favouriteUpdated');
     }
 
     public function render()

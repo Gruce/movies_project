@@ -23,22 +23,42 @@
                     <div class="mt-5 text-left font-semibold flex justify-between ">
                         <div class="flex flex-col">
                             <span class="text-xl">{{ $episode->season->series->name }}</span>
-                            <span class="text-gray-500">{{$episode->season->name}} - {{$episode->name}} ({{ $episode->number }})</span>
+                            <span class="text-gray-500">{{ $episode->season->name }} - {{ $episode->name }}
+                                ({{ $episode->number }})</span>
                         </div>
-                        <div class="flex gap-5 items-center">
+                        <div class="flex gap-5 items-center flex-col">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-thumbs-up"></i>
                                 <span class="text-sm">{{ $episode->likes_count }}</span>
                                 <i class="fa-solid fa-thumbs-down"></i>
                                 <span class="text-sm">{{ $episode->dislikes_count }}</span>
                             </div>
+                            @auth
+                                <div class="flex justify-between w-full">
+                                    @if (!$episode->queued())
+                                        <x-ui.icon-button wire:click="watch_later(true)" icon="fa-solid fa-clock" color="dark"
+                                            class="text-2xl hover:text-yellow-300" />
+                                    @else
+                                        <x-ui.icon-button wire:click="watch_later(false)" icon="fa-solid fa-clock"
+                                            color="warning" class="text-2xl" />
+                                    @endif
+                                    @if (!$episode->favourited())
+                                        <x-ui.icon-button wire:click="favourite(true)" icon="fa-solid fa-heart" color="dark"
+                                            class="text-2xl hover:text-red-500" />
+                                    @else
+                                        <x-ui.icon-button wire:click="favourite(false)" icon="fa-solid fa-heart" color="error"
+                                            class="text-2xl hover:bg-tr" />
+                                    @endif
+                                </div>
+                            @endauth
                         </div>
                     </div>
-                    
+
                     <div class="flex-row justify-around text-left ">
                         {{ implode(', ', $episode->season->series->genres->pluck('name')->toArray()) }}
                         <div class="mt-2 flex items-center gap-1">
-                            <span class="bg-yellow-300 text-red-600  cursor-pointer text-gray-800 text-base font-semibold mr-1 px-1 py-0.25 rounded">IMDB</span>
+                            <span
+                                class="bg-yellow-300 text-red-600  cursor-pointer text-gray-800 text-base font-semibold mr-1 px-1 py-0.25 rounded">IMDB</span>
                             <i class="fa-solid text-yellow-300 fa-star text-lg"></i>
                             <p class="text-lg">{{ $episode->season->series->rating }}</p>
                         </div>
@@ -65,9 +85,8 @@
             <div class="flex overflow-y-hidden flex-nowrap pb-2 rounded-lg">
                 @forelse ($seasons as $season)
                     <li class="mr-2" role="presentation">
-                        <button style="border-color: red; 
-                        color: red;"
-                            class="inline-block p-4 rounded-t-lg border-b-2 border-red-600"
+                        <button style="border-color: red;
+                        color: red;" class="inline-block p-4 rounded-t-lg border-b-2 border-red-600"
                             id="season-{{ $season->id }}-tab" data-tabs-target="#season-{{ $season->id }}"
                             type="button" role="tab" aria-controls="season-{{ $season->id }}"
                             aria-selected="true">{{ $season->name }}</button>

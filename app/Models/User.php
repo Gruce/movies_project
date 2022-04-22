@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -58,6 +59,7 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'is_admin',
     ];
 
     public function favourites(){
@@ -71,4 +73,28 @@ class User extends Authenticatable
     public function likes(){
         return $this->hasMany(Like::class);
     }
+
+
+    /***********************************************************/
+    /******************* ACCESSOR AND MUTATOR ******************/
+    /***********************************************************/
+
+    protected function isAdmin(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->type === 1,
+        );
+    }
+
+
+
+    /****************************************************/
+    /******************* SCOPES *************************/
+    /****************************************************/
+
+    public function scopeAdmins($query)
+    {
+        return $query->where('type', 1);
+    }
+
 }

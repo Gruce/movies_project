@@ -1,8 +1,11 @@
 <div wire:loading.class="opacity-50">
+    <div class="p-10 bg-gray-100 rounded-lg mb-10">
+        <livewire:ui.video :file="$movie->files->first()" />
+    </div>
     <div class="p-3 bg-gray-100 rounded-lg">
         <div class="flex flex-row">
             <div class="basis-1/4 flex flex-col justify-center items-start w-1/4 ">
-                <img class="h-full w-full rounded-lg h-45 basis-1/3" src="{{asset('storage/' . $movie->cover->url)}}" />
+                <img class="h-full w-full rounded-lg h-45 basis-1/3" src="{{ $movie->cover_url }}" />
                 <div class="flex items-center mt-3 justify-between w-full gap-6">
                     <x-ui.button color="error" class="text-white block grow" href="#">
                         WATCH NOW
@@ -24,13 +27,31 @@
                         <div>
                             <span class="text-xl">{{ $movie->name }}</span>
                         </div>
-                        <div class="flex gap-5 items-center">
+                        <div class="flex gap-5 items-center flex-col">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-thumbs-up"></i>
                                 <span class="text-sm">{{ $movie->likes_count }}</span>
                                 <i class="fa-solid fa-thumbs-down"></i>
                                 <span class="text-sm">{{ $movie->dislikes_count }}</span>
                             </div>
+                            @auth
+                                <div class="flex justify-between w-full">
+                                    @if (!$movie->queued())
+                                        <x-ui.icon-button wire:click="watch_later(true)" icon="fa-solid fa-clock"
+                                            color="dark" class="text-2xl hover:text-yellow-300" />
+                                    @else
+                                        <x-ui.icon-button wire:click="watch_later(false)" icon="fa-solid fa-clock"
+                                            color="warning" class="text-2xl" />
+                                    @endif
+                                    @if (!$movie->favourited())
+                                        <x-ui.icon-button wire:click="favourite(true)" icon="fa-solid fa-heart" color="dark"
+                                            class="text-2xl hover:text-red-500" />
+                                    @else
+                                        <x-ui.icon-button wire:click="favourite(false)" icon="fa-solid fa-heart"
+                                            color="error" class="text-2xl hover:bg-tr" />
+                                    @endif
+                                </div>
+                            @endauth
                         </div>
                     </div>
 
@@ -42,7 +63,8 @@
                             </span>
                         @endforeach
                         <div class=" mt-2 flex items-center gap-1">
-                            <span class="bg-yellow-300 text-red-600  cursor-pointer text-gray-800 text-base font-semibold mr-1 px-1 py-0.25 rounded">IMDB</span>
+                            <span
+                                class="bg-yellow-300 text-red-600  cursor-pointer text-gray-800 text-base font-semibold mr-1 px-1 py-0.25 rounded">IMDB</span>
                             <i class="fa-solid text-yellow-300 fa-star text-lg"></i>
                             <p class="text-lg">{{ $movie->rating }}</p>
                         </div>
