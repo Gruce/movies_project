@@ -1,5 +1,5 @@
 <div wire:loading.class="opacity-50" href="#" class="bg-white rounded-lg p-2 flex mt-3 hover:bg-gray-100 group transition ease-in-out duration-300">
-    <img class="rounded-lg h-28 basis-1/3 w-1/3" src="{{ $movie->cover->url }}" />
+    <img class="rounded-lg h-28 basis-1/3 w-1/3" src="{{ $movie->cover_url }}" />
 
     <div class="px-2 flex flex-col items-start justify-between basis-2/3 w-2/3">
         <div class="flex flex-col items-start w-full">

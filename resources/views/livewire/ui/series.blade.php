@@ -1,5 +1,5 @@
 <div wire:loading.class="opacity-50" class="w-52 h-80 bg-cover flex items-end justify-center rounded-lg relative group transition ease-in-out duration-300"
-    style="background-image: url('{{ $episode->cover->url }}')">
+    style="background-image: url('{{ $episode->cover_url }}')">
     <div
         class="w-full h-full absolute bg-gradient-to-b  to-gray-800 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300">
     </div>
