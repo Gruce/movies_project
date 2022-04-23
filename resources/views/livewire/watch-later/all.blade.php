@@ -1,7 +1,7 @@
 @section('title', 'Watch Later')
 
 <div>
-    <div class="grid grid-cols-5 gap-4 mt-8">
+    <div :class="sidebar_extended ? 'grid-cols-6' : 'grid-cols-7'" class="grid gap-4 mt-8">
         @foreach ($movies  as $movie)
             <livewire:ui.movie :movie="$movie->id" :wire:key="$movie->id" />
         @endforeach

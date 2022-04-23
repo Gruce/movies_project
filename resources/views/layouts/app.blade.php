@@ -39,7 +39,7 @@
                     <x-sidebar />
 
                     {{-- Content --}}
-                    <div class="basis-8/12 w-8/12 grow">
+                    <div class="basis-8/12 w-8/12 grow pb-10">
                         <div class="h-36 flex items-center p-10 border-b justify-between mb-10">
                             <span class="text-2xl text-gray-600 font-semibold">@yield('title')</span>
                             @yield('header-actions')

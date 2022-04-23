@@ -1,7 +1,7 @@
 @section('title', 'Movies')
 
 <div wire:loading.class="opacity-50">
-    <div class="flex mb-10 border p-2 rounded-lg border-gray-200  px-4">
+    <div class="flex mb-10 border p-2 rounded-lg border-gray-200 px-4">
         <!-- Dropdown menu -->
         <div class="block">
 

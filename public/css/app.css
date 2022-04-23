@@ -2137,6 +2137,9 @@ select {
 .pb-5 {
   padding-bottom: 1.25rem;
 }
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
 .text-left {
   text-align: left;
 }
