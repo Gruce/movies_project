@@ -5,7 +5,7 @@
     </div>
     @endif
 
-    <div class="p-10 z-20 bg-gray-100 rounded-lg mb-10">
+    <div class="z-20 my-12">
         <livewire:ui.video :file="$movie->files->first()"/>
     </div>
     <div class="p-3 bg-gray-100 rounded-lg">
