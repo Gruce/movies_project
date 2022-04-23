@@ -11,13 +11,14 @@ use App\Models\{
     Cover,
     Favourite,
     Queue,
+    Imdb,
 };
 
 class Movie extends Model
 {
     use HasFactory;
 
-    protected $appends = ['rating_five', 'likes_count', 'dislikes_count', 'cover_url', 'slider_url'];
+    protected $appends = ['rating_five', 'likes_count', 'dislikes_count', 'cover_url', 'slider_url' , 'imdb_url'];
     protected $fillable = ['name', 'description', 'rating', 'duration', 'release_date'];
 
     /****************************************************/
@@ -52,6 +53,11 @@ class Movie extends Model
     public function likes()
     {
         return $this->morphMany(Like::class, 'likeable');
+    }
+
+    public function imdb()
+    {
+        return $this->morphOne(Imdb::class, 'imdbable');
     }
 
 
@@ -111,6 +117,13 @@ class Movie extends Model
         );
     }
 
+    protected function imdbUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn()=>$this->imdb->url
+        );
+    }
+
 
     /************************************************/
     /******************* FUNCTIONS ******************/
@@ -125,7 +138,7 @@ class Movie extends Model
             'duration' => $data['duration'],
             'release_date' => $data['release_date'],
         ]);
-
+        
         $movie->genres()->attach($data['genres']);
 
         foreach ($data['files'] as $file_path) {
@@ -133,6 +146,10 @@ class Movie extends Model
             $file->path = $file_path;
             $movie->files()->save($file);
         }
+
+        $imdb = new Imdb();
+        $imdb->url = $data['imdb'];
+        $movie->imdb()->save($imdb);
 
         $cover = new Cover;
         $cover->url = $data['cover'];

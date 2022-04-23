@@ -69,8 +69,9 @@
                             </span>
                         @endforeach
                         <div class=" mt-2 flex items-center gap-1">
-                            <span
-                                class="bg-yellow-300 text-red-600  cursor-pointer text-gray-800 text-base font-semibold mr-1 px-1 py-0.25 rounded">IMDB</span>
+                            <a href="{{$movie->imdb_url}}" target="_blank"
+                                class="bg-yellow-300 text-red-600  cursor-pointer text-gray-800 text-base font-semibold mr-1 px-1 py-0.25 rounded">
+                                IMDB</a>
                             <i class="fa-solid text-yellow-300 fa-star text-lg"></i>
                             <p class="text-lg">{{ $movie->rating }}</p>
                         </div>
