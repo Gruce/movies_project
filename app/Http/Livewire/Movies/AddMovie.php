@@ -1,16 +1,22 @@
 <?php
 
 namespace App\Http\Livewire\Movies;
-use App\Models\Genre;
-use App\Models\Movie;
+use App\Models\{
+    Genre,
+    Movie,
+    File,
+    Cover
+};
 use Livewire\WithFileUploads;
 use Livewire\Component;
+use App\Traits\MovieTrait;
 
 class AddMovie extends Component
 {
     use WithFileUploads;
+    use MovieTrait;
 
-    // public $name, $description, $rating, $duration, $release_date, $genres =[], $files=[], $cover, $url_slider;
+    public $cover, $genres, $files;
 
     protected $rules = [
         'movie.name' => 'required',
@@ -18,77 +24,38 @@ class AddMovie extends Component
         'movie.rating' => 'required',
         'movie.duration' => 'required',
         'movie.release_date' => 'required',
-        'movie.genres' => 'required',
-        'movie.files.*' => 'required',
-        'movie.cover.*' => 'required',
-        // 'movie.cover.url_slider' => 'required',
-        'movie.genres.*' => 'required',
+        'files.*' => 'required',
+        'cover.url' => 'required|image',
+        'cover.url_slider' => 'required|image',
+        'genres.*' => 'required',
     ];
 
     public function mount(){
         $this->movie = new Movie;
     }
 
-    public function add2(){
-        // $this->movie->save();
-        dd($this->movie);
-    }
-
-    public function add()
-    {
-
+    public function add(){
         $this->validate();
 
-        $genre_ids = collect($this->genres);
-        $genre_ids = array_keys($genre_ids->filter(fn($genre)=>$genre==true)->toArray());
+        // Getting Movie Data
+        $data = array_filter($this->movie->toArray());
 
-        $cover_path = null;
+        // Remove unchecked genres
+        $this->genres = array_filter($this->genres);
 
-        if($this->cover ){
-            $ext = $this->cover->extension();
-            $name = \Str::random(10) . '.' . $ext;
-            $cover_path = 'movies/covers/' ;
-            $this->cover->storeAs('public/' . $cover_path, $name);
-            $cover_path .= $name;
-        }
+        // Getting Cover Data
+        $data['cover'] = $this->uploadCoverPath($this->cover['url']);
+        $data['url_slider'] = $this->uploadSliderPath($this->cover['url_slider']);
 
-        $url_slider_path = null;
-        if($this->url_slider ){
-            $ext = $this->url_slider->extension();
-            $name = \Str::random(10) . '.' . $ext;
-            $url_slider_path = 'movies/url_sliders/' ;
-            $this->url_slider->storeAs('public/' . $url_slider_path, $name);
-            $url_slider_path .= $name;
-        }
+        // Getting Files Data
+        $data['files'] = $this->uploadFilesPaths($this->files);
 
-        $files_path = [];
-        if($this->files ){
-            foreach ($this->files as $file) {
-                $ext = $file->extension();
-                $name = \Str::random(10) . '.' . $ext;
-                $file_path = 'movies/files/' ;
-                $file->storeAs('public/' . $file_path, $name);
-                array_push($files_path, $file_path . $name);
-            }
-        }
+        // Getting Genres Data
+        $data['genres'] = $this->genres;
 
-        $data = [
-            'name' => $this->name,
-            'description' => $this->description,
-            'rating' => $this->rating,
-            'duration' => $this->duration,
-            'release_date' => $this->release_date,
-            'genres' => $genre_ids,
-            'cover' => $cover_path,
-            'url_slider' => $url_slider_path,
-            'files' => $files_path,
-        ];
-
-        $movie = new Movie;
-        $movie->add($data);
-        $this->emitTo('movies.all', '$refresh');
-        $this->reset();
+        $this->movie->add($data);
     }
+
     public function render()
     {
         $all_genres = Genre::get();

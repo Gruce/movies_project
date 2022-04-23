@@ -18,7 +18,7 @@ class Movie extends Model
     use HasFactory;
 
     protected $appends = ['rating_five', 'likes_count', 'dislikes_count', 'cover_url', 'slider_url'];
-    protected $fillable = ['name','description','rating','duration', 'release_date' ];
+    protected $fillable = ['name', 'description', 'rating', 'duration', 'release_date'];
 
     /****************************************************/
     /******************* RELATIONSHIPS ******************/
@@ -65,9 +65,12 @@ class Movie extends Model
         return Attribute::make(
             get: function () {
                 $url = $this->cover->url ?? null;
-                if(filter_var($url , FILTER_VALIDATE_URL))
+                if (filter_var($url, FILTER_VALIDATE_URL))
                     return $url;
                 return asset('storage/' . $url);
+            },
+            set: function ($value) {
+                $this->cover()->updateOrCreate(['url' => $value]);
             }
         );
     }
@@ -77,9 +80,12 @@ class Movie extends Model
         return Attribute::make(
             get: function () {
                 $url = $this->cover->url_slider ?? null;
-                if(filter_var($url , FILTER_VALIDATE_URL))
+                if (filter_var($url, FILTER_VALIDATE_URL))
                     return $url;
                 return asset('storage/' . $url);
+            },
+            set: function ($value) {
+                $this->cover()->updateOrCreate(['url_slider' => $value]);
             }
         );
     }
@@ -101,7 +107,7 @@ class Movie extends Model
     protected function ratingFive(): Attribute
     {
         return Attribute::make(
-            get: fn () => round($this->rating/2),
+            get: fn () => round($this->rating / 2),
         );
     }
 
