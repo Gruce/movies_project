@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         /// custome direction
         Blade::if('admin', function () {
-            return auth()->check() && auth()->user()->type == 1;
+            return auth()->check() && auth()->user()->is_admin;
 
          // admin is just a directive name that i want to create
        // return korbe authentication check korbe login ache kina

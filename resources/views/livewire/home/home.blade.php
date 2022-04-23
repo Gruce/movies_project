@@ -7,41 +7,61 @@
             <!-- Carousel wrapper -->
             <div class="overflow-hidden relative h-48 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
 
-                @forelse ($last as $item)
-                    <div class="snap-start group w-full h-full flex items-center  justify-center  text-white  font-bold flex-shrink-0 bg-black"
-                        data-carousel-item>
-                        <div
-                            class="w-full h-full  z-20 opacity-100 absolute bg-gradient-to-bl  to-gray-800 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300">
-                        </div>
-                        <img src="{{ $item->cover->url_slider }}"
-                            class="h-full w-full object-cover relative inset-0 z-10 opacity-80 transition duration-300 group-hover:opacity-100">
+                @if ($type == 'movies')
+                    @forelse ($last_movies as $item)
+                        <div class="snap-start group w-full h-full flex items-center  justify-center  text-white  font-bold flex-shrink-0 bg-black"
+                            data-carousel-item>
+                            <div
+                                class="w-full h-full  z-20 opacity-100 absolute bg-gradient-to-bl  to-gray-800 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300">
+                            </div>
+                            <img src="{{ $item->slider_url }}"
+                                class="h-full w-full object-cover relative inset-0 z-10 opacity-80 transition duration-300 group-hover:opacity-100">
 
-                        <x-ui.button class="absolute z-20 bottom-10 right-20"
-                            href="{{ route('movie-show', ['movie' => $item->id]) }}" color="error">Watch Now!
-                        </x-ui.button>
-                        <div class="absolute text-left z-20 max-w-sm bottom-10 left-20">
-                            <div class="flex">
-                                <span class="text-3xl">{{ $item->name }}</span>
-                                <span class="bg-yellow-300 rounded-lg ml-5 my-2  text-black px-2"><i
-                                        class="fa-solid fa-star"></i>{{ $item->rating }}</span>
+                            <x-ui.button class="absolute z-20 bottom-10 right-20"
+                                href="{{ route('movie-show', ['movie' => $item->id]) }}" color="error">Watch Now!
+                            </x-ui.button>
+                            <div class="absolute text-left z-20 max-w-sm bottom-10 left-20">
+                                <div class="text-3xl">
+                                    {{ $item->name }}
+                                    <span class="bg-yellow-300 h-full rounded-lg ml-5 text-black px-2 py-1 text-sm"><i
+                                            class="fa-solid fa-star text-xs mr-1 "></i>{{ $item->rating }}</span>
+                                </div>
+
+                                <span class="font-normal text-xs">{{ $item->description }}</span>
                             </div>
 
-                            <span class="font-normal text-xs">{{ $item->description }}</span>
                         </div>
+                    @empty
+                        No movies
+                    @endforelse
+                @else
+                    @forelse ($last_series as $item)
+                        <div class="snap-start group w-full h-full flex items-center  justify-center  text-white  font-bold flex-shrink-0 bg-black"
+                            data-carousel-item>
+                            <div
+                                class="w-full h-full  z-20 opacity-100 absolute bg-gradient-to-bl  to-gray-800 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300">
+                            </div>
+                            <img src="{{ $item->last_season->first_episode->slider_url }}"
+                                class="h-full w-full object-cover object-top relative inset-0 z-10 opacity-80 transition duration-300 group-hover:opacity-100">
 
-                    </div>
-                @empty
-                    NO {{ $type == 'movies' ? 'Movies' : 'Series' }}
-                @endforelse
+                            <x-ui.button class="absolute z-20 bottom-10 right-20"
+                                href="{{ route('series-show', ['episode' => $item->last_season->first_episode->id]) }}" color="error">Watch Now!
+                            </x-ui.button>
+                            <div class="absolute text-left z-20 max-w-sm bottom-10 left-20">
+                                <div class="text-3xl">
+                                    {{ $item->name }}
+                                    <span class="bg-yellow-300 h-full rounded-lg ml-5 text-black px-2 py-1 text-sm"><i
+                                            class="fa-solid fa-star text-xs mr-1 "></i>{{ $item->rating }}</span>
+                                </div>
 
-                {{-- @foreach (['https://cnth2.shabakaty.com/cover-images/5EB2C14F-B5BC-7855-1D82-C665128E6811_cover.jpg', 'https://cnth2.shabakaty.com/cover-images/710BA908-B35F-F422-9324-CF9628A10739_cover.jpg', 'https://cnth2.shabakaty.com/cover-images/FD6F3C97-03B6-7D5B-50CA-9ADDA1A79E15_cover.jpg'] as $k => $item)
-                    <div class="snap-start group w-full h-full flex items-center  justify-center  text-white  font-bold flex-shrink-0 bg-black"  data-carousel-item>
-                        <img src="{{$item}}" class="h-full w-full object-cover relative inset-0 z-10 opacity-80 transition duration-300 group-hover:opacity-100">
+                                <span class="font-normal text-xs">{{ $item->description }}</span>
+                            </div>
 
-                        <x-ui.button class="absolute z-20 bottom-10" href="{{route('movie-show', ['movie' => ($k+1)])}}" color="error">Watch Now!
-                        </x-ui.button>
-                    </div>
-                @endforeach --}}
+                        </div>
+                    @empty
+                        No movies
+                    @endforelse
+                @endif
             </div>
             <!-- Slider controls -->
             <button type="button"

@@ -11,6 +11,8 @@ class Season extends Model
 {
     use HasFactory;
 
+    protected $appends = ['first_episode'];
+
     public function series(){
         return $this->belongsTo(Series::class);
     }
