@@ -1044,6 +1044,12 @@ select {
 .top-4 {
   top: 1rem;
 }
+.top-10 {
+  top: 2.5rem;
+}
+.right-10 {
+  right: 2.5rem;
+}
 .z-0 {
   z-index: 0;
 }
@@ -2167,6 +2173,9 @@ select {
 }
 .opacity-80 {
   opacity: 0.8;
+}
+.opacity-25 {
+  opacity: 0.25;
 }
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);

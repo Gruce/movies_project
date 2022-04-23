@@ -36,9 +36,15 @@
         <div class="my-4 gap-4 ">
             <div class="p-6 text-center bg-white rounded-lg border border-gray-200">
                 <div class="flex flex-row">
-                    <div class="basis-1/6 w-1/6">
-                        <x-sidebar />
-                    </div>
+                    @if (!Route::is('*show*'))
+                        <div class="basis-1/6 w-1/6">
+                            <x-sidebar />
+                        </div>
+                    @else
+                        <div class="absolute">
+                            <x-ui.icon-button href="{{url()->previous()}}" class="text-2xl" color="error" icon="fas fa-arrow-left" />
+                        </div>
+                    @endif
                     <div class="basis-4/6 w-4/6 grow">
                         <div class="px-10">
                             <div class="container py-3">

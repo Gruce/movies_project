@@ -75,31 +75,15 @@
         </div>
 
         <div class="grid grid-cols-3 gap-4">
-            <label class="block mt-2 text-left">Choose Cover
-                <input required id="cover_file" wire:model="cover.url" type="file"
-                    class="mt-2 block w-full text-sm text-slate-500
-                        file:mr-4 file:py-2 file:px-4
-                        file:rounded-full file:border-0
-                        file:text-sm file:font-semibold
-                        file:bg-violet-50 file:text-violet-700
-                        hover:file:bg-violet-100
-                    " />
-            </label>
-            <label class="block mt-2 text-left">Choose Slider
-                <input required id="slider_file" wire:model="cover.url_slider" type="file"
-                    class="mt-2 block w-full text-sm text-slate-500
-                        file:mr-4 file:py-2 file:px-4
-                        file:rounded-full file:border-0
-                        file:text-sm file:font-semibold
-                        file:bg-violet-50 file:text-violet-700
-                        hover:file:bg-violet-100
-                    " />
-            </label>
-            <!-- ... -->
+            <div>
+                <label class="block mt-2 text-left">
+                    Choose Cover
+                    @error('url')
+                        <span class="error text-red-600 bg-red-100 rounded-lg py-1 px-2 text-xs">{{ $message }}</span>
+                    @enderror
+                </label>
 
-            <label class="block mt-2 text-left">Choose File
-                <input required id="file" wire:model.lazy="files" type="file" data-multiple-caption="{count} files selected"
-                    multiple
+                <input required id="cover_file" wire:model="url" type="file"
                     class="mt-2 block w-full text-sm text-slate-500
                         file:mr-4 file:py-2 file:px-4
                         file:rounded-full file:border-0
@@ -107,7 +91,40 @@
                         file:bg-violet-50 file:text-violet-700
                         hover:file:bg-violet-100
                     " />
-            </label>
+            </div>
+            <div>
+                <label class="block mt-2 text-left">
+                    Choose Slider
+                    @error('url_slider')
+                        <span class="error text-red-600 bg-red-100 rounded-lg py-1 px-2 text-xs">{{ $message }}</span>
+                    @enderror
+                </label>
+                <input required id="slider_file" wire:model="url_slider" type="file"
+                    class="mt-2 block w-full text-sm text-slate-500
+                        file:mr-4 file:py-2 file:px-4
+                        file:rounded-full file:border-0
+                        file:text-sm file:font-semibold
+                        file:bg-violet-50 file:text-violet-700
+                        hover:file:bg-violet-100
+                    " />
+            </div>
+            <!-- ... -->
+            <div>
+                <label class="block mt-2 text-left">
+                    Choose File
+                    @error('files')
+                        <span class="error text-red-600 bg-red-100 rounded-lg py-1 px-2 text-xs">{{ $message }}</span>
+                    @enderror
+                </label>
+                <input id="file" wire:model="files" type="file" data-multiple-caption="{count} files selected" multiple
+                    class="mt-2 block w-full text-sm text-slate-500
+                        file:mr-4 file:py-2 file:px-4
+                        file:rounded-full file:border-0
+                        file:text-sm file:font-semibold
+                        file:bg-violet-50 file:text-violet-700
+                        hover:file:bg-violet-100
+                    " />
+            </div>
         </div>
         {{-- Genres --}}
         <div class="grid grid-cols-7 gap-4 mt-6">

@@ -16,42 +16,45 @@ class AddMovie extends Component
     use WithFileUploads;
     use MovieTrait;
 
-    public $cover, $genres, $files;
-
     protected $rules = [
         'movie.name' => 'required',
         'movie.description' => 'required',
         'movie.rating' => 'required',
         'movie.duration' => 'required',
         'movie.release_date' => 'required',
-        'files.*' => 'required',
-        'cover.url' => 'required|image',
-        'cover.url_slider' => 'required|image',
+        'files.*' => 'required|file',
+        'url' => 'required|image',
+        'url_slider' => 'required|image',
         'genres.*' => 'required',
     ];
 
     public function mount(){
         $this->movie = new Movie;
+        $this->url = null;
+        $this->url_slider = null;
+        $this->genres = [];
+        $this->files = [];
     }
 
     public function add(){
         $this->validate();
-
+        
         // Getting Movie Data
         $data = array_filter($this->movie->toArray());
-
+        
         // Remove unchecked genres
         $this->genres = array_filter($this->genres);
 
         // Getting Cover Data
-        $data['cover'] = $this->uploadCoverPath($this->cover['url']);
-        $data['url_slider'] = $this->uploadSliderPath($this->cover['url_slider']);
+        $data['cover'] = $this->uploadCoverPath($this->url);
+        $data['url_slider'] = $this->uploadSliderPath($this->url_slider);
 
         // Getting Files Data
         $data['files'] = $this->uploadFilesPaths($this->files);
 
         // Getting Genres Data
         $data['genres'] = $this->genres;
+
 
         $this->movie->add($data);
     }
