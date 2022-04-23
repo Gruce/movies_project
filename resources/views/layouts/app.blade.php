@@ -48,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     {{-- Right Sidebar --}}
                     @if (Route::is('home*') || Route::is('movies-all') || Route::is('series-all'))
                         @livewire('right-side')

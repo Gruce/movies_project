@@ -42,9 +42,6 @@ class AddMovie extends Component
         // Getting Movie Data
         $data = array_filter($this->movie->toArray());
         
-        // Remove unchecked genres
-        $this->genres = array_filter($this->genres);
-
         // Getting Cover Data
         $data['cover'] = $this->uploadCoverPath($this->url);
         $data['url_slider'] = $this->uploadSliderPath($this->url_slider);
@@ -53,8 +50,7 @@ class AddMovie extends Component
         $data['files'] = $this->uploadFilesPaths($this->files);
 
         // Getting Genres Data
-        $data['genres'] = $this->genres;
-
+        $data['genres'] = array_filter($this->genres);
 
         $this->movie->add($data);
     }
