@@ -9,7 +9,7 @@ class RightSide extends Component
 {
     public function render(){
         $this->series = Series::get()->take(3);
-        
+        $this->movie = Movie::inRandomOrder()->first();
 
         return view('livewire.right-side');
     }

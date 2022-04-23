@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -31,34 +31,33 @@
 </head>
 
 <body class="font-sans antialiased bg-gray-200">
+    <div class="p-6 mx-auto">
+        <div class="gap-4">
+            <div class="text-center bg-white rounded-lg">
+                <div class="flex flex-row" x-data="{ sidebar_extended: false }">
+                    {{-- Left Sidebar --}}
+                    <x-sidebar />
 
-    <div class="container mx-auto">
-        <div class="my-4 gap-4 ">
-            <div class="p-6 text-center bg-white rounded-lg border border-gray-200">
-                <div class="flex flex-row">
-                    @if (!Route::is('*show*'))
-                        <div class="basis-1/6 w-1/6">
-                            <x-sidebar />
+                    {{-- Content --}}
+                    <div class="basis-8/12 w-8/12 grow pb-10">
+                        <div class="h-36 flex items-center p-10 border-b justify-between mb-10">
+                            <span class="text-2xl text-gray-600 font-semibold">@yield('title')</span>
+                            @yield('header-actions')
+                            @hasSection ('disable-search')
+                            @else
+                                <livewire:ui.search />
+                            @endif
                         </div>
-                    @else
-                        <a  href="{{route('home')}}" class="absolute flex items-center p-2 text-base text-gray text-red-700 rounded-lg">
-                            <i class="fa-solid fa-cannabis fa-2x"></i>
-                            <span class="ml-3 font-bold">Watch Together</span>
-                        </a>
-                    @endif
-                    <div class="basis-4/6 w-4/6 grow">
                         <div class="px-10">
-                            <div class="container py-3">
-                                @isset($slot)
-                                    {{ $slot }}
-                                @endisset
-                            </div>
+                            @isset($slot)
+                                {{ $slot }}
+                            @endisset
                         </div>
                     </div>
+
+                    {{-- Right Sidebar --}}
                     @if (Route::is('home*') || Route::is('movies-all') || Route::is('series-all'))
-                        <div class="basis-1/6 w-1/6">
-                            @livewire('right-side')
-                        </div>
+                        @livewire('right-side')
                     @endif
                 </div>
             </div>
