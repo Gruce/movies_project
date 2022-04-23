@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -34,18 +34,24 @@
     <div class="p-6 mx-auto">
         <div class="gap-4">
             <div class="text-center bg-white rounded-lg">
-                <div class="flex flex-row">
+                <div class="flex flex-row" x-data="{ sidebar_extended: false }">
                     {{-- Left Sidebar --}}
                     <x-sidebar />
 
                     {{-- Content --}}
                     <div class="basis-8/12 w-8/12 grow">
+                        <div class="h-36 flex items-center p-10 border-b justify-between mb-10">
+                            <span class="text-2xl text-gray-600 font-semibold">@yield('title')</span>
+                            @yield('header-actions')
+                            @hasSection ('disable-search')
+                            @else
+                                <livewire:ui.search />
+                            @endif
+                        </div>
                         <div class="px-10">
-                            <div class="container py-3">
-                                @isset($slot)
-                                    {{ $slot }}
-                                @endisset
-                            </div>
+                            @isset($slot)
+                                {{ $slot }}
+                            @endisset
                         </div>
                     </div>
 

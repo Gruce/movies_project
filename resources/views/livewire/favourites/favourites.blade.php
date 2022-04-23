@@ -1,10 +1,6 @@
-<div>
-    <div class="flex justify-between mt-10 mb-5">
-        <div class="font-bold text-lg text-gray-500">
-            <span>Favourites</span>
-        </div>
-    </div>
+@section('title', 'Favourites')
 
+<div>
     <div class="grid grid-cols-5 gap-4 mt-8">
         @foreach ($movies  as $movie)
             <livewire:ui.movie :movie="$movie->id" :wire:key="$movie->id" />

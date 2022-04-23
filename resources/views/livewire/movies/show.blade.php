@@ -1,3 +1,5 @@
+@section('disable-search', true)
+@section('title', $movie->name)
 <div wire:loading.class="opacity-50">
     {{-- @if ($showDarkScreen)
     <div class="w-screen h-screen fixed top-0 left-0 bg-gray-900 opacity-50 z-0">
