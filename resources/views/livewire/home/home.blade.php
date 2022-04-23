@@ -1,7 +1,10 @@
+@section('header-actions')
+    <x-navbar />
+@endsection
+
+@section('title', 'Home')
+
 <div>
-    <div class="sticky mx-3 top-0 z-30">
-        <x-navbar />
-    </div>
     <div class="flex flex-col">
         <div id="animation-carousel" class="relative" data-carousel="static">
             <!-- Carousel wrapper -->
@@ -45,7 +48,8 @@
                                 class="h-full w-full object-cover object-top relative inset-0 z-10 opacity-80 transition duration-300 group-hover:opacity-100">
 
                             <x-ui.button class="absolute z-20 bottom-10 right-20"
-                                href="{{ route('series-show', ['episode' => $item->last_season->first_episode->id]) }}" color="error">Watch Now!
+                                href="{{ route('series-show', ['episode' => $item->last_season->first_episode->id]) }}"
+                                color="error">Watch Now!
                             </x-ui.button>
                             <div class="absolute text-left z-20 max-w-sm bottom-10 left-20">
                                 <div class="text-3xl">

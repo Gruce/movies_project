@@ -1,5 +1,7 @@
+@section('title', 'Series')
+
+
 <div wire:loading.class="opacity-50">
-    <h1 class="text-left py-2 pr-4 pl-3 text-gray-700 text-lg font-bold ">Series</h1>
     <div class="flex mb-10 border p-2 rounded-lg border-gray-200  px-4">
         <!-- Dropdown menu -->
         <div class="block">
@@ -41,7 +43,7 @@
 
         </div>
     </div>
-    <div class="grid grid-cols-6 gap-4 mt-8">
+    <div :class="sidebar_extended ? 'grid-cols-5' : 'grid-cols-6'" class="grid gap-4 mt-8">
         @forelse ($series as $item)
             <div class="mr-5">
                 <livewire:ui.series :episode="$item->seasons->first()->episodes->first()->id" :wire:key="$item->id" />
