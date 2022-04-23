@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 
 <head>
     <meta charset="utf-8">
@@ -41,9 +41,10 @@
                             <x-sidebar />
                         </div>
                     @else
-                        <div class="absolute">
-                            <x-ui.icon-button href="{{url()->previous()}}" class="text-2xl" color="error" icon="fas fa-arrow-left" />
-                        </div>
+                        <a  href="{{url()->previous()}}" class="absolute flex items-center p-2 text-base text-gray text-red-700 rounded-lg">
+                            <i class="fa-solid fa-cannabis fa-2x"></i>
+                            <span class="ml-3 font-bold">Watch Together</span>
+                        </a>
                     @endif
                     <div class="basis-4/6 w-4/6 grow">
                         <div class="px-10">
