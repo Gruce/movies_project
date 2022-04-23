@@ -13,7 +13,7 @@
         var player = videojs('my-video', {
             fluid: true,
             controls: true,
-            autoplay: true,
+            autoplay: false,
             preload: 'auto',
             playbackRates: [0.7, 1.0, 1.5, 2.0],
             sources: [{

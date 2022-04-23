@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 
 <head>
     <meta charset="utf-8">
@@ -36,9 +36,16 @@
         <div class="my-4 gap-4 ">
             <div class="p-6 text-center bg-white rounded-lg border border-gray-200">
                 <div class="flex flex-row">
-                    <div class="basis-1/6 w-1/6">
-                        <x-sidebar />
-                    </div>
+                    @if (!Route::is('*show*'))
+                        <div class="basis-1/6 w-1/6">
+                            <x-sidebar />
+                        </div>
+                    @else
+                        <a  href="{{url()->previous()}}" class="absolute flex items-center p-2 text-base text-gray text-red-700 rounded-lg">
+                            <i class="fa-solid fa-cannabis fa-2x"></i>
+                            <span class="ml-3 font-bold">Watch Together</span>
+                        </a>
+                    @endif
                     <div class="basis-4/6 w-4/6 grow">
                         <div class="px-10">
                             <div class="container py-3">

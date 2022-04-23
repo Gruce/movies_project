@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="flex overflow-y-hidden flex-nowrap pb-2 rounded-lg" x-ref="slider">
+    <div class="flex overflow-y-hidden flex-nowrap pb-2 rounded-lg scroll-smooth" x-ref="slider">
         @forelse ($series as $series)
             <div x-ref="slide_item" class="mr-5">
                 <livewire:ui.series :episode="$series->seasons->first()->episodes->first()->id" :wire:key="$series->id" />

@@ -1,4 +1,4 @@
 
-<button {{ $attributes->merge(['class' => $default]) }} type="button">
+<a {{ $attributes->merge(['class' => $default]) }}>
     <i class="{{$icon}}"></i>
-</button>
+</a>
