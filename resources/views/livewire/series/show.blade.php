@@ -1,3 +1,6 @@
+@section('disable-search', true)
+@section('title', $episode->season->series->name . ' - ' . $episode->season->name . ' - ' . $episode->name . ' ( ' . $episode->number . ' ) ')
+
 <div wire:loading.class="opacity-50">
     <div class="p-3 bg-gray-100 rounded-lg">
         <div class="flex flex-row">
