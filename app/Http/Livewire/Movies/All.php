@@ -13,9 +13,13 @@ class All extends Component
     public $genre_id;
     public $genre_name = 'All Genres';
     public $rating = null;
+    public $search;
+
+    protected $queryString = ['search'];
 
     protected $listeners = [
         'ratingUpdated' => 'rating_updated',
+        '$refresh',
     ];
 
     public function rating_updated($item){
@@ -41,6 +45,8 @@ class All extends Component
         if ($this->rating)
             $this->movies = $this->movies->where('rating_five', $this->rating);
 
+        if ($this->search)
+            $this->movies = $this->movies->where('name', 'like', '%' . $this->search . '%');
 
         $this->genres = Genre::get([
             'id',
