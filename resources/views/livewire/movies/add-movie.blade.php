@@ -4,13 +4,13 @@
             <h2 class="text-left card-title  pr-4"> Add Movie</h2>
         </div>
     </div>
-    <form wire:submit.prevent="add">
+    <form wire:submit.prevent="add2">
         {{-- name --}}
         <div class="grid grid-cols-2 gap-4">
             <div class="mb-6">
                 <label for="name" class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">movie
                     name</label>
-                <input wire:model="name" type="text" id="name"
+                <input wire:model.lazy="movie.name" type="text" id="name"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
                     placeholder="name" >
                     @error('name') <span class="error text-red-600">{{ $message }}</span> @enderror
@@ -19,7 +19,7 @@
             <div class="mb-6">
                 <label for="rating" class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     rating</label>
-                <input wire:model="rating" type="number" min="0" max="10" step="0.5" id="rating"
+                <input wire:model.lazy="movie.rating" type="number" min="0" max="10" step="0.5" id="rating"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
                     placeholder="rating">
                     @error('rating') <span class="error text-red-600">{{ $message }}</span> @enderror
@@ -29,7 +29,7 @@
             <div class="mb-6">
                 <label for="name"
                     class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Duration</label>
-                <input wire:model="duration" type="number"
+                <input wire:model.lazy="movie.duration" type="number"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:shadow-sm-light"
                     placeholder="Duration">
                     @error('duration') <span class="error text-red-600">{{ $message }}</span> @enderror
@@ -38,7 +38,7 @@
             <div class="mb-6">
                 <label class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Release Date</label>
-                <select wire:model="release_date"
+                <select wire:model.lazy="movie.release_date"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5">
                     <option selected value="" > select year </option>
                     @for ($year = 1900; $year<=date('Y'); $year++)
@@ -52,7 +52,7 @@
         <div class="mt-4 grid grid-cols-1 gap-4 ">
             <label for="message"
                 class="text-left block text-sm font-medium text-gray-900 dark:text-gray-400">Description</label>
-            <textarea wire:model="description" id="message" rows="4"
+            <textarea wire:model.lazy="movie.description" id="message" rows="4"
                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:shadow-sm-light"
                 placeholder="description..."></textarea>
                 @error('description') <span class="error text-red-600">{{ $message }}</span> @enderror
@@ -60,7 +60,7 @@
 
         <div class="grid grid-cols-3 gap-4">
             <label class="block mt-2 text-left">Choose Cover
-                <input wire:model="cover" type="file"
+                <input wire:model.lazy="movie.cover.url" type="file"
                     class="mt-2 block w-full text-sm text-slate-500
                         file:mr-4 file:py-2 file:px-4
                         file:rounded-full file:border-0
@@ -71,7 +71,7 @@
 
             </label>
             <label class="block mt-2 text-left">Choose Slider
-                <input wire:model="url_slider" type="file"
+                <input wire:model.lazy="movie.cover.url_slider" type="file"
                     class="mt-2 block w-full text-sm text-slate-500
                         file:mr-4 file:py-2 file:px-4
                         file:rounded-full file:border-0
@@ -84,7 +84,7 @@
             <!-- ... -->
 
             <label class="block mt-2 text-left">Choose File
-                <input wire:model="files" type="file" data-multiple-caption="{count} files selected" multiple
+                <input wire:model.lazy="movie.files" type="file" data-multiple-caption="{count} files selected" multiple
                     class="mt-2 block w-full text-sm text-slate-500
                         file:mr-4 file:py-2 file:px-4
                         file:rounded-full file:border-0
@@ -98,7 +98,7 @@
         <div class="grid grid-cols-7 gap-4 mt-6">
             @forelse ($all_genres as $genre)
                 <div class="flex items-center mb-4">
-                    <input wire:model="genres.{{$genre->id}}"  id="checkbox-{{$genre->id}}" aria-describedby="checkbox-{{$genre->id}}"
+                    <input wire:model.lazy="movie.genres.{{$genre->id}}"  id="checkbox-{{$genre->id}}" aria-describedby="checkbox-{{$genre->id}}"
                         type="checkbox"
                         class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500">
                     <label for="checkbox-{{$genre->id}}"

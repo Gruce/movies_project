@@ -10,19 +10,29 @@ class AddMovie extends Component
 {
     use WithFileUploads;
 
-    public $name, $description, $rating, $duration, $release_date, $genres =[], $files=[], $cover, $url_slider;
+    // public $name, $description, $rating, $duration, $release_date, $genres =[], $files=[], $cover, $url_slider;
 
     protected $rules = [
-        'name' => 'required',
-        'description' => 'required',
-        'rating' => 'required',
-        'duration' => 'required',
-        'release_date' => 'required',
-        'genres' => 'required',
-        'cover' => 'required',
-        'url_slider' => 'required',
-        'files' => 'required',
+        'movie.name' => 'required',
+        'movie.description' => 'required',
+        'movie.rating' => 'required',
+        'movie.duration' => 'required',
+        'movie.release_date' => 'required',
+        'movie.genres' => 'required',
+        'movie.files.*' => 'required',
+        'movie.cover.*' => 'required',
+        // 'movie.cover.url_slider' => 'required',
+        'movie.genres.*' => 'required',
     ];
+
+    public function mount(){
+        $this->movie = new Movie;
+    }
+
+    public function add2(){
+        // $this->movie->save();
+        dd($this->movie);
+    }
 
     public function add()
     {

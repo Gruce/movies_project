@@ -61,7 +61,7 @@ class Episode extends Model
                 $url = $this->cover->url ?? null;
                 if(filter_var($url , FILTER_VALIDATE_URL))
                     return $url;
-                return asset('storage/' . $this->cover->url);
+                return asset('storage/' . $url);
             }
         );
     }
@@ -73,7 +73,7 @@ class Episode extends Model
                 $url = $this->cover->url_slider ?? null;
                 if(filter_var($url , FILTER_VALIDATE_URL))
                     return $url;
-                return asset('storage/' . $this->cover->url_slider);
+                return asset('storage/' . $url);
             }
         );
     }
