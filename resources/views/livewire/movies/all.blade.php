@@ -41,7 +41,7 @@
 
         </div>
     </div>
-    <div class="grid grid-cols-4 gap-4 mt-8">
+    <div class="grid grid-cols-6 gap-4 mt-8">
         @forelse ($movies as $movie)
             <div class="mr-5">
                 <livewire:ui.movie :movie="$movie->id" :wire:key="$movie->id" />

@@ -41,7 +41,7 @@
 
         </div>
     </div>
-    <div class="grid grid-cols-4 gap-4 mt-8">
+    <div class="grid grid-cols-6 gap-4 mt-8">
         @forelse ($series as $item)
             <div class="mr-5">
                 <livewire:ui.series :episode="$item->seasons->first()->episodes->first()->id" :wire:key="$item->id" />
