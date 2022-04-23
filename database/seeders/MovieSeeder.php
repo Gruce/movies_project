@@ -22,7 +22,7 @@ class MovieSeeder extends Seeder
         $movie->add([
             'name' => 'The Tomorrow War',
             'description' => 'A family man is drafted to fight in a future war where the fate of humanity relies on his ability to confront the past.',
-            'rating' => 3.5,
+            'rating' => 6.6,
             'duration' => 138,
             'release_date' => '2021',
 
@@ -111,7 +111,7 @@ class MovieSeeder extends Seeder
 
             'genres' => [1, 3, 10],
             'cover' => 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3d/The_Lion_King_poster.jpg/220px-The_Lion_King_poster.jpg',
-            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            'url_slider' =>'https://www.komar.de/en/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/1/4/1418_1.jpg',
             
             'files' => [
                 'https://youtu.be/4Cbfb0eeN9E'
@@ -128,7 +128,7 @@ class MovieSeeder extends Seeder
 
             'genres' => [1, 4, 10],
             'cover' => 'https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/The_Secret_Life_of_Pets_2_%282019%29_Final_Poster.jpg/220px-The_Secret_Life_of_Pets_2_%282019%29_Final_Poster.jpg',
-            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            'url_slider' =>'https://uhdwallpapers.org/uploads/cache/3326643890/the-secret-life-of-pets-2-poster_600x338-mm-90.jpg',
             
             'files' => [
                 'https://youtu.be/4Cbfb0eeN9E'
@@ -145,7 +145,7 @@ class MovieSeeder extends Seeder
 
             'genres' => [1, 3, 10],
             'cover' => 'https://m.media-amazon.com/images/M/MV5BNWJiYmU4NTItZjAyZi00OGQxLTkwNmQtOGE5ODgyYTg0MzY1XkEyXkFqcGdeQXVyMTEzMjQzMDM1._V1_.jpg',
-            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            'url_slider' =>'https://androidcommunity.com/wp-content/uploads/2016/06/maxresdefault-3.jpg',
             
             'files' => [
                 'https://youtu.be/4Cbfb0eeN9E'
@@ -163,7 +163,7 @@ class MovieSeeder extends Seeder
 
             'genres' => [1, 3, 12],
             'cover' => 'https://img.wattpad.com/cover/216342125-288-k170397.jpg',
-            'url_slider' =>'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhotZZ36j8rndD5i2OG1scehoqeH_m7uLmohqF-yDDfR8X7kFk',
+            'url_slider' =>'https://images-na.ssl-images-amazon.com/images/S/pv-target-images/a06376322cc0d4edf5335484bd1b809517a7f6363ceabe74992b7ee02a041c34._UR1920,1080_RI_.jpg',
             
             'files' => [
                 'https://youtu.be/4Cbfb0eeN9E'
