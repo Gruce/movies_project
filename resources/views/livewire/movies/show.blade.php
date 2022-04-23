@@ -1,6 +1,6 @@
 <div wire:loading.class="opacity-50">
     <div class="p-10 bg-gray-100 rounded-lg mb-10">
-        <livewire:ui.video :file="$movie->files->first()" />
+        <livewire:ui.video :file="$movie->files->first()"/>
     </div>
     <div class="p-3 bg-gray-100 rounded-lg">
         <div class="flex flex-row">

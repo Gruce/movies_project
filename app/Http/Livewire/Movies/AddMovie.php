@@ -86,6 +86,8 @@ class AddMovie extends Component
 
         $movie = new Movie;
         $movie->add($data);
+        $this->emitTo('movies.all', '$refresh');
+        $this->reset();
     }
     public function render()
     {
