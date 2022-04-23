@@ -41,7 +41,7 @@
                             <x-sidebar />
                         </div>
                     @else
-                        <a  href="{{url()->previous()}}" class="absolute flex items-center p-2 text-base text-gray text-red-700 rounded-lg">
+                        <a  href="{{route('home')}}" class="absolute flex items-center p-2 text-base text-gray text-red-700 rounded-lg">
                             <i class="fa-solid fa-cannabis fa-2x"></i>
                             <span class="ml-3 font-bold">Watch Together</span>
                         </a>
