@@ -1077,6 +1077,9 @@ select {
 .m-2 {
   margin: 0.5rem;
 }
+.m-0 {
+  margin: 0px;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1385,6 +1388,27 @@ select {
 .w-screen {
   width: 100vw;
 }
+.w-1\/12 {
+  width: 8.333333%;
+}
+.w-4\/12 {
+  width: 33.333333%;
+}
+.w-3\/12 {
+  width: 25%;
+}
+.w-6\/12 {
+  width: 50%;
+}
+.w-10\/12 {
+  width: 83.333333%;
+}
+.w-2\/12 {
+  width: 16.666667%;
+}
+.w-8\/12 {
+  width: 66.666667%;
+}
 .min-w-0 {
   min-width: 0px;
 }
@@ -1402,6 +1426,9 @@ select {
 }
 .max-w-6xl {
   max-width: 72rem;
+}
+.max-w-full {
+  max-width: 100%;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1431,6 +1458,27 @@ select {
   flex-basis: 16.666667%;
 }
 .basis-4\/6 {
+  flex-basis: 66.666667%;
+}
+.basis-1\/12 {
+  flex-basis: 8.333333%;
+}
+.basis-4\/12 {
+  flex-basis: 33.333333%;
+}
+.basis-3\/12 {
+  flex-basis: 25%;
+}
+.basis-6\/12 {
+  flex-basis: 50%;
+}
+.basis-10\/12 {
+  flex-basis: 83.333333%;
+}
+.basis-2\/12 {
+  flex-basis: 16.666667%;
+}
+.basis-8\/12 {
   flex-basis: 66.666667%;
 }
 .origin-top-left {
@@ -1667,6 +1715,9 @@ select {
 .border-2 {
   border-width: 2px;
 }
+.border-0 {
+  border-width: 0px;
+}
 .border-b-2 {
   border-bottom-width: 2px;
 }
@@ -1681,6 +1732,9 @@ select {
 }
 .border-r {
   border-right-width: 1px;
+}
+.border-l {
+  border-left-width: 1px;
 }
 .border-gray-300 {
   --tw-border-opacity: 1;
@@ -1716,6 +1770,10 @@ select {
 .border-red-600 {
   --tw-border-opacity: 1;
   border-color: rgb(220 38 38 / var(--tw-border-opacity));
+}
+.border-gray-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -1787,6 +1845,10 @@ select {
 .bg-red-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
@@ -1861,6 +1923,9 @@ select {
 }
 .p-1 {
   padding: 0.25rem;
+}
+.p-0 {
+  padding: 0px;
 }
 .px-4 {
   padding-left: 1rem;
@@ -1942,6 +2007,10 @@ select {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
 }
+.px-9 {
+  padding-left: 2.25rem;
+  padding-right: 2.25rem;
+}
 .pt-6 {
   padding-top: 1.5rem;
 }
@@ -1983,6 +2052,21 @@ select {
 }
 .pt-8 {
   padding-top: 2rem;
+}
+.pr-3 {
+  padding-right: 0.75rem;
+}
+.pr-6 {
+  padding-right: 1.5rem;
+}
+.pr-9 {
+  padding-right: 2.25rem;
+}
+.pl-9 {
+  padding-left: 2.25rem;
+}
+.pb-5 {
+  padding-bottom: 1.25rem;
 }
 .text-left {
   text-align: left;

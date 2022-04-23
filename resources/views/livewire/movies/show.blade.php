@@ -1,9 +1,9 @@
 <div wire:loading.class="opacity-50">
-    @if ($showDarkScreen)
+    {{-- @if ($showDarkScreen)
     <div class="w-screen h-screen fixed top-0 left-0 bg-gray-900 opacity-50 z-0">
         <x-ui.icon-button wire:click="$set('showDarkScreen', {{false}})" class="absolute top-10 right-10 p-3" icon="fas fa-times fa-3x" color="secondary" />
     </div>
-    @endif
+    @endif --}}
 
     <div class="z-20 my-12">
         <livewire:ui.video :file="$movie->files->first()"/>
