@@ -15,11 +15,11 @@ class All extends Component
     public $rating = null;
     public $search;
 
-    protected $queryString = ['search'];
 
     protected $listeners = [
         'ratingUpdated' => 'rating_updated',
         '$refresh',
+        'search'
     ];
 
     public function rating_updated($item){
@@ -33,20 +33,23 @@ class All extends Component
         $this->genre_id = $genre_id;
         $this->genre_name = $genre_name;
     }
+    function search($string)
+    {
+        $this->search = $string;
+    }
+
 
     public function render()
     {
+        $search = '%' . $this->search . '%';
 
-        $this->movies = Movie::genre($this->genre_id)
+        $this->movies = Movie::where('name','LIKE',$search)->genre($this->genre_id)
 
                                 ->get()
                                 ->sortByDesc('likes_count');
 
         if ($this->rating)
             $this->movies = $this->movies->where('rating_five', $this->rating);
-
-        if ($this->search)
-            $this->movies = $this->movies->where('name', 'like', '%' . $this->search . '%');
 
         $this->genres = Genre::get([
             'id',

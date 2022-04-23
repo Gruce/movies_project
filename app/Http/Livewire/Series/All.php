@@ -13,10 +13,12 @@ class All extends Component
     public $genre_id;
     public $genre_name = 'All Genres';
     public $rating = null;
+    public $search;
 
     protected $listeners = [
         'ratingUpdated' => 'rating_updated',
         'watchLaterUpdated' => '$refresh',
+        'search',
     ];
 
     public function rating_updated($item)
@@ -32,9 +34,14 @@ class All extends Component
         $this->genre_id = $genre_id;
         $this->genre_name = $genre_name;
     }
+    function search($string)
+    {
+        $this->search = $string;
+    }
     public function render()
     {
-        $this->series = Series::genre($this->genre_id)
+        $search = '%' . $this->search . '%';
+        $this->series = Series::where('name','LIKE',$search)->genre($this->genre_id)
 
             ->get()
             // Sort by first episode with first season of each series in descending order
