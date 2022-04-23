@@ -1,4 +1,5 @@
-<div wire:loading.class="opacity-50" class="w-52 h-80 bg-cover hover:scale-105 opacity-90 hover:opacity-100 flex items-end justify-center rounded-lg relative group transition ease-in-out duration-300"
+<div wire:loading.class="opacity-50"
+    class="w-52 h-80 bg-cover hover:scale-105 opacity-90 hover:opacity-100 flex items-end justify-center rounded-lg relative group transition ease-in-out duration-300"
     style="background-image: url('{{ $movie->cover_url }}')">
 
     <div class=" -mb-3 text-center group-hover:mb-5 group-hover:duration-300">
@@ -36,8 +37,9 @@
     </div>
     <div
         class="top-0 left-0 absolute z-50 text-white bg-gradient-to-tl to-red-500 from-red-700  px-5 py-0.5 rounded-tl-[8px] rounded-br-[15px]">
-        <button data-tooltip-target="tooltip-default-{{$movie->id}}" type="button" class="fa-solid fa-film"></button>
-        <div id="tooltip-default-{{$movie->id}}" role="tooltip"
+        <button data-tooltip-target="tooltip-default-{{ $movie->id }}" type="button"
+            class="fa-solid fa-film"></button>
+        <div id="tooltip-default-{{ $movie->id }}" role="tooltip"
             class="absolute invisible  py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
             Movie
             <div class="tooltip-arrow" data-popper-arrow></div>
