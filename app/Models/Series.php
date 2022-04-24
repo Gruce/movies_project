@@ -58,10 +58,7 @@ class Series extends Model
     {
         return Attribute::make(
             get: function () {
-                $url = $this->imdb->url ?? null;
-                if (filter_var($url, FILTER_VALIDATE_URL))
-                    return $url;
-                return asset('storage/' . $url);
+                return $this->imdb->url ?? null;
             },
         );
     }
