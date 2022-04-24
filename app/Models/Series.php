@@ -11,7 +11,7 @@ class Series extends Model
 {
     use HasFactory;
 
-    protected $appends = ['rating_five', 'last_season'];
+    protected $appends = ['rating_five', 'last_season', 'imdb_url'];
 
 
     public function genres()
@@ -24,6 +24,10 @@ class Series extends Model
         return $this->hasMany(Season::class);
     }
     
+    public function imdb()
+    {
+        return $this->morphOne(Imdb::class, 'imdbable');
+    }
     /***********************************************************/
     /******************* ACCESSOR AND MUTATOR ******************/
     /***********************************************************/
@@ -49,6 +53,13 @@ class Series extends Model
         );
     }
 
+
+    protected function imdbUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn()=>$this->imdb->url
+        );
+    }
 
 
 
@@ -95,6 +106,10 @@ class Series extends Model
                 'rating' => $data['series_rating'],
             ]);
             $series->genres()->attach($data['series_genres']);
+
+            $imdb = new Imdb();
+            $imdb->url = $data['imdb'];
+            $series->imdb()->save($imdb);
         }
 
         if (isset($data['season_id'])) {
