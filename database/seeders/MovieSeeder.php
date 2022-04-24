@@ -132,7 +132,7 @@ class MovieSeeder extends Seeder
         $movie = new Movie;
         $movie->add([
             'name' => 'The Secret Life of Pets 2',
-            'description' => 'fdgdfgew family turns out to be a secret society run by evil genius Mr. Peterman, who puts his mysterious ways to use pets to his advantage.',
+            'description' => 'family turns out to be a secret society run by evil genius Mr. Peterman, who puts his mysterious ways to use pets to his advantage.',
             'rating' => 6.7,
             'duration' => 98,
             'release_date' => '2019',

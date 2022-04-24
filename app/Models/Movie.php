@@ -126,7 +126,10 @@ class Movie extends Model
     protected function imdbUrl(): Attribute
     {
         return Attribute::make(
-            get: fn()=>$this->imdb->url
+            get: function () {
+                 return $this->imdb->url ?? null;
+                
+            },
         );
     }
 
