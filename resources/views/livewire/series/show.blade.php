@@ -77,7 +77,9 @@
                 </div>
             </div>
         </div>
-
+        @auth
+            <livewire:ui.comment :commentable="$episode" />
+        @endauth
 
 
 
@@ -88,7 +90,7 @@
                     @forelse ($seasons as $season)
                         <li class="mr-2" role="presentation">
                             <button style="border-color: red;
-                            color: red;" class="inline-block p-4 rounded-t-lg border-b-2 border-red-600"
+                                    color: red;" class="inline-block p-4 rounded-t-lg border-b-2 border-red-600"
                                 id="season-{{ $season->id }}-tab" data-tabs-target="#season-{{ $season->id }}"
                                 type="button" role="tab" aria-controls="season-{{ $season->id }}"
                                 aria-selected="true">{{ $season->name }}</button>
@@ -120,17 +122,6 @@
                     <span class="text-xl">No Seasons</span>
                 </div>
             @endforelse
-            @auth
-            <form  wire:submit.prevent="comment">
-                <label for="message" class="block mb-4 mt-4 text-left text-xs font-medium text-gray-900 dark:text-gray-400">Your
-                    Comment</label>
-                <textarea wire:model.lazy="comment" id="message" rows="2" cols="6"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Leave a comment..."></textarea>
-                <button type="submit"
-                    class="focus:outline-none flex justify-items-start mt-4 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">comment</button>
-            </form>
-            @endauth
         </div>
 
         <div>
