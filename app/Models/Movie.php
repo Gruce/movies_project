@@ -172,7 +172,7 @@ class Movie extends Model
         $comment = new Comment;
         $comment->body = $body;
         $comment->user_id = auth()->id();
-        $comment->collaboration_id = $collaboration->id;
+        if ($collaboration) $comment->collaboration_id = $collaboration->id;
         $this->comments()->save($comment);
     }
 
