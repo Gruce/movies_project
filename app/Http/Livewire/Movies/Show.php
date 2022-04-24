@@ -7,13 +7,14 @@ use App\Models\Movie;
 
 class Show extends Component
 {
+    public $comment;
 
     public $showDarkScreen = true;
 
     protected $listeners = [
         'watchLaterUpdated' => '$refresh',
     ];
-    
+
     public function mount(Movie $movie)
     {
         $this->movie = $movie;
@@ -33,6 +34,12 @@ class Show extends Component
     public function favourite($state){
         $this->movie->favourite($state);
         $this->emit('favouriteUpdated');
+    }
+
+    public function comment()
+    {
+        $this->movie->comment($this->comment);
+        $this->comment = '';
     }
 
     public function render()
