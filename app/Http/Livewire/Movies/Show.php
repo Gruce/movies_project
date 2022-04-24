@@ -36,12 +36,6 @@ class Show extends Component
         $this->emit('favouriteUpdated');
     }
 
-    public function comment()
-    {
-        $this->movie->comment($this->comment);
-        $this->comment = '';
-    }
-
     public function render()
     {
         return view('livewire.movies.show');
