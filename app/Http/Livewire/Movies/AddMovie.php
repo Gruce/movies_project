@@ -59,6 +59,9 @@ class AddMovie extends Component
     public function render()
     {
         $all_genres = Genre::get();
+
+        $this->movie->cover_url = $this->url ? $this->url->temporaryUrl() : null;
+
         return view('livewire.movies.add-movie', [ 'all_genres' => $all_genres ] );
     }
 }

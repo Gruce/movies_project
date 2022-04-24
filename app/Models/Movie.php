@@ -66,6 +66,11 @@ class Movie extends Model
         return $this->morphOne(Imdb::class, 'imdbable');
     }
 
+    public function collaborations()
+    {
+        return $this->morphMany(Collaboration::class, 'collaborationable');
+    }
+
 
 
     /***********************************************************/
@@ -75,30 +80,26 @@ class Movie extends Model
     protected function coverUrl(): Attribute
     {
         return Attribute::make(
-            get: function () {
+            get: function ($value) {
                 $url = $this->cover->url ?? null;
-                if (filter_var($url, FILTER_VALIDATE_URL))
-                    return $url;
+                if ($value) return $value;
+                if (filter_var($url, FILTER_VALIDATE_URL)) return $url;
                 return asset('storage/' . $url);
             },
-            set: function ($value) {
-                $this->cover()->updateOrCreate(['url' => $value]);
-            }
+            set: fn ($value) => $value
         );
     }
 
     protected function sliderUrl(): Attribute
     {
         return Attribute::make(
-            get: function () {
+            get: function ($value) {
                 $url = $this->cover->url_slider ?? null;
-                if (filter_var($url, FILTER_VALIDATE_URL))
-                    return $url;
+                if ($value) return $value;
+                if (filter_var($url, FILTER_VALIDATE_URL)) return $url;
                 return asset('storage/' . $url);
             },
-            set: function ($value) {
-                $this->cover()->updateOrCreate(['url_slider' => $value]);
-            }
+            set: fn ($value) => $value
         );
     }
 
@@ -166,12 +167,20 @@ class Movie extends Model
         $movie->cover()->save($cover);
     }
 
-    public function comment($body)
+    public function comment($body, $collaboration = null)
     {
         $comment = new Comment;
         $comment->body = $body;
         $comment->user_id = auth()->id();
+        $comment->collaboration_id = $collaboration->id;
         $this->comments()->save($comment);
+    }
+
+    public function collaborate(){
+        $collaboration = new Collaboration;
+        $collaboration->user_id = auth()->id();
+        $collaboration->room = md5('collaboration' . auth()->id() . now());
+        return $this->collaborations()->save($collaboration);
     }
 
     public function favourite($state)
@@ -233,6 +242,8 @@ class Movie extends Model
     {
         return $this->queues()->where('user_id', auth()->id())->exists();
     }
+
+    
 
 
     /****************************************************/

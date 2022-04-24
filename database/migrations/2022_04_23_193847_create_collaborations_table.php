@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('collaborations', function (Blueprint $table) {
             $table->id();
-            $table->text('body');
-            
+            $table->string('room');
+
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('SET NULL');
-            $table->foreignId('collaboration_id')->nullable()->constrained('collaborations')->onDelete('SET NULL');
             
-            $table->integer('commentable_id');
-            $table->string('commentable_type');
-            
+            $table->integer('collaborationable_id');
+            $table->string('collaborationable_type');
+
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('collaborations');
     }
 };
