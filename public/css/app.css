@@ -3167,6 +3167,10 @@ select {
   .xl\:h-80 {
     height: 20rem;
   }
+
+  .xl\:h-96 {
+    height: 24rem;
+  }
 }
 @media (min-width: 1536px) {
 
