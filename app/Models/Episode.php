@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Models\{
     Like,
-    
+    Comment,
+
 };
 
 
@@ -26,6 +27,11 @@ class Episode extends Model
     public function cover()
     {
         return $this->morphOne(Cover::class, 'coverable');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function files()
@@ -106,6 +112,14 @@ class Episode extends Model
 
             $this->favourites()->save($favourite);
         }
+    }
+
+    public function comment($body)
+    {
+        $comment = new Comment;
+        $comment->body = $body;
+        $comment->user_id = auth()->id();
+        $this->comments()->save($comment);
     }
 
     public function queue($state)

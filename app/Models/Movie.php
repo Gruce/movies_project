@@ -11,6 +11,7 @@ use App\Models\{
     Cover,
     Favourite,
     Queue,
+    Comment,
 };
 
 class Movie extends Model
@@ -32,6 +33,11 @@ class Movie extends Model
     public function cover()
     {
         return $this->morphOne(Cover::class, 'coverable');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function files()
@@ -140,6 +146,14 @@ class Movie extends Model
         $movie->cover()->save($cover);
     }
 
+    public function comment($body)
+    {
+        $comment = new Comment;
+        $comment->body = $body;
+        $comment->user_id = auth()->id();
+        $this->comments()->save($comment);
+    }
+
     public function favourite($state)
     {
         if (!$state) {
@@ -214,3 +228,5 @@ class Movie extends Model
         });
     }
 }
+
+
