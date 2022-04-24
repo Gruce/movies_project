@@ -8,9 +8,11 @@
             <livewire:ui.rating :rating="$movie->rating" wire:key="{{ now() }}" />
             <div
                 class="flex gap-1 mt-3 invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300">
-                <x-ui.button href="{{ route('movie-show', ['movie' => $movie->id]) }}" color="error">
-                    Watch Now!
-                </x-ui.button>
+                @if ($movie->id)
+                    <x-ui.button href="{{ route('movie-show', ['movie' => $movie->id]) }}" color="error">
+                        Watch Now!
+                    </x-ui.button>
+                @endif
             </div>
         </div>
     </div>
@@ -18,22 +20,24 @@
         class="w-full h-full opacity-90 hover:opacity-100 -z-10 absolute bg-gradient-to-b  to-gray-800 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300">
     </div>
     <div class="top-2 right-2 absolute flex flex-col gap-2">
-        @auth
-            @if (!$movie->queued())
-                <x-ui.icon-button wire:click="watch_later(true)" icon="fa-solid fa-clock" color="light2"
-                    class="text-2xl invisible opacity-0 hover:text-yellow-300 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
-            @else
-                <x-ui.icon-button wire:click="watch_later(false)" icon="fa-solid fa-clock" color="warning"
-                    class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
-            @endif
-            @if (!$movie->favourited())
-                <x-ui.icon-button wire:click="favourite(true)" icon="fa-solid fa-heart" color="light2"
-                    class="text-2xl invisible opacity-0 hover:text-red-500 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
-            @else
-                <x-ui.icon-button wire:click="favourite(false)" icon="fa-solid fa-heart" color="error"
-                    class="text-2xl invisible opacity-0 group-hover:opacity-100 hover:bg-tr group-hover:visible group-hover:duration-300" />
-            @endif
-        @endauth
+        @if ($movie->id)
+            @auth
+                @if (!$movie->queued())
+                    <x-ui.icon-button wire:click="watch_later(true)" icon="fa-solid fa-clock" color="light2"
+                        class="text-2xl invisible opacity-0 hover:text-yellow-300 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+                @else
+                    <x-ui.icon-button wire:click="watch_later(false)" icon="fa-solid fa-clock" color="warning"
+                        class="text-2xl invisible opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+                @endif
+                @if (!$movie->favourited())
+                    <x-ui.icon-button wire:click="favourite(true)" icon="fa-solid fa-heart" color="light2"
+                        class="text-2xl invisible opacity-0 hover:text-red-500 group-hover:opacity-100 group-hover:visible group-hover:duration-300" />
+                @else
+                    <x-ui.icon-button wire:click="favourite(false)" icon="fa-solid fa-heart" color="error"
+                        class="text-2xl invisible opacity-0 group-hover:opacity-100 hover:bg-tr group-hover:visible group-hover:duration-300" />
+                @endif
+            @endauth
+        @endif
     </div>
     <div
         class="top-0 left-0 absolute z-50 text-white bg-gradient-to-tl to-red-500 from-red-700  px-5 py-0.5 rounded-tl-[8px] rounded-br-[15px]">

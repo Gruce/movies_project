@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Logout;
 
 use App\Http\Livewire\Home\Home;
+
 use App\Http\Livewire\Series\{
     Show as ShowEpisode,
     All as AllSeries,
@@ -17,8 +18,8 @@ use App\Http\Livewire\Movies\{
 
 use App\Http\Livewire\Favourites\Favourites;
 
-use App\Http\Livewire\WatchLater\{
 
+use App\Http\Livewire\WatchLater\{
     All as AllWatchLater
 };
 
@@ -47,8 +48,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'admin'] ,function(){
 //movies
 Route::prefix('movies')->group(function (){
     Route::get('/', AllMovies::class)->name('movies-all');
-    Route::get('/show/{movie}', ShowMovie::class)->name('movie-show');
-
+    Route::get('/show/{movie}/{room?}', ShowMovie::class)->name('movie-show');
 });
 
 //Series
@@ -56,8 +56,8 @@ Route::prefix('series')->group(function (){
     Route::get('/', AllSeries::class)->name('series-all');
 
     Route::get('/show/{episode}', ShowEpisode::class)->name('series-show');
-
 });
+
 
 Route::prefix('favourites')->group(function (){
     Route::get('/', Favourites::class)->name('favourites');
@@ -66,6 +66,10 @@ Route::prefix('favourites')->group(function (){
 Route::prefix('watchlater')->group(function (){
     Route::get('/', AllWatchLater::class)->name('watch-later-all');
 });
+
+
+
+
 
 
 // Route::middleware([

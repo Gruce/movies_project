@@ -54,6 +54,10 @@ class Episode extends Model
         return $this->morphMany(Like::class, 'likeable');
     }
 
+    public function collaborations()
+    {
+        return $this->morphMany(Collaboration::class, 'collaborationable');
+    }
 
 
     /***********************************************************/
