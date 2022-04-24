@@ -36,8 +36,8 @@ class SeriesSeeder extends Seeder
             ],
 
             'cover' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg',
-            'url_slider' => 'https://imgix.bustle.com/uploads/image/2022/1/6/348ce53e-5b4f-4baa-b3da-ae1e5f85d90e-attack-on-titan-final-season-part-2-visual.webp?w=1200&h=630&fit=crop&crop=focalpoint&fm=jpg&fp-x=0.492&fp-y=0.3009'
-            
+            'url_slider' => 'https://imgix.bustle.com/uploads/image/2022/1/6/348ce53e-5b4f-4baa-b3da-ae1e5f85d90e-attack-on-titan-final-season-part-2-visual.webp?w=1200&h=630&fit=crop&crop=focalpoint&fm=jpg&fp-x=0.492&fp-y=0.3009',
+            'imdb' =>'https://www.imdb.com/title/tt2560140',
         ]);
 
         // ID 2
@@ -60,8 +60,8 @@ class SeriesSeeder extends Seeder
             ],
 
             'cover' => 'https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg',
-            'url_slider' => 'https://www.anime-internet.com/content/images/2021/10/Death-Note.jpg'
-
+            'url_slider' => 'https://www.anime-internet.com/content/images/2021/10/Death-Note.jpg',
+            'imdb' => 'https://www.imdb.com/title/tt0877057'
         ]);
 
         // ID 3
@@ -84,7 +84,9 @@ class SeriesSeeder extends Seeder
             ],
 
             'cover' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcScQ3SvxqLuT1el0OmUisC1YiBpUhRVJQk8OeBW7LM-fpE5I4UQ',
-            'url_slider' => 'https://gamingonphone.com/wp-content/uploads/2021/12/Fullmetal-Alchemist-Mobile-Guide.jpg'
+            'url_slider' => 'https://gamingonphone.com/wp-content/uploads/2021/12/Fullmetal-Alchemist-Mobile-Guide.jpg',
+            'imdb' => 'https://www.imdb.com/title/tt0877057'
+
 
         ]);
         $series->add([
@@ -100,7 +102,9 @@ class SeriesSeeder extends Seeder
             ],
 
             'cover' => 'https://m.media-amazon.com/images/M/MV5BMjIxNzU1MDg2OF5BMl5BanBnXkFtZTgwOTQwMzQ2MjE@._V1_UX224_CR0,0,224,126_AL_.jpg',
-            'url_slider' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg'
+            'url_slider' => 'https://m.media-amazon.com/images/M/MV5BNzc5MTczNDQtNDFjNi00ZDU5LWFkNzItOTE1NzQzMzdhNzMxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_QL75_UX380_CR0,4,380,562_.jpg',
+            'imdb' => 'https://www.imdb.com/title/tt0877057'
+
 
         ]);
 
@@ -125,7 +129,9 @@ class SeriesSeeder extends Seeder
             ],
 
             'cover' => 'https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg',
-            'url_slider' => 'https://freegametips.com/wp-content/uploads/2021/02/1613392885_Naruto-anime-where-to-watch-online-in-Spanish-all-seasons.jpg'
+            'url_slider' => 'https://freegametips.com/wp-content/uploads/2021/02/1613392885_Naruto-anime-where-to-watch-online-in-Spanish-all-seasons.jpg',
+            'imdb' => 'https://www.imdb.com/title/tt0877057'
+
 
         ]);
 

@@ -7,13 +7,14 @@ use App\Models\Movie;
 
 class Show extends Component
 {
+    public $comment;
 
     public $showDarkScreen = true;
 
     protected $listeners = [
         'watchLaterUpdated' => '$refresh',
     ];
-    
+
     public function mount(Movie $movie)
     {
         $this->movie = $movie;

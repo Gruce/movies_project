@@ -32,6 +32,7 @@ class MovieSeeder extends Seeder
             'files' => [
                 'https://www.youtube.com/watch?v=7QKqQY-_zj8'
             ],
+            'imdb' => 'https://www.imdb.com/title/tt9777666',
         ]);
         // ID 2
         $movie = new Movie;
@@ -48,6 +49,8 @@ class MovieSeeder extends Seeder
             'files' => [
                 'https://youtu.be/SKu5lGfRBxc'
             ],
+            'imdb' => 'https://www.imdb.com/title/tt2713180',
+
         ]);
         // ID 3
         $movie = new Movie;
@@ -65,6 +68,8 @@ class MovieSeeder extends Seeder
             'files' => [
                 'https://youtu.be/sslCRVx7nPQ'
             ],
+            'imdb' => 'https://www.imdb.com/title/tt2119532',
+
         ]);
         // ID 4
         $movie = new Movie;
@@ -82,6 +87,8 @@ class MovieSeeder extends Seeder
             'files' => [
                 'https://youtu.be/RK8xHq6dfAo'
             ],
+            'imdb' => 'https://www.imdb.com/title/tt4846340',
+
         ]);
         // ID 5
         $movie = new Movie;
@@ -99,6 +106,8 @@ class MovieSeeder extends Seeder
             'files' => [
                 'https://www.youtube.com/watch?v=JfVOs4VSpmA'
             ],
+            'imdb' => 'https://www.imdb.com/title/tt10872600',
+
         ]);
         // ID 6
         $movie = new Movie;
@@ -116,12 +125,14 @@ class MovieSeeder extends Seeder
             'files' => [
                 'https://youtu.be/4Cbfb0eeN9E'
             ],
+            'imdb' => 'https://www.imdb.com/title/tt0110357',
+
         ]);
         // ID 7
         $movie = new Movie;
         $movie->add([
             'name' => 'The Secret Life of Pets 2',
-            'description' => 'fdgdfgew family turns out to be a secret society run by evil genius Mr. Peterman, who puts his mysterious ways to use pets to his advantage.',
+            'description' => 'family turns out to be a secret society run by evil genius Mr. Peterman, who puts his mysterious ways to use pets to his advantage.',
             'rating' => 6.7,
             'duration' => 98,
             'release_date' => '2019',
@@ -133,6 +144,8 @@ class MovieSeeder extends Seeder
             'files' => [
                 'https://youtu.be/4Cbfb0eeN9E'
             ],
+            'imdb' => 'https://www.imdb.com/title/tt5113040',
+
         ]);
         // ID 8
         $movie = new Movie;
@@ -150,6 +163,8 @@ class MovieSeeder extends Seeder
             'files' => [
                 'https://youtu.be/4Cbfb0eeN9E'
             ],
+            'imdb' => 'https://www.imdb.com/title/tt6928902',
+
         ]);
 
         // ID 9
@@ -168,6 +183,8 @@ class MovieSeeder extends Seeder
             'files' => [
                 'https://youtu.be/4Cbfb0eeN9E'
             ],
+            'imdb' => 'https://www.imdb.com/title/tt2709768',
+
         ]);
         
     }

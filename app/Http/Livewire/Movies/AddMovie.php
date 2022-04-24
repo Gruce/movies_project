@@ -5,7 +5,7 @@ use App\Models\{
     Genre,
     Movie,
     File,
-    Cover
+    Cover,
 };
 use Livewire\WithFileUploads;
 use Livewire\Component;
@@ -22,6 +22,7 @@ class AddMovie extends Component
         'movie.rating' => 'required',
         'movie.duration' => 'required',
         'movie.release_date' => 'required',
+        'movie.imdb' => 'required',
         'files.*' => 'required|file',
         'url' => 'required|image',
         'url_slider' => 'required|image',

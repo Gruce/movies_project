@@ -11,13 +11,15 @@ use App\Models\{
     Cover,
     Favourite,
     Queue,
+    Comment,
+    Imdb,
 };
 
 class Movie extends Model
 {
     use HasFactory;
 
-    protected $appends = ['rating_five', 'likes_count', 'dislikes_count', 'cover_url', 'slider_url'];
+    protected $appends = ['rating_five', 'likes_count', 'dislikes_count', 'cover_url', 'slider_url' , 'imdb_url'];
     protected $fillable = ['name', 'description', 'rating', 'duration', 'release_date'];
 
     /****************************************************/
@@ -32,6 +34,11 @@ class Movie extends Model
     public function cover()
     {
         return $this->morphOne(Cover::class, 'coverable');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function files()
@@ -52,6 +59,11 @@ class Movie extends Model
     public function likes()
     {
         return $this->morphMany(Like::class, 'likeable');
+    }
+
+    public function imdb()
+    {
+        return $this->morphOne(Imdb::class, 'imdbable');
     }
 
 
@@ -111,6 +123,16 @@ class Movie extends Model
         );
     }
 
+    protected function imdbUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                 return $this->imdb->url ?? null;
+                
+            },
+        );
+    }
+
 
     /************************************************/
     /******************* FUNCTIONS ******************/
@@ -125,7 +147,7 @@ class Movie extends Model
             'duration' => $data['duration'],
             'release_date' => $data['release_date'],
         ]);
-
+        
         $movie->genres()->attach($data['genres']);
 
         foreach ($data['files'] as $file_path) {
@@ -134,10 +156,22 @@ class Movie extends Model
             $movie->files()->save($file);
         }
 
+        $imdb = new Imdb();
+        $imdb->url = $data['imdb'];
+        $movie->imdb()->save($imdb);
+
         $cover = new Cover;
         $cover->url = $data['cover'];
         $cover->url_slider = $data['url_slider'];
         $movie->cover()->save($cover);
+    }
+
+    public function comment($body)
+    {
+        $comment = new Comment;
+        $comment->body = $body;
+        $comment->user_id = auth()->id();
+        $this->comments()->save($comment);
     }
 
     public function favourite($state)
@@ -214,3 +248,5 @@ class Movie extends Model
         });
     }
 }
+
+
