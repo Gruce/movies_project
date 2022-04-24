@@ -74,6 +74,22 @@
                 placeholder="description..."></textarea>
         </div>
 
+        {{-- imdb url --}}
+
+        <div class="grid grid-cols-2 gap-4">
+            <div class="mb-6">
+                <label for="name" class="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    IMDB URL
+                    @error('movie.imdb')
+                        <span class="error text-red-600 bg-red-100 rounded-lg py-1 px-2 text-xs">{{ $message }}</span>
+                    @enderror
+                </label>
+                <input required wire:model.lazy="movie.imdb" type="text"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:shadow-sm-light"
+                    placeholder="IMDB URL">
+            </div>
+        </div>
+
         <div class="grid grid-cols-3 gap-4">
             <div>
                 <label class="block mt-2 text-left">

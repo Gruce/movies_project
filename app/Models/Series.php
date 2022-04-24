@@ -57,7 +57,12 @@ class Series extends Model
     protected function imdbUrl(): Attribute
     {
         return Attribute::make(
-            get: fn()=>$this->imdb->url
+            get: function () {
+                $url = $this->imdb->url ?? null;
+                if (filter_var($url, FILTER_VALIDATE_URL))
+                    return $url;
+                return asset('storage/' . $url);
+            },
         );
     }
 
