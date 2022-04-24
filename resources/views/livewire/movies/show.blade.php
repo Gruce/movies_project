@@ -2,12 +2,15 @@
 @section('title', $movie->name)
 <div wire:loading.class="opacity-50">
     <div class="flex">
-        <div class="basis-5/6 w-5/6">
+        <div class="basis-3/4 w-3/4">
             <livewire:ui.video :file="$movie->files->first()" />
+                @auth
+                <livewire:ui.comment :commentable="$movie" />
+            @endauth
         </div>
 
-        <div class="basis-1/6 w-1/6 mx-3 p-3 bg-gray-100 rounded-lg">
-            <div class="flex flex-col">
+        <div class="basis-1/4 w-1/4">
+            <div class="flex flex-col mx-3 p-3 bg-gray-100 rounded-lg">
                 <div class="flex flex-col justify-center items-center">
                     <img class="h-full w-full rounded-lg h-45 basis-1/3" src="{{ $movie->cover_url }}" />
                     <div class="text-xl font-bold mt-3">
@@ -94,9 +97,7 @@
         </div>
     </div>
 </div>
-@auth
-    <livewire:ui.comment :commentable="$movie" />
-@endauth
+
 <div>
     @livewire('movies.similar', ['movie_id' => $movie->id])
 </div>
