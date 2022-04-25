@@ -9,6 +9,8 @@ class Collaboration extends Model
 {
     use HasFactory;
 
+    
+
     public function collaborationable()
     {
         return $this->morphTo();

@@ -1,5 +1,16 @@
 @section('disable-search', true)
 @section('title', $movie->name)
+
+@if ($collaboration)
+    @section('header-actions')
+    <x-ui.button src="{{$collaboration->room}}" 
+        class="text-2xs text-white">
+        <i class="fa-regular fa-2x fa-2x fa-copy px-2"></i>
+        <span class="text-lg">Copy room URL {{ $collaboration->room }}</span>
+    </x-ui.button>
+    @endsection
+@endif
+
 <div wire:loading.class="opacity-50">
     <div class="flex">
         <div class="basis-3/4 w-3/4">
