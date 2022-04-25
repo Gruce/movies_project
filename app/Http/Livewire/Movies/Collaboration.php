@@ -11,6 +11,7 @@ class Collaboration extends Component
     {
         $this->collaboration = $collaboration;
     }
+    
     public function render()
     {
         return view('livewire.movies.collaboration');
