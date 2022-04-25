@@ -11,7 +11,7 @@
 
     <div class="flex overflow-y-hidden flex-nowrap pb-2 rounded-lg scroll-smooth" x-ref="slider">
         @forelse ($series as $series)
-            <div x-ref="slide_item" class="mr-5">
+            <div x-ref="slide_item" class="m-2">
                 <livewire:ui.series :episode="$series->seasons->first()->episodes->first()->id" :wire:key="$series->id" />
             </div>
         @empty
