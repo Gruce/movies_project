@@ -7,19 +7,26 @@ use App\Models\Collaboration as CollaborationModel;
 
 class Collaboration extends Component
 {
+   
     public function mount(CollaborationModel $collaboration)
     {
         $this->collaboration = $collaboration;
-        $this->participants = $this->collaboration->participants->first();
-        if($this->participants){
-            // dd('okk');
-            if(!$this->participants->where('user_id', auth()->id())->exists()){
+        $this->participants = $this->collaboration->participants();
+
+        if (auth()->check()) {
+            if (!$this->participants->where('user_id', auth()->id())->first()) {
                 $this->participants->create([
                     'user_id' => auth()->id(),
                     'collaboration_id' => $this->collaboration->id
                 ]);
             }
         }
+        $this->participants = $this->participants->get();
+    }
+
+    public function login()
+    {
+        return redirect()->route('login');
     }
 
     public function render()
