@@ -13,6 +13,8 @@ use App\Models\{
     Queue,
     Comment,
     Imdb,
+    Collaboration,
+    Participant,
 };
 
 class Movie extends Model
@@ -128,8 +130,8 @@ class Movie extends Model
     {
         return Attribute::make(
             get: function () {
-                 return $this->imdb->url ?? null;
-                
+                return $this->imdb->url ?? null;
+
             },
         );
     }
@@ -148,7 +150,7 @@ class Movie extends Model
             'duration' => $data['duration'],
             'release_date' => $data['release_date'],
         ]);
-        
+
         $movie->genres()->attach($data['genres']);
 
         foreach ($data['files'] as $file_path) {
@@ -181,6 +183,14 @@ class Movie extends Model
         $collaboration->user_id = auth()->id();
         $collaboration->room = md5('collaboration' . auth()->id() . now());
         return $this->collaborations()->save($collaboration);
+    }
+
+    public function participant(){
+        $participant = new participant;
+        $participant->user_id ;
+        $participant->collaboration_id;
+        // $participant->room = md5('participant' . auth()->id() . now());
+        return $this->participants()->save($participant);
     }
 
     public function favourite($state)
@@ -243,7 +253,7 @@ class Movie extends Model
         return $this->queues()->where('user_id', auth()->id())->exists();
     }
 
-    
+
 
 
     /****************************************************/

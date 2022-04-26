@@ -16,9 +16,7 @@ return new class extends Migration
         Schema::create('participants', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('SET NULL');
-
             $table->foreignId('collaboration_id')->nullable()->constrained('collaborations')->onDelete('SET NULL');
-            
             $table->timestamps();
         });
     }
