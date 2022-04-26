@@ -185,13 +185,13 @@ class Movie extends Model
         return $this->collaborations()->save($collaboration);
     }
 
-    public function participant(){
-        $participant = new participant;
-        $participant->user_id ;
-        $participant->collaboration_id;
-        // $participant->room = md5('participant' . auth()->id() . now());
-        return $this->participants()->save($participant);
-    }
+    // public function participant(){
+    //     $participant = new participant;
+    //     $participant->user_id ;
+    //     $participant->collaboration_id;
+    //     // $participant->room = md5('participant' . auth()->id() . now());
+    //     return $this->participants()->save($participant);
+    // }
 
     public function favourite($state)
     {

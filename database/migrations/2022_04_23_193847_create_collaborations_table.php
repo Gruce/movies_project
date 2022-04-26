@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('SET NULL');
             $table->integer('collaborationable_id');
             $table->string('collaborationable_type');
+            $table->boolean('public')->default(false);
             $table->timestamps();
         });
     }
