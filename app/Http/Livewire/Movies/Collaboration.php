@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Movies;
 
 use Livewire\Component;
 use App\Models\Collaboration as CollaborationModel;
-use App\Models\Participant as ParticipantModel;
 class Collaboration extends Component
 {
     public function mount(CollaborationModel $collaboration)
