@@ -26,7 +26,7 @@
 
         @if ($collaboration)
              <div class="basis-1/4 w-1/4">
-                <livewire:movie.collaboration :collaboration="$collaboration" />
+                <livewire:movies.collaboration :collaboration="$collaboration" />
             </div>
         @else       
 

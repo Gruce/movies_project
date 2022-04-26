@@ -10,7 +10,16 @@ class Collaboration extends Component
     public function mount(CollaborationModel $collaboration)
     {
         $this->collaboration = $collaboration;
-        // dd($this->collaboration->user);
+        $this->participants = $this->collaboration->participants->first();
+        if($this->participants){
+            // dd('okk');
+            if(!$this->participants->where('user_id', auth()->id())->exists()){
+                $this->participants->create([
+                    'user_id' => auth()->id(),
+                    'collaboration_id' => $this->collaboration->id
+                ]);
+            }
+        }
     }
 
     public function render()
