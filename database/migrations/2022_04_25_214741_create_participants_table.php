@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('collaborations', function (Blueprint $table) {
+        Schema::create('participants', function (Blueprint $table) {
             $table->id();
-            $table->string('room');
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('SET NULL');
-            $table->integer('collaborationable_id');
-            $table->string('collaborationable_type');
+            $table->foreignId('collaboration_id')->nullable()->constrained('collaborations')->onDelete('SET NULL');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('collaborations');
+        Schema::dropIfExists('participants');
     }
 };

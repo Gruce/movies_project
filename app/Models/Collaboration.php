@@ -9,7 +9,10 @@ class Collaboration extends Model
 {
     use HasFactory;
 
-    
+    public function participants()
+    {
+        return $this->hasMany(Participant::class);
+    }
 
     public function collaborationable()
     {
@@ -19,4 +22,6 @@ class Collaboration extends Model
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+
+   
 }
