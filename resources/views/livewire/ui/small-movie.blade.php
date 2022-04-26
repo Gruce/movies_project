@@ -1,8 +1,8 @@
-<div wire:loading.class="opacity-50" href="#" class="bg-white rounded-lg p-2 flex mt-3 hover:bg-gray-100 group transition ease-in-out duration-300">
-    <img class="rounded-lg h-28 basis-1/3 w-1/3" src="{{ $movie->cover_url }}" />
+<div wire:loading.class="opacity-50" href="#" class="bg-white rounded-lg p-2 flex mt-2 hover:bg-gray-100 group transition ease-in-out duration-300">
+    <img class="rounded-lg h-28 basis-1/3 w-20" src="{{ $movie->cover_url }}" />
 
     <div class="px-2 flex flex-col items-start justify-between basis-2/3 w-2/3">
-        <div class="flex flex-col items-start w-full">
+        <div class="flex flex-col items-start">
             <h1 class="font-semibold text-left text-sm">{{ $movie->name }}</h1>
             <p class="text-2xs text-gray-500">{{ implode(', ', $movie->genres->pluck('name')->toArray()) }}</p>
             <div class="flex mt-1">
