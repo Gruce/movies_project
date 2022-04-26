@@ -3,11 +3,27 @@
 
 @if ($collaboration)
     @section('header-actions')
-    <x-ui.button src="{{$collaboration->room}}" 
+    <x-ui.button src="{{$collaboration->room}}" onclick="myFunction()"
         class="text-2xs text-white">
         <i class="fa-regular fa-2x fa-2x fa-copy px-2"></i>
-        <span class="text-lg">Copy room URL {{ $collaboration->room }}</span>
+        <span class="text-lg">Copy room URL </span>
     </x-ui.button>
+    <!-- The text field -->
+<input type="text"  value="{{ route('movie-show', ['movie' => $movie->id]) }}/{{ $collaboration->room }}" id="myInput" readonly>
+
+    <script>
+        function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("myInput");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+   /* Copy the text inside the text field */
+  navigator.clipboard.writeText(copyText.value);
+}
+    </script>
     @endsection
 @endif
 
