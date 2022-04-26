@@ -10,8 +10,9 @@ class Collaboration extends Component
     public function mount(CollaborationModel $collaboration)
     {
         $this->collaboration = $collaboration;
+        // dd($this->collaboration->user);
     }
-    
+
     public function render()
     {
         return view('livewire.movies.collaboration');

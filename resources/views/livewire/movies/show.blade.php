@@ -28,7 +28,7 @@
              <div class="basis-1/4 w-1/4">
                 <livewire:movie.collaboration :collaboration="$collaboration" />
             </div>
-            @else       
+        @else       
 
         <div class="basis-1/4 w-1/4">
             <div class="flex flex-col mx-3 p-3 bg-gray-100 rounded-lg">
