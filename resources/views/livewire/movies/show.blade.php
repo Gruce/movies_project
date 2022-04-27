@@ -1,6 +1,6 @@
 @section('disable-search', true)
 @section('title', $movie->name)
-@if ($collaboration && $collaboartion->user_id == auth()->id())
+@if ($collaboration && $collaboration->user_id == auth()->id())
     @section('header-actions')
         <livewire:collaborations.action :collaboration="$collaboration->id" />
     @endsection
