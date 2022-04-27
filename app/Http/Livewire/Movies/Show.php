@@ -46,6 +46,7 @@ class Show extends Component
     public function collaborate()
     {
         $collaboration = $this->movie->collaborate();
+        $this->emit('collaborateUpdate');
         return redirect()->route('movie-show', [
             'movie' => $this->movie->id,
             'room' => $collaboration->room
