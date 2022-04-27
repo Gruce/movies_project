@@ -1,4 +1,3 @@
-
 <div>
     @guest
         <x-ui.button wire:click="login">
@@ -22,4 +21,4 @@
             </div>
         @endforelse
     @endguest
-</div>
+</div>z
