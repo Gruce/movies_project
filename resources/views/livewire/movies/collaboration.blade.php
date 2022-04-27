@@ -1,4 +1,3 @@
-
 <div wire:poll>
     @guest
         <x-ui.button wire:click="login">

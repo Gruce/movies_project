@@ -17,6 +17,7 @@ use App\Http\Livewire\Movies\{
 };
 
 use App\Http\Livewire\Favourites\Favourites;
+use App\Http\Livewire\Collaborations\Collaboration;
 
 
 use App\Http\Livewire\WatchLater\{
@@ -65,6 +66,10 @@ Route::prefix('favourites')->group(function (){
 
 Route::prefix('watchlater')->group(function (){
     Route::get('/', AllWatchLater::class)->name('watch-later-all');
+});
+
+Route::prefix('collaboration')->group(function (){
+    Route::get('/', Collaboration::class)->name('collaboration');
 });
 
 
