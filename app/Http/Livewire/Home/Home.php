@@ -16,6 +16,8 @@ class Home extends Component
     protected $queryString = ['type'];
 
 
+
+
     public function mount(){
         if($this->type === 'movies'){
             $this->last_movies = Movie::orderBy('id', 'desc')->take(5)->get(['id', 'name', 'rating', 'description']);

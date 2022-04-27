@@ -43,6 +43,11 @@
                         <div class="h-36 flex items-center p-10 border-b justify-between mb-10">
                             <span class="text-2xl text-gray-600 font-semibold">@yield('title')</span>
                             @yield('header-actions')
+                            {{-- @hasSection('enable-actions')
+                            <livewire:collabrate.action />
+                            @else
+
+                            @endif --}}
                             @hasSection ('disable-search')
                             @else
                                 <livewire:ui.search />
