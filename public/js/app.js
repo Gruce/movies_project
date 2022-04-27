@@ -22479,12 +22479,9 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
   \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/postcss-loader/dist/cjs.js):\nError: ENOENT: no such file or directory, stat './resources/views/livewire/ui/movie.blade.php'\n    at Object.statSync (node:fs:1538:3)\n    at resolveChangedFiles (G:\\GitHub\\movies_project\\node_modules\\tailwindcss\\lib\\lib\\setupTrackingContext.js:163:36)\n    at resolvedChangedContent (G:\\GitHub\\movies_project\\node_modules\\tailwindcss\\lib\\lib\\setupTrackingContext.js:147:29)\n    at G:\\GitHub\\movies_project\\node_modules\\tailwindcss\\lib\\lib\\setupTrackingContext.js:55:44\n    at G:\\GitHub\\movies_project\\node_modules\\tailwindcss\\lib\\processTailwindFeatures.js:38:11\n    at plugins (G:\\GitHub\\movies_project\\node_modules\\tailwindcss\\lib\\index.js:33:58)\n    at LazyResult.runOnRoot (G:\\GitHub\\movies_project\\node_modules\\postcss\\lib\\lazy-result.js:339:16)\n    at LazyResult.runAsync (G:\\GitHub\\movies_project\\node_modules\\postcss\\lib\\lazy-result.js:393:26)\n    at async Object.loader (G:\\GitHub\\movies_project\\node_modules\\postcss-loader\\dist\\index.js:97:14)\n    at processResult (G:\\GitHub\\movies_project\\node_modules\\webpack\\lib\\NormalModule.js:758:19)\n    at G:\\GitHub\\movies_project\\node_modules\\webpack\\lib\\NormalModule.js:860:5\n    at G:\\GitHub\\movies_project\\node_modules\\loader-runner\\lib\\LoaderRunner.js:400:11\n    at G:\\GitHub\\movies_project\\node_modules\\loader-runner\\lib\\LoaderRunner.js:252:18\n    at context.callback (G:\\GitHub\\movies_project\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (G:\\GitHub\\movies_project\\node_modules\\postcss-loader\\dist\\index.js:142:7)");
 
 /***/ }),
 
@@ -22805,7 +22802,6 @@ process.umask = function() { return 0; };
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
-/******/ 			"css/app": 0,
 /******/ 			"css/style": 0
 /******/ 		};
 /******/ 		
@@ -22856,9 +22852,9 @@ process.umask = function() { return 0; };
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/style"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/style"], () => (__webpack_require__("./resources/sass/style.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/style"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/style"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/style"], () => (__webpack_require__("./resources/sass/style.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/style"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
