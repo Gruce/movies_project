@@ -3,37 +3,28 @@
 namespace App\Http\Livewire\Movies;
 
 use Livewire\Component;
-use App\Models\Collaboration as CollaborationModel;
 use App\Models\{
-    Movie,
-    Episode,
+    Collaboration as CollaborationModel,
+    Participant
 };
+
 class Collaboration extends Component
 {
 
     public function mount(CollaborationModel $collaboration)
     {
         $this->collaboration = $collaboration;
-        $this->participants = $this->collaboration->participants();
-
-        if (auth()->check()) {
-            if (!$this->participants->where('user_id', auth()->id())->first()) {
-                $this->participants->create([
-                    'user_id' => auth()->id(),
-                    'collaboration_id' => $this->collaboration->id
-                ]);
-            }
-        }
-        $this->participants = $this->participants->get();
+        // New Participant if not participated
+        $this->collaboration->new_participant();
     }
 
-    public function login()
-    {
+    public function login(){
         return redirect()->route('login');
     }
 
-    public function render()
-    {
+    public function render(){
+        $this->participants = $this->collaboration->participants()->orderBy('id', 'desc')->get();
+
         return view('livewire.movies.collaboration');
     }
 }

@@ -23,4 +23,17 @@ class Collaboration extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function scopePublic ($query){
+        return $query->where('public', true);
+    }
+
+    public function new_participant(){
+        if (auth()->check()) {
+            if (!$this->participants()->where('user_id', auth()->id())->first()) {
+                $this->participants()->create([
+                    'user_id' => auth()->id(),
+                ]);
+            }
+        }
+    }
 }
