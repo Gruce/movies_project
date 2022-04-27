@@ -7,11 +7,13 @@
                 <span class="relative inline-flex w-3 h-3 bg-red-500 rounded-full"></span>
             </span>
         </h1>
-        <div class="w-full mt-3">
+        <div class="w-full mt-3" wire:poll>
             @forelse ($collaborations as $collaboration)
                 <livewire:ui.collaboration :collaboration="$collaboration->id" />
             @empty
-                No current collaborations.
+                <div class="p-3 text-gray-500 bg-gray-100 rounded-lg">
+                    No current collaborations
+                </div>
             @endforelse
         </div>
     </div>
