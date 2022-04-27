@@ -1,14 +1,10 @@
 @section('disable-search', true)
 @section('title', $movie->name)
-
-{{-- @if ($collaboration)
-@section('header-actions')
-<x-ui.button href="{{$collaboration->room}}" class="text-white text-2xs">
-    <i class="px-2 fa-regular fa-2x fa-copy"></i>
-    <span class="text-lg">Copy room URL</span>
-</x-ui.button>
-@endsection
-@endif --}}
+@if ($collaboration)
+    @section('header-actions')
+        <livewire:collaborations.action :collaboration="$collaboration->id" />
+    @endsection
+@endif
 
 <div wire:loading.class="opacity-50">
     <div class="flex">
@@ -25,10 +21,9 @@
 
         @if ($collaboration)
         <div class="w-1/4 basis-1/4">
-            <livewire:movie.collaboration :collaboration="$collaboration" />
+            <livewire:movies.collaboration :collaboration="$collaboration" />
         </div>
         @else
-
         <div class="w-1/4 basis-1/4">
             <div class="flex flex-col p-3 mx-3 bg-gray-100 rounded-lg">
                 <div class="flex flex-col items-center justify-center">
@@ -123,6 +118,6 @@
     </div>
 
     <div>
-        @livewire('movies.similar', ['movie_id' => $movie->id])
+        @livewire('movies.similar', ['movie_id'=> $movie->id])
     </div>
 </div>
