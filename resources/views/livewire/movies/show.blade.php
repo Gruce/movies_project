@@ -4,7 +4,6 @@
 @section('enable-actions', true, 'collaboration', $collaboration->id)
 @endif --}}
 
-{{--
 {{-- @section('header-actions') --}}
 {{-- <x-ui.button
     class="text-2xs text-white">
@@ -12,7 +11,6 @@
     <span class="text-lg">Copy room URL</span>
 </x-ui.button> --}}
 {{-- @endsection --}}
-
 <div wire:loading.class="opacity-50">
     @if($collaboration)
     <livewire:collabrate.action :collaboration="$collaboration->id"/>
