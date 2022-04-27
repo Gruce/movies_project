@@ -32,16 +32,6 @@ class Collaboration extends Component
         return redirect()->route('login');
     }
 
-    public function test() {
-        // if($this->collaboration->public) {
-        //     $this->collaboration->public = false;
-        // } else {
-        //     $this->collaboration->public = true;
-        // }
-        dd('ok');
-
-    }
-
     public function render()
     {
         return view('livewire.movies.collaboration');

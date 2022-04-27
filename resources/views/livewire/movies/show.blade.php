@@ -1,5 +1,9 @@
 @section('disable-search', true)
 @section('title', $movie->name)
+{{-- @if ($collaboration)
+@section('enable-actions', true, 'collaboration', $collaboration->id)
+@endif --}}
+
 {{--
 {{-- @section('header-actions') --}}
 {{-- <x-ui.button
@@ -10,13 +14,15 @@
 {{-- @endsection --}}
 
 <div wire:loading.class="opacity-50">
-    <livewire:collabrate.action/>
+    @if($collaboration)
+    <livewire:collabrate.action :collaboration="$collaboration->id"/>
+    @endif
     <div class="flex">
         <div class="basis-3/4 w-3/4">
-            <livewire:ui.video :file="$movie -> files -> first()" />
+            <livewire:ui.video :file="$movie->files->first()" />
             @auth
                 @if ($collaboration)
-                    <livewire:ui.comment :commentable="$movie" :room="$collaboration -> room" />
+                    <livewire:ui.comment :commentable="$movie" :room="$collaboration->room" />
                 @else
                     <livewire:ui.comment :commentable="$movie" />
                 @endif
@@ -135,6 +141,6 @@
     </div>
 
     <div>
-        @livewire('movies.similar', ['movie_id' => $movie->id])
+        @livewire('movies.similar', ['movie_id'=> $movie->id])
     </div>
 </div>
