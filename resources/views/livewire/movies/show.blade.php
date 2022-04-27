@@ -44,9 +44,13 @@
                         <div class="flex justify-between w-full gap-2">
                             <div class="flex flex-col items-center w-3/6 gap-2 basis-3/6 grow">
                                 @auth
-                                <x-ui.button wire:click="like(true)" :color="$movie->liked(true) ? 'success' : 'secondary'" class="flex items-center justify-between w-full h-10 px-1 text-white text-2xs">
+                                <x-ui.button data-tooltip-target="1" data-tooltip-trigger="hover" type="button" class="flex items-center justify-between w-full h-10 px-1 text-white text-2xs" wire:click="like(true)" :color="$movie->liked(true) ? 'success' : 'secondary'">
                                     <i class="fa-solid fa-2x fa-thumbs-up"></i>
                                     <span class="text-lg">{{ $movie->likes_count }}</span>
+                                    <div id="1" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-black rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                                        Like
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
                                 </x-ui.button>
                                 @else
                                 <x-ui.button :color="$movie->liked(true) ? 'error' : 'secondary'" class="flex items-center justify-between w-full h-10 px-1 text-white text-2xs" href="{{ route('login') }}">
@@ -55,9 +59,13 @@
                                 </x-ui.button>
                                 @endauth
                                 @auth
-                                <x-ui.button wire:click="like(false)" :color="$movie->liked(false) ? 'error' : 'secondary'" class="flex items-center justify-between w-full h-10 px-1 text-white text-2xs">
+                                <x-ui.button data-tooltip-target="2" data-tooltip-trigger="hover" type="button" class="flex items-center justify-between w-full h-10 px-1 text-white text-2xs" wire:click="like(false)" :color="$movie->liked(false) ? 'error' : 'secondary'">
                                     <i class="fa-solid fa-2x fa-thumbs-down"></i>
                                     <span class="text-lg">{{ $movie->dislikes_count }}</span>
+                                    <div id="2" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-black rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                                        Dislike
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
                                 </x-ui.button>
                                 @else
                                 <x-ui.button :color="$movie->liked(false) ? 'error' : 'secondary'" class="flex items-center justify-between w-full h-10 px-1 text-white text-2xs" href="{{ route('login') }}">
@@ -69,8 +77,12 @@
                             @auth
                             <div class="flex flex-col items-center w-3/6 gap-2 basis-3/6">
                                 @if (!$movie->queued())
-                                <x-ui.button wire:click="watch_later(true)" color="secondary" class="flex items-center justify-center w-full h-10 px-1 text-white text-2xs">
+                                <x-ui.button data-tooltip-target="3" data-tooltip-trigger="hover" type="button" wire:click="watch_later(true)" color="secondary" class="flex items-center justify-center w-full h-10 px-1 text-white text-2xs">
                                     <i class="fa-solid fa-2x fa-clock"></i>
+                                    <div id="3" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-black rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                                        Watch Later
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
                                 </x-ui.button>
                                 @else
                                 <x-ui.button wire:click="watch_later(false)" color="warning" class="flex items-center justify-center w-full h-10 px-1 text-white text-2xs">
@@ -78,8 +90,12 @@
                                 </x-ui.button>
                                 @endif
                                 @if (!$movie->favourited())
-                                <x-ui.button wire:click="favourite(true)" color="secondary" class="flex items-center justify-center w-full h-10 px-1 text-white text-2xs">
+                                <x-ui.button data-tooltip-target="4" data-tooltip-trigger="hover" type="button" wire:click="favourite(true)" color="secondary" class="flex items-center justify-center w-full h-10 px-1 text-white text-2xs">
                                     <i class="fa-solid fa-2x fa-heart"></i>
+                                    <div id="4" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-black rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                                        Favorite
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
                                 </x-ui.button>
                                 @else
                                 <x-ui.button wire:click="favourite(false)" color="error" class="flex items-center justify-center w-full h-10 px-1 text-white text-2xs">
@@ -93,15 +109,23 @@
                     <div class="flex items-center justify-between w-full gap-4 mt-3">
                         <div class="flex justify-between w-full gap-2">
                             <div class="flex flex-col items-center w-3/6 gap-2 basis-3/6 grow">
-                                <x-ui.button color="warning" class="flex items-center justify-between w-full h-10 px-1 mt-2 text-sm text-white" href="{{ $movie->imdb_url }}" target="_blank">
+                                <x-ui.button data-tooltip-target="5" data-tooltip-trigger="hover" type="button" color="warning" class="flex items-center justify-between w-full h-10 px-1 mt-2 text-sm text-white" href="{{ $movie->imdb_url }}" target="_blank">
                                     <span>IMDB</span>
                                     <span class="text-lg">{{ $movie->rating }}</span>
+                                    <div id="5" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-black rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                                        More Details
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
                                 </x-ui.button>
                             </div>
                             @auth
                             <div class="flex flex-col items-center w-3/6 gap-2 basis-3/6 grow">
-                                <x-ui.button wire:click="collaborate" color="secondary" class="flex items-center justify-center w-full h-10 px-1 mt-2 text-sm text-white">
+                                <x-ui.button data-tooltip-target="6" data-tooltip-trigger="hover" type="button" wire:click="collaborate" color="secondary" class="flex items-center justify-center w-full h-10 px-1 mt-2 text-sm text-white">
                                     <i class="text-2xl fa-solid fa-share-from-square"></i>
+                                    <div id="6" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-black rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                                        Watch Together 
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
                                 </x-ui.button>
                             </div>
                             @endauth
