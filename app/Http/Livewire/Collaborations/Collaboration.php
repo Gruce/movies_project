@@ -14,7 +14,7 @@ use App\Models\{
 class Collaboration extends Component {
 
     public $search;
-    protected $listeners = ['collaborationUpdate' => '$refresh', 'search' ];
+    protected $listeners = ['collaborationUpdate' => '$refresh', 'search'];
 
     function search($string)
     {
@@ -25,7 +25,7 @@ class Collaboration extends Component {
     {
         // $search = '%' . $this->search . '%';
         $this->collaborations = $collaboration->where('public', true)->get();
-        // ->where('room','LIKE',$search)
+        // ->where('name','LIKE',$search)
 
     }
 
