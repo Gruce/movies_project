@@ -6,7 +6,7 @@ use Livewire\Component;
 use App\Models\{
     Movie,
     Episode,
-    Participant,
+    Participant as ParticipantModel,
     Collaboration as CollaborationModel,
 };
 
@@ -21,10 +21,14 @@ class Collaboration extends Component {
         $this->search = $string;
     }
 
-    public function mount( CollaborationModel $collaboration )
+    public function mount( CollaborationModel $collaboration , ParticipantModel $participant)
     {
         // $search = '%' . $this->search . '%';
         $this->collaborations = $collaboration->where('public', true)->get();
+
+        // $this->participants = $participant->where('user_id')->get();
+        // dd($participants->user_id);
+        
         // ->where('name','LIKE',$search)
 
     }

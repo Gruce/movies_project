@@ -15,7 +15,7 @@
                         <div class="snap-start group w-full h-full flex items-center  justify-center  text-white  font-bold flex-shrink-0 bg-black"
                             data-carousel-item>
                             <div
-                                class="w-full h-full  z-20 opacity-100 absolute bg-gradient-to-bl  to-gray-800 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300">
+                                class="w-full h-full  z-2zz0 opacity-100 absolute bg-gradient-to-bl  to-gray-800 from-transparent rounded-lg group-hover:to-gray-900 group-hover:duration-300">
                             </div>
                             <img src="{{ $item->slider_url }}"
                                 class="h-full w-full object-cover relative inset-0 z-10 opacity-80 transition duration-300 group-hover:opacity-100">
