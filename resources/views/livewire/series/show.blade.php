@@ -7,15 +7,10 @@
 @endsection
 @endif
 
+
     <div wire:loading.class="opacity-50">
         <div wire:loading.class="opacity-50">
             <div class="flex">
-                {{-- <div class="basis-3/4 w-3/4">
-                    <livewire:ui.video :file="$episode->files->first()" />
-                    @auth
-                        <livewire:ui.comment :commentable="$episode" />
-                    @endauth
-                </div> --}}
                 <div class="w-3/4 basis-3/4">
                     <livewire:ui.video :file="$episode->files->first()" />
                     @auth
@@ -145,9 +140,6 @@
                 </div>
                 @endif
             </div>
-
-
-
 
             <div class="mb-4 border-b border-gray-200">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab"

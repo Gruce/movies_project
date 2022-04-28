@@ -13,6 +13,7 @@ use App\Models\{
 
 class Collaboration extends Component {
 
+    
     public $search;
     protected $listeners = ['collaborationUpdate' => '$refresh', 'search'];
 
