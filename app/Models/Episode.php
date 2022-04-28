@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Models\{
     Like,
     Comment,
+    Collaboration,
+    Participant,
 
 };
 
@@ -102,6 +104,7 @@ class Episode extends Model
         );
     }
 
+
     /************************************************/
     /******************* FUNCTIONS ******************/
     /************************************************/
@@ -117,14 +120,22 @@ class Episode extends Model
             $this->favourites()->save($favourite);
         }
     }
-
-    public function comment($body)
+    public function comment($body, $collaboration = null)
     {
         $comment = new Comment;
         $comment->body = $body;
         $comment->user_id = auth()->id();
+        if ($collaboration) $comment->collaboration_id = $collaboration->id;
         $this->comments()->save($comment);
     }
+
+    public function collaborate(){
+        $collaboration = new Collaboration;
+        $collaboration->user_id = auth()->id();
+        $collaboration->room = md5('collaboration' . auth()->id() . now());
+        return $this->collaborations()->save($collaboration);
+    }
+
 
     public function queue($state)
     {

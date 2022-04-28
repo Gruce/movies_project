@@ -10,18 +10,28 @@ use App\Models\{
     Collaboration as CollaborationModel,
 };
 
-class Collaboration extends Component
-{
-    protected $listeners = ['collaborationUpdate' => '$refresh'];
 
-    public function mount(CollaborationModel $collaboration){
-        $this->collaboration = $collaboration;
+class Collaboration extends Component {
+
+    public $search;
+    protected $listeners = ['collaborationUpdate' => '$refresh', 'search' ];
+
+    function search($string)
+    {
+        $this->search = $string;
     }
+
+    public function mount( CollaborationModel $collaboration )
+    {
+        // $search = '%' . $this->search . '%';
+        $this->collaborations = $collaboration->where('public', true)->get();
+        // ->where('room','LIKE',$search)
+
+    }
+
     public function render()
     {
-        // $this->movies = Movie::with('cover')->whereHas('collaborations')->get();
-        // $this->collaborations = Collaboration::with('room')->whereHas('collaborations')->get();
-        // $this->participants = Participant::with('user_id')->whereHas('participants')->get();
+
         return view('livewire.collaborations.collaboration');
     }
 }

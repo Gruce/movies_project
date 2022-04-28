@@ -6,20 +6,23 @@ use Livewire\Component;
 use App\Models\Series;
 use App\Models\Episode;
 use App\Models\Season;
+use App\Models\Collaboration;
 
 class Show extends Component
 {
-    public $comment;
+    public $comment, $collaboration ;
     public $season_id = null;
 
     protected $listeners = [
         'watchLaterUpdated' => '$refresh',
     ];
 
-    public function mount(Episode $episode)
+    public function mount(Episode $episode, $room = null)
     {
         $this->episode = $episode;
-        // dd($this->episode->toArray());
+        if ($room)
+            $this->collaboration = Collaboration::where('room', $room)->first();
+
     }
 
     public function like($type)
@@ -41,6 +44,15 @@ class Show extends Component
     {
         $this->episode->comment($this->comment);
         $this->comment = '';
+    }
+    public function collaborate()
+    {
+        $collaboration = $this->episode->collaborate();
+        $this->emit('collaborateUpdate');
+        return redirect()->route('series-show', [
+            'episode' => $this->episode->id,
+            'room' => $collaboration->room
+        ]);
     }
 
     public function render()

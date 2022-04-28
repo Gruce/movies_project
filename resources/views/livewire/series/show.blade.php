@@ -1,16 +1,36 @@
 @section('disable-search', true)
 @section('title', $episode->season->series->name . ' - ' . $episode->season->name . ' - ' . $episode->name . ' ( ' .
     $episode->number . ' ) ')
+@if ($collaboration && $collaboration->user_id == auth()->id())
+@section('header-actions')
+    <livewire:collaborations.action :collaboration="$collaboration->id" />
+@endsection
+@endif
 
     <div wire:loading.class="opacity-50">
         <div wire:loading.class="opacity-50">
             <div class="flex">
-                <div class="basis-3/4 w-3/4">
+                {{-- <div class="basis-3/4 w-3/4">
                     <livewire:ui.video :file="$episode->files->first()" />
                     @auth
                         <livewire:ui.comment :commentable="$episode" />
                     @endauth
+                </div> --}}
+                <div class="w-3/4 basis-3/4">
+                    <livewire:ui.video :file="$episode->files->first()" />
+                    @auth
+                    @if ($collaboration)
+                    <livewire:ui.comment :commentable="$episode" :room="$collaboration->room" />
+                    @else
+                    <livewire:ui.comment :commentable="$episode" />
+                    @endif
+                    @endauth
                 </div>
+                @if ($collaboration)
+                <div class="w-1/4 basis-1/4">
+                    <livewire:series.collaboration :collaboration="$collaboration" />
+                </div>
+                @else
 
                 <div class="basis-1/4 w-1/4">
                     <div class="flex flex-col mx-3 p-3 bg-gray-100 rounded-lg">
@@ -89,23 +109,42 @@
                                     @endauth
                                 </div>
                             </div>
-                            <x-ui.button color="warning"
-                                class="mt-2 flex w-full justify-between items-center text-sm h-10 px-1 text-white"
-                                href="{{ $episode->season->series->imdb_url }}" target="_blank">
-                                <span>IMDB</span>
-                                <span class="text-lg">{{ $episode->rating }}</span>
-                            </x-ui.button>
+
+                            <div class="flex items-center justify-between w-full gap-4 mt-3">
+                                <div class="flex justify-between w-full gap-2">
+                                    <div class="flex flex-col items-center w-3/6 gap-2 basis-3/6 grow">
+                                        <x-ui.button data-tooltip-target="5" data-tooltip-trigger="hover" type="button" color="warning" class="flex items-center justify-between w-full h-10 px-1 mt-2 text-sm text-white" href="{{ $episode->season->series->imdb_url }}" target="_blank">
+                                            <span>IMDB</span>
+                                            <span class="text-lg">{{ $episode->rating }}</span>
+                                            <div id="5" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-black rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                                                More Details
+                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                            </div>
+                                        </x-ui.button>
+                                    </div>
+                                    @auth
+                                    <div class="flex flex-col items-center w-3/6 gap-2 basis-3/6 grow">
+                                        <x-ui.button data-tooltip-target="6" data-tooltip-trigger="hover" type="button" wire:click="collaborate" color="secondary" class="flex items-center justify-center w-full h-10 px-1 mt-2 text-sm text-white">
+                                            <i class="text-2xl fa-solid fa-share-from-square"></i>
+                                            <div id="6" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-black rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                                                Watch Together
+                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                            </div>
+                                        </x-ui.button>
+                                    </div>
+                                    @endauth
+                                </div>
+                            </div>
+
+
                             <div class="text-left text-gray-500 text-sm mt-5 border-l-8 border-gray-200 pl-2 pt-1 pb-4">
                                 {{ $episode->season->series->description }}
                             </div>
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
-
-
-
-
 
 
 
