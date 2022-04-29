@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ mix('css/style.css') }}">
 
+
     @livewireStyles
 
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css" />
@@ -43,7 +44,7 @@
                         <div class="h-36 flex items-center p-10 border-b justify-between mb-10">
                             <span class="text-2xl text-gray-600 font-semibold">@yield('title')</span>
                             @yield('header-actions')
-                            
+
                             @hasSection ('disable-search')
                             @else
                                 <livewire:ui.search />
@@ -66,7 +67,6 @@
     </div>
 
     @stack('modals')
-
     @livewireScripts
     {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
 
