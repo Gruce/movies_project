@@ -23,7 +23,7 @@
         </div>
         <div
             class="flex justify-between invisible w-full gap-1 opacity-0 group-hover:opacity-100 group-hover:visible group-hover:duration-300">
-            @if (str_contains($collaboration->collaborationable_type, 'Episode'))
+            {{-- @if (str_contains($collaboration->collaborationable_type, 'Episode'))
                 <x-ui.button color="error" class="text-2xs py-0.5 px-1 grow text-white"
                     href="{{ route('series-show', ['episode' => $collaboration->collaborationable->id, 'room' => $collaboration->room]) }}">
                     Watch Together
@@ -33,7 +33,13 @@
                     href="{{ route('movie-show', ['movie' => $collaboration->collaborationable->id, 'room' => $collaboration->room]) }}">
                     Watch Together
                 </x-ui.button>
-            @endif
+            @endif --}}
+
+            <x-ui.button color="error" class="text-2xs py-0.5 px-1 grow text-white"
+                href="{{ route(str_contains($collaboration->collaborationable_type, 'Episode') ? 'series-show' : 'movie-show',
+                [str_contains($collaboration->collaborationable_type, 'Episode') ? 'episode' : 'movie' => $collaboration->collaborationable->id,'room' => $collaboration->room]) }}">
+                Watch Together
+            </x-ui.button>
 
         </div>
     </div>
