@@ -23,7 +23,7 @@
                 except ones got the link.
             @endif
         </small>
-        @if (str_contains($collaboration->collaborationable_type, 'Episode'))
+        {{-- @if (str_contains($collaboration->collaborationable_type, 'Episode'))
             <input type="text" class="hidden"
                 value="{{ route('series-show', ['episode' => $collaboration->collaborationable->id, 'room' => $collaboration->room]) }}"
                 id="myInput">
@@ -31,7 +31,12 @@
             <input type="text" class="hidden"
                 value="{{ route('movie-show', ['movie' => $collaboration->collaborationable->id, 'room' => $collaboration->room]) }}"
                 id="inputLink">
-        @endif
+        @endif --}}
+
+            <input type="text" class="hidden"
+                value="{{ route(str_contains($collaboration->collaborationable_type, 'Episode') ? 'series-show' : 'movie-show',
+                [str_contains($collaboration->collaborationable_type, 'Episode') ? 'episode' : 'movie' => $collaboration->collaborationable->id,'room' => $collaboration->room]) }}"
+                id="inputLink">
 
         <div class="w-3/9 grow mt-4">
             <x-ui.button onclick="copyLink()" data-tooltip-target="6" data-tooltip-trigger="hover" type="button" color="secondary" class="flex items-center justify-center w-full h-10 px-1 mt-2 text-sm text-white">
