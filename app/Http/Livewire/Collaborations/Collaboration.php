@@ -28,7 +28,7 @@ class Collaboration extends Component {
         $this->collaborations = $collaboration->where('public', true)->get();
 
         // $this->participants = $participant->where('user_id')->get();
-        // dd($participants->user_id);
+        // dd($this->participants->user_id);
         
         // ->where('name','LIKE',$search)
 
