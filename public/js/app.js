@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 // packages/collapse/src/index.js
 function src_default(Alpine) {
   Alpine.directive("collapse", collapse);
-  collapse.inline = (el, {modifiers}) => {
+  collapse.inline = (el, { modifiers }) => {
     if (!modifiers.includes("min"))
       return;
     el._x_doShow = () => {
@@ -23,7 +23,7 @@ function src_default(Alpine) {
     el._x_doHide = () => {
     };
   };
-  function collapse(el, {modifiers}) {
+  function collapse(el, { modifiers }) {
     let duration = modifierValue(modifiers, "duration", 250) / 1e3;
     let floor = modifierValue(modifiers, "min", 0);
     let fullyHide = !modifiers.includes("min");
@@ -59,10 +59,10 @@ function src_default(Alpine) {
         }
         Alpine.transition(el, Alpine.setStyles, {
           during: transitionStyles,
-          start: {height: current + "px"},
-          end: {height: full + "px"}
+          start: { height: current + "px" },
+          end: { height: full + "px" }
         }, () => el._x_isShown = true, () => {
-          if (el.style.height == `${full}px`) {
+          if (el.getBoundingClientRect().height == full) {
             el.style.overflow = null;
           }
         });
@@ -73,8 +73,8 @@ function src_default(Alpine) {
         let full = el.getBoundingClientRect().height;
         Alpine.transition(el, setFunction, {
           during: transitionStyles,
-          start: {height: full + "px"},
-          end: {height: floor + "px"}
+          start: { height: full + "px" },
+          end: { height: floor + "px" }
         }, () => el.style.overflow = "hidden", () => {
           el._x_isShown = false;
           if (el.style.height == `${floor}px` && fullyHide) {
@@ -127,6 +127,7 @@ __webpack_require__.r(__webpack_exports__);
 var flushPending = false;
 var flushing = false;
 var queue = [];
+var lastFlushedIndex = -1;
 function scheduler(callback) {
   queueJob(callback);
 }
@@ -137,7 +138,7 @@ function queueJob(job) {
 }
 function dequeueJob(job) {
   let index = queue.indexOf(job);
-  if (index !== -1)
+  if (index !== -1 && index > lastFlushedIndex)
     queue.splice(index, 1);
 }
 function queueFlush() {
@@ -151,8 +152,10 @@ function flushJobs() {
   flushing = true;
   for (let i = 0; i < queue.length; i++) {
     queue[i]();
+    lastFlushedIndex = i;
   }
   queue.length = 0;
+  lastFlushedIndex = -1;
   flushing = false;
 }
 
@@ -170,13 +173,13 @@ function disableEffectScheduling(callback) {
 function setReactivityEngine(engine) {
   reactive = engine.reactive;
   release = engine.release;
-  effect = (callback) => engine.effect(callback, {scheduler: (task) => {
+  effect = (callback) => engine.effect(callback, { scheduler: (task) => {
     if (shouldSchedule) {
       scheduler(task);
     } else {
       task();
     }
-  }});
+  } });
   raw = engine.raw;
 }
 function overrideEffect(override) {
@@ -188,7 +191,7 @@ function elementBoundEffect(el) {
   let wrappedEffect = (callback) => {
     let effectReference = effect(callback);
     if (!el._x_effects) {
-      el._x_effects = new Set();
+      el._x_effects = /* @__PURE__ */ new Set();
       el._x_runEffects = () => {
         el._x_effects.forEach((i) => i());
       };
@@ -247,7 +250,7 @@ function cleanupAttributes(el, names) {
 var observer = new MutationObserver(onMutate);
 var currentlyObserving = false;
 function startObservingMutations() {
-  observer.observe(document, {subtree: true, childList: true, attributes: true, attributeOldValue: true});
+  observer.observe(document, { subtree: true, childList: true, attributes: true, attributeOldValue: true });
   currentlyObserving = true;
 }
 function stopObservingMutations() {
@@ -296,8 +299,8 @@ function onMutate(mutations) {
   }
   let addedNodes = [];
   let removedNodes = [];
-  let addedAttributes = new Map();
-  let removedAttributes = new Map();
+  let addedAttributes = /* @__PURE__ */ new Map();
+  let removedAttributes = /* @__PURE__ */ new Map();
   for (let i = 0; i < mutations.length; i++) {
     if (mutations[i].target._x_ignoreMutationObserver)
       continue;
@@ -312,7 +315,7 @@ function onMutate(mutations) {
       let add2 = () => {
         if (!addedAttributes.has(el))
           addedAttributes.set(el, []);
-        addedAttributes.get(el).push({name, value: el.getAttribute(name)});
+        addedAttributes.get(el).push({ name, value: el.getAttribute(name) });
       };
       let remove = () => {
         if (!removedAttributes.has(el))
@@ -449,7 +452,7 @@ function mergeProxies(objects) {
 function initInterceptors(data2) {
   let isObject2 = (val) => typeof val === "object" && !Array.isArray(val) && val !== null;
   let recurse = (obj, basePath = "") => {
-    Object.entries(Object.getOwnPropertyDescriptors(obj)).forEach(([key, {value, enumerable}]) => {
+    Object.entries(Object.getOwnPropertyDescriptors(obj)).forEach(([key, { value, enumerable }]) => {
       if (enumerable === false || value === void 0)
         return;
       let path = basePath === "" ? key : `${basePath}.${key}`;
@@ -518,7 +521,7 @@ function injectMagics(obj, el) {
     Object.defineProperty(obj, `$${name}`, {
       get() {
         let [utilities, cleanup2] = getElementBoundUtilities(el);
-        utilities = {interceptor, ...utilities};
+        utilities = { interceptor, ...utilities };
         onElRemoved(el, cleanup2);
         return callback(el, utilities);
       },
@@ -537,7 +540,7 @@ function tryCatch(el, expression, callback, ...args) {
   }
 }
 function handleError(error2, el, expression = void 0) {
-  Object.assign(error2, {el, expression});
+  Object.assign(error2, { el, expression });
   console.warn(`Alpine Expression Error: ${error2.message}
 
 ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
@@ -547,6 +550,13 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
 }
 
 // packages/alpinejs/src/evaluator.js
+var shouldAutoEvaluateFunctions = true;
+function dontAutoEvaluateFunctions(callback) {
+  let cache = shouldAutoEvaluateFunctions;
+  shouldAutoEvaluateFunctions = false;
+  callback();
+  shouldAutoEvaluateFunctions = cache;
+}
 function evaluate(el, expression, extras = {}) {
   let result;
   evaluateLater(el, expression)((value) => result = value, extras);
@@ -563,15 +573,12 @@ function normalEvaluator(el, expression) {
   let overriddenMagics = {};
   injectMagics(overriddenMagics, el);
   let dataStack = [overriddenMagics, ...closestDataStack(el)];
-  if (typeof expression === "function") {
-    return generateEvaluatorFromFunction(dataStack, expression);
-  }
-  let evaluator = generateEvaluatorFromString(dataStack, expression, el);
+  let evaluator = typeof expression === "function" ? generateEvaluatorFromFunction(dataStack, expression) : generateEvaluatorFromString(dataStack, expression, el);
   return tryCatch.bind(null, el, expression, evaluator);
 }
 function generateEvaluatorFromFunction(dataStack, func) {
   return (receiver = () => {
-  }, {scope: scope2 = {}, params = []} = {}) => {
+  }, { scope: scope2 = {}, params = [] } = {}) => {
     let result = func.apply(mergeProxies([scope2, ...dataStack]), params);
     runIfTypeOfFunction(receiver, result);
   };
@@ -583,7 +590,7 @@ function generateFunctionFromString(expression, el) {
   }
   let AsyncFunction = Object.getPrototypeOf(async function() {
   }).constructor;
-  let rightSideSafeExpression = /^[\n\s]*if.*\(.*\)/.test(expression) || /^(let|const)\s/.test(expression) ? `(() => { ${expression} })()` : expression;
+  let rightSideSafeExpression = /^[\n\s]*if.*\(.*\)/.test(expression) || /^(let|const)\s/.test(expression) ? `(async()=>{ ${expression} })()` : expression;
   const safeAsyncFunction = () => {
     try {
       return new AsyncFunction(["__self", "scope"], `with (scope) { __self.result = ${rightSideSafeExpression} }; __self.finished = true; return __self.result;`);
@@ -599,7 +606,7 @@ function generateFunctionFromString(expression, el) {
 function generateEvaluatorFromString(dataStack, expression, el) {
   let func = generateFunctionFromString(expression, el);
   return (receiver = () => {
-  }, {scope: scope2 = {}, params = []} = {}) => {
+  }, { scope: scope2 = {}, params = [] } = {}) => {
     func.result = void 0;
     func.finished = false;
     let completeScope = mergeProxies([scope2, ...dataStack]);
@@ -617,13 +624,15 @@ function generateEvaluatorFromString(dataStack, expression, el) {
   };
 }
 function runIfTypeOfFunction(receiver, value, scope2, params, el) {
-  if (typeof value === "function") {
+  if (shouldAutoEvaluateFunctions && typeof value === "function") {
     let result = value.apply(scope2, params);
     if (result instanceof Promise) {
       result.then((i) => runIfTypeOfFunction(receiver, i, scope2, params)).catch((error2) => handleError(error2, el, value));
     } else {
       receiver(result);
     }
+  } else if (typeof value === "object" && value instanceof Promise) {
+    value.then((i) => receiver(i));
   } else {
     receiver(value);
   }
@@ -640,10 +649,37 @@ function setPrefix(newPrefix) {
 var directiveHandlers = {};
 function directive(name, callback) {
   directiveHandlers[name] = callback;
+  return {
+    before(directive2) {
+      if (!directiveHandlers[directive2]) {
+        console.warn(
+          "Cannot find directive `${directive}`. `${name}` will use the default order of execution"
+        );
+        return;
+      }
+      const pos = directiveOrder.indexOf(directive2);
+      directiveOrder.splice(pos >= 0 ? pos : directiveOrder.indexOf("DEFAULT"), 0, name);
+    }
+  };
 }
 function directives(el, attributes, originalAttributeOverride) {
+  attributes = Array.from(attributes);
+  if (el._x_virtualDirectives) {
+    let vAttributes = Object.entries(el._x_virtualDirectives).map(([name, value]) => ({ name, value }));
+    let staticAttributes = attributesOnly(vAttributes);
+    vAttributes = vAttributes.map((attribute) => {
+      if (staticAttributes.find((attr) => attr.name === attribute.name)) {
+        return {
+          name: `x-bind:${attribute.name}`,
+          value: `"${attribute.value}"`
+        };
+      }
+      return attribute;
+    });
+    attributes = attributes.concat(vAttributes);
+  }
   let transformedAttributeMap = {};
-  let directives2 = Array.from(attributes).map(toTransformedAttributes((newName, oldName) => transformedAttributeMap[newName] = oldName)).filter(outNonAlpineAttributes).map(toParsedDirectives(transformedAttributeMap, originalAttributeOverride)).sort(byPriority);
+  let directives2 = attributes.map(toTransformedAttributes((newName, oldName) => transformedAttributeMap[newName] = oldName)).filter(outNonAlpineAttributes).map(toParsedDirectives(transformedAttributeMap, originalAttributeOverride)).sort(byPriority);
   return directives2.map((directive2) => {
     return getDirectiveHandler(el, directive2);
   });
@@ -652,7 +688,7 @@ function attributesOnly(attributes) {
   return Array.from(attributes).map(toTransformedAttributes()).filter((attr) => !outNonAlpineAttributes(attr));
 }
 var isDeferringHandlers = false;
-var directiveHandlerStacks = new Map();
+var directiveHandlerStacks = /* @__PURE__ */ new Map();
 var currentHandlerStackKey = Symbol();
 function deferHandlingDirectives(callback) {
   isDeferringHandlers = true;
@@ -702,33 +738,33 @@ function getDirectiveHandler(el, directive2) {
   fullHandler.runCleanups = cleanup2;
   return fullHandler;
 }
-var startingWith = (subject, replacement) => ({name, value}) => {
+var startingWith = (subject, replacement) => ({ name, value }) => {
   if (name.startsWith(subject))
     name = name.replace(subject, replacement);
-  return {name, value};
+  return { name, value };
 };
 var into = (i) => i;
 function toTransformedAttributes(callback = () => {
 }) {
-  return ({name, value}) => {
-    let {name: newName, value: newValue} = attributeTransformers.reduce((carry, transform) => {
+  return ({ name, value }) => {
+    let { name: newName, value: newValue } = attributeTransformers.reduce((carry, transform) => {
       return transform(carry);
-    }, {name, value});
+    }, { name, value });
     if (newName !== name)
       callback(newName, name);
-    return {name: newName, value: newValue};
+    return { name: newName, value: newValue };
   };
 }
 var attributeTransformers = [];
 function mapAttributes(callback) {
   attributeTransformers.push(callback);
 }
-function outNonAlpineAttributes({name}) {
+function outNonAlpineAttributes({ name }) {
   return alpineAttributeRegex().test(name);
 }
 var alpineAttributeRegex = () => new RegExp(`^${prefixAsString}([^:^.]+)\\b`);
 function toParsedDirectives(transformedAttributeMap, originalAttributeOverride) {
-  return ({name, value}) => {
+  return ({ name, value }) => {
     let typeMatch = name.match(alpineAttributeRegex());
     let valueMatch = name.match(/:([a-zA-Z0-9\-:]+)/);
     let modifiers = name.match(/\.[^.\]]+(?=[^\]]*$)/g) || [];
@@ -757,8 +793,7 @@ var directiveOrder = [
   "show",
   "if",
   DEFAULT,
-  "teleport",
-  "element"
+  "teleport"
 ];
 function byPriority(a, b) {
   let typeA = directiveOrder.indexOf(a.type) === -1 ? DEFAULT : a.type;
@@ -768,32 +803,15 @@ function byPriority(a, b) {
 
 // packages/alpinejs/src/utils/dispatch.js
 function dispatch(el, name, detail = {}) {
-  el.dispatchEvent(new CustomEvent(name, {
-    detail,
-    bubbles: true,
-    composed: true,
-    cancelable: true
-  }));
-}
-
-// packages/alpinejs/src/nextTick.js
-var tickStack = [];
-var isHolding = false;
-function nextTick(callback) {
-  tickStack.push(callback);
-  queueMicrotask(() => {
-    isHolding || setTimeout(() => {
-      releaseNextTicks();
-    });
-  });
-}
-function releaseNextTicks() {
-  isHolding = false;
-  while (tickStack.length)
-    tickStack.shift()();
-}
-function holdNextTicks() {
-  isHolding = true;
+  el.dispatchEvent(
+    new CustomEvent(name, {
+      detail,
+      bubbles: true,
+      // Allows events to pass the shadow DOM barrier.
+      composed: true,
+      cancelable: true
+    })
+  );
 }
 
 // packages/alpinejs/src/utils/walk.js
@@ -871,9 +889,16 @@ function findClosest(el, callback) {
 function isRoot(el) {
   return rootSelectors().some((selector) => el.matches(selector));
 }
-function initTree(el, walker = walk) {
+var initInterceptors2 = [];
+function interceptInit(callback) {
+  initInterceptors2.push(callback);
+}
+function initTree(el, walker = walk, intercept = () => {
+}) {
   deferHandlingDirectives(() => {
     walker(el, (el2, skip) => {
+      intercept(el2, skip);
+      initInterceptors2.forEach((i) => i(el2, skip));
       directives(el2, el2.attributes).forEach((handle) => handle());
       el2._x_ignore && skip();
     });
@@ -881,6 +906,32 @@ function initTree(el, walker = walk) {
 }
 function destroyTree(root) {
   walk(root, (el) => cleanupAttributes(el));
+}
+
+// packages/alpinejs/src/nextTick.js
+var tickStack = [];
+var isHolding = false;
+function nextTick(callback = () => {
+}) {
+  queueMicrotask(() => {
+    isHolding || setTimeout(() => {
+      releaseNextTicks();
+    });
+  });
+  return new Promise((res) => {
+    tickStack.push(() => {
+      callback();
+      res();
+    });
+  });
+}
+function releaseNextTicks() {
+  isHolding = false;
+  while (tickStack.length)
+    tickStack.shift()();
+}
+function holdNextTicks() {
+  isHolding = true;
 }
 
 // packages/alpinejs/src/utils/classes.js
@@ -981,7 +1032,7 @@ function once(callback, fallback = () => {
 }
 
 // packages/alpinejs/src/directives/x-transition.js
-directive("transition", (el, {value, modifiers, expression}, {evaluate: evaluate2}) => {
+directive("transition", (el, { value, modifiers, expression }, { evaluate: evaluate2 }) => {
   if (typeof expression === "function")
     expression = evaluate2(expression);
   if (!expression) {
@@ -993,7 +1044,7 @@ directive("transition", (el, {value, modifiers, expression}, {evaluate: evaluate
 function registerTransitionsFromClassString(el, classString, stage) {
   registerTransitionObject(el, setClasses, "");
   let directiveStorageMap = {
-    enter: (classes) => {
+    "enter": (classes) => {
       el._x_transition.enter.during = classes;
     },
     "enter-start": (classes) => {
@@ -1002,7 +1053,7 @@ function registerTransitionsFromClassString(el, classString, stage) {
     "enter-end": (classes) => {
       el._x_transition.enter.end = classes;
     },
-    leave: (classes) => {
+    "leave": (classes) => {
       el._x_transition.leave.during = classes;
     },
     "leave-start": (classes) => {
@@ -1074,8 +1125,8 @@ function registerTransitionsFromHelper(el, modifiers, stage) {
 function registerTransitionObject(el, setFunction, defaultValue = {}) {
   if (!el._x_transition)
     el._x_transition = {
-      enter: {during: defaultValue, start: defaultValue, end: defaultValue},
-      leave: {during: defaultValue, start: defaultValue, end: defaultValue},
+      enter: { during: defaultValue, start: defaultValue, end: defaultValue },
+      leave: { during: defaultValue, start: defaultValue, end: defaultValue },
       in(before = () => {
       }, after = () => {
       }) {
@@ -1097,9 +1148,8 @@ function registerTransitionObject(el, setFunction, defaultValue = {}) {
     };
 }
 window.Element.prototype._x_toggleAndCascadeWithTransitions = function(el, value, show, hide) {
-  let clickAwayCompatibleShow = () => {
-    document.visibilityState === "visible" ? requestAnimationFrame(show) : setTimeout(show);
-  };
+  const nextTick2 = document.visibilityState === "visible" ? requestAnimationFrame : setTimeout;
+  let clickAwayCompatibleShow = () => nextTick2(show);
   if (value) {
     if (el._x_transition && (el._x_transition.enter || el._x_transition.leave)) {
       el._x_transition.enter && (Object.entries(el._x_transition.enter.during).length || Object.entries(el._x_transition.enter.start).length || Object.entries(el._x_transition.enter.end).length) ? el._x_transition.in(show) : clickAwayCompatibleShow();
@@ -1111,7 +1161,7 @@ window.Element.prototype._x_toggleAndCascadeWithTransitions = function(el, value
   el._x_hidePromise = el._x_transition ? new Promise((resolve, reject) => {
     el._x_transition.out(() => {
     }, () => resolve(hide));
-    el._x_transitioning.beforeCancel(() => reject({isFromCancelledTransition: true}));
+    el._x_transitioning.beforeCancel(() => reject({ isFromCancelledTransition: true }));
   }) : Promise.resolve(hide);
   queueMicrotask(() => {
     let closest = closestHide(el);
@@ -1120,7 +1170,7 @@ window.Element.prototype._x_toggleAndCascadeWithTransitions = function(el, value
         closest._x_hideChildren = [];
       closest._x_hideChildren.push(el);
     } else {
-      queueMicrotask(() => {
+      nextTick2(() => {
         let hideAfterChildren = (el2) => {
           let carry = Promise.all([
             el2._x_hidePromise,
@@ -1144,7 +1194,7 @@ function closestHide(el) {
     return;
   return parent._x_hidePromise ? parent : closestHide(parent);
 }
-function transition(el, setFunction, {during, start: start2, end} = {}, before = () => {
+function transition(el, setFunction, { during, start: start2, end } = {}, before = () => {
 }, after = () => {
 }) {
   if (el._x_transitioning)
@@ -1261,6 +1311,9 @@ var isCloning = false;
 function skipDuringClone(callback, fallback = () => {
 }) {
   return (...args) => isCloning ? fallback(...args) : callback(...args);
+}
+function onlyDuringClone(callback) {
+  return (...args) => isCloning && callback(...args);
 }
 function clone(oldEl, newEl) {
   if (!newEl._x_dataStack)
@@ -1421,11 +1474,11 @@ function getBinding(el, name, fallback) {
   let attr = el.getAttribute(name);
   if (attr === null)
     return typeof fallback === "function" ? fallback() : fallback;
+  if (attr === "")
+    return true;
   if (isBooleanAttr(name)) {
     return !![name, "true"].includes(attr);
   }
-  if (attr === "")
-    return true;
   return attr;
 }
 
@@ -1484,8 +1537,13 @@ function getStores() {
 
 // packages/alpinejs/src/binds.js
 var binds = {};
-function bind2(name, object) {
-  binds[name] = typeof object !== "function" ? () => object : object;
+function bind2(name, bindings) {
+  let getBindings = typeof bindings !== "function" ? () => bindings : bindings;
+  if (name instanceof Element) {
+    applyBindingsObject(name, getBindings());
+  } else {
+    binds[name] = getBindings;
+  }
 }
 function injectBindingProviders(obj) {
   Object.entries(binds).forEach(([name, callback]) => {
@@ -1498,6 +1556,26 @@ function injectBindingProviders(obj) {
     });
   });
   return obj;
+}
+function applyBindingsObject(el, obj, original) {
+  let cleanupRunners = [];
+  while (cleanupRunners.length)
+    cleanupRunners.pop()();
+  let attributes = Object.entries(obj).map(([name, value]) => ({ name, value }));
+  let staticAttributes = attributesOnly(attributes);
+  attributes = attributes.map((attribute) => {
+    if (staticAttributes.find((attr) => attr.name === attribute.name)) {
+      return {
+        name: `x-bind:${attribute.name}`,
+        value: `"${attribute.value}"`
+      };
+    }
+    return attribute;
+  });
+  directives(el, attributes, original).map((handle) => {
+    cleanupRunners.push(handle.runCleanups);
+    handle();
+  });
 }
 
 // packages/alpinejs/src/datas.js
@@ -1533,25 +1611,34 @@ var Alpine = {
   get raw() {
     return raw;
   },
-  version: "3.9.6",
+  version: "3.12.0",
   flushAndStopDeferringMutations,
+  dontAutoEvaluateFunctions,
   disableEffectScheduling,
+  startObservingMutations,
+  stopObservingMutations,
   setReactivityEngine,
   closestDataStack,
   skipDuringClone,
+  onlyDuringClone,
   addRootSelector,
   addInitSelector,
   addScopeToNode,
   deferMutations,
   mapAttributes,
   evaluateLater,
+  interceptInit,
   setEvaluator,
   mergeProxies,
   findClosest,
   closestRoot,
+  destroyTree,
   interceptor,
+  // INTERNAL: not public API and is subject to change without major release.
   transition,
+  // INTERNAL
   setStyles,
+  // INTERNAL
   mutateDom,
   directive,
   throttle,
@@ -1568,6 +1655,7 @@ var Alpine = {
   clone,
   bound: getBinding,
   $data: scope,
+  walk,
   data,
   bind: bind2
 };
@@ -1575,34 +1663,13 @@ var alpine_default = Alpine;
 
 // node_modules/@vue/shared/dist/shared.esm-bundler.js
 function makeMap(str, expectsLowerCase) {
-  const map = Object.create(null);
+  const map = /* @__PURE__ */ Object.create(null);
   const list = str.split(",");
   for (let i = 0; i < list.length; i++) {
     map[list[i]] = true;
   }
   return expectsLowerCase ? (val) => !!map[val.toLowerCase()] : (val) => !!map[val];
 }
-var PatchFlagNames = {
-  [1]: `TEXT`,
-  [2]: `CLASS`,
-  [4]: `STYLE`,
-  [8]: `PROPS`,
-  [16]: `FULL_PROPS`,
-  [32]: `HYDRATE_EVENTS`,
-  [64]: `STABLE_FRAGMENT`,
-  [128]: `KEYED_FRAGMENT`,
-  [256]: `UNKEYED_FRAGMENT`,
-  [512]: `NEED_PATCH`,
-  [1024]: `DYNAMIC_SLOTS`,
-  [2048]: `DEV_ROOT_FRAGMENT`,
-  [-1]: `HOISTED`,
-  [-2]: `BAIL`
-};
-var slotFlagsText = {
-  [1]: "STABLE",
-  [2]: "DYNAMIC",
-  [3]: "FORWARDED"
-};
 var specialBooleanAttrs = `itemscope,allowfullscreen,formnovalidate,ismap,nomodule,novalidate,readonly`;
 var isBooleanAttr2 = /* @__PURE__ */ makeMap(specialBooleanAttrs + `,async,autofocus,autoplay,controls,default,defer,disabled,hidden,loop,open,required,reversed,scoped,seamless,checked,muted,multiple,selected`);
 var EMPTY_OBJ =  true ? Object.freeze({}) : 0;
@@ -1622,7 +1689,7 @@ var toRawType = (value) => {
 };
 var isIntegerKey = (key) => isString(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
 var cacheStringFunction = (fn) => {
-  const cache = Object.create(null);
+  const cache = /* @__PURE__ */ Object.create(null);
   return (str) => {
     const hit = cache[str];
     return hit || (cache[str] = fn(str));
@@ -1639,7 +1706,7 @@ var toHandlerKey = cacheStringFunction((str) => str ? `on${capitalize(str)}` : `
 var hasChanged = (value, oldValue) => value !== oldValue && (value === value || oldValue === oldValue);
 
 // node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
-var targetMap = new WeakMap();
+var targetMap = /* @__PURE__ */ new WeakMap();
 var effectStack = [];
 var activeEffect;
 var ITERATE_KEY = Symbol( true ? "iterate" : 0);
@@ -1696,7 +1763,7 @@ function createReactiveEffect(fn, options) {
   return effect3;
 }
 function cleanup(effect3) {
-  const {deps} = effect3;
+  const { deps } = effect3;
   if (deps.length) {
     for (let i = 0; i < deps.length; i++) {
       deps[i].delete(effect3);
@@ -1724,11 +1791,11 @@ function track(target, type, key) {
   }
   let depsMap = targetMap.get(target);
   if (!depsMap) {
-    targetMap.set(target, depsMap = new Map());
+    targetMap.set(target, depsMap = /* @__PURE__ */ new Map());
   }
   let dep = depsMap.get(key);
   if (!dep) {
-    depsMap.set(key, dep = new Set());
+    depsMap.set(key, dep = /* @__PURE__ */ new Set());
   }
   if (!dep.has(activeEffect)) {
     dep.add(activeEffect);
@@ -1748,7 +1815,7 @@ function trigger(target, type, key, newValue, oldValue, oldTarget) {
   if (!depsMap) {
     return;
   }
-  const effects = new Set();
+  const effects = /* @__PURE__ */ new Set();
   const add2 = (effectsToAdd) => {
     if (effectsToAdd) {
       effectsToAdd.forEach((effect3) => {
@@ -1959,14 +2026,17 @@ var toReadonly = (value) => isObject(value) ? readonly(value) : value;
 var toShallow = (value) => value;
 var getProto = (v) => Reflect.getPrototypeOf(v);
 function get$1(target, key, isReadonly = false, isShallow = false) {
-  target = target["__v_raw"];
+  target = target[
+    "__v_raw"
+    /* RAW */
+  ];
   const rawTarget = toRaw(target);
   const rawKey = toRaw(key);
   if (key !== rawKey) {
     !isReadonly && track(rawTarget, "get", key);
   }
   !isReadonly && track(rawTarget, "get", rawKey);
-  const {has: has2} = getProto(rawTarget);
+  const { has: has2 } = getProto(rawTarget);
   const wrap = isShallow ? toShallow : isReadonly ? toReadonly : toReactive;
   if (has2.call(rawTarget, key)) {
     return wrap(target.get(key));
@@ -1977,7 +2047,10 @@ function get$1(target, key, isReadonly = false, isShallow = false) {
   }
 }
 function has$1(key, isReadonly = false) {
-  const target = this["__v_raw"];
+  const target = this[
+    "__v_raw"
+    /* RAW */
+  ];
   const rawTarget = toRaw(target);
   const rawKey = toRaw(key);
   if (key !== rawKey) {
@@ -1987,7 +2060,10 @@ function has$1(key, isReadonly = false) {
   return key === rawKey ? target.has(key) : target.has(key) || target.has(rawKey);
 }
 function size(target, isReadonly = false) {
-  target = target["__v_raw"];
+  target = target[
+    "__v_raw"
+    /* RAW */
+  ];
   !isReadonly && track(toRaw(target), "iterate", ITERATE_KEY);
   return Reflect.get(target, "size", target);
 }
@@ -2005,7 +2081,7 @@ function add(value) {
 function set$1(key, value) {
   value = toRaw(value);
   const target = toRaw(this);
-  const {has: has2, get: get3} = getProto(target);
+  const { has: has2, get: get3 } = getProto(target);
   let hadKey = has2.call(target, key);
   if (!hadKey) {
     key = toRaw(key);
@@ -2024,7 +2100,7 @@ function set$1(key, value) {
 }
 function deleteEntry(key) {
   const target = toRaw(this);
-  const {has: has2, get: get3} = getProto(target);
+  const { has: has2, get: get3 } = getProto(target);
   let hadKey = has2.call(target, key);
   if (!hadKey) {
     key = toRaw(key);
@@ -2052,7 +2128,10 @@ function clear() {
 function createForEach(isReadonly, isShallow) {
   return function forEach(callback, thisArg) {
     const observed = this;
-    const target = observed["__v_raw"];
+    const target = observed[
+      "__v_raw"
+      /* RAW */
+    ];
     const rawTarget = toRaw(target);
     const wrap = isShallow ? toShallow : isReadonly ? toReadonly : toReactive;
     !isReadonly && track(rawTarget, "iterate", ITERATE_KEY);
@@ -2063,7 +2142,10 @@ function createForEach(isReadonly, isShallow) {
 }
 function createIterableMethod(method, isReadonly, isShallow) {
   return function(...args) {
-    const target = this["__v_raw"];
+    const target = this[
+      "__v_raw"
+      /* RAW */
+    ];
     const rawTarget = toRaw(target);
     const targetIsMap = isMap(rawTarget);
     const isPair = method === "entries" || method === Symbol.iterator && targetIsMap;
@@ -2072,13 +2154,15 @@ function createIterableMethod(method, isReadonly, isShallow) {
     const wrap = isShallow ? toShallow : isReadonly ? toReadonly : toReactive;
     !isReadonly && track(rawTarget, "iterate", isKeyOnly ? MAP_KEY_ITERATE_KEY : ITERATE_KEY);
     return {
+      // iterator protocol
       next() {
-        const {value, done} = innerIterator.next();
-        return done ? {value, done} : {
+        const { value, done } = innerIterator.next();
+        return done ? { value, done } : {
           value: isPair ? [wrap(value[0]), wrap(value[1])] : wrap(value),
           done
         };
       },
+      // iterable protocol
       [Symbol.iterator]() {
         return this;
       }
@@ -2132,10 +2216,22 @@ var readonlyInstrumentations = {
   has(key) {
     return has$1.call(this, key, true);
   },
-  add: createReadonlyMethod("add"),
-  set: createReadonlyMethod("set"),
-  delete: createReadonlyMethod("delete"),
-  clear: createReadonlyMethod("clear"),
+  add: createReadonlyMethod(
+    "add"
+    /* ADD */
+  ),
+  set: createReadonlyMethod(
+    "set"
+    /* SET */
+  ),
+  delete: createReadonlyMethod(
+    "delete"
+    /* DELETE */
+  ),
+  clear: createReadonlyMethod(
+    "clear"
+    /* CLEAR */
+  ),
   forEach: createForEach(true, false)
 };
 var shallowReadonlyInstrumentations = {
@@ -2148,10 +2244,22 @@ var shallowReadonlyInstrumentations = {
   has(key) {
     return has$1.call(this, key, true);
   },
-  add: createReadonlyMethod("add"),
-  set: createReadonlyMethod("set"),
-  delete: createReadonlyMethod("delete"),
-  clear: createReadonlyMethod("clear"),
+  add: createReadonlyMethod(
+    "add"
+    /* ADD */
+  ),
+  set: createReadonlyMethod(
+    "set"
+    /* SET */
+  ),
+  delete: createReadonlyMethod(
+    "delete"
+    /* DELETE */
+  ),
+  clear: createReadonlyMethod(
+    "clear"
+    /* CLEAR */
+  ),
   forEach: createForEach(true, true)
 };
 var iteratorMethods = ["keys", "values", "entries", Symbol.iterator];
@@ -2193,10 +2301,10 @@ function checkIdentityKeys(target, has2, key) {
     console.warn(`Reactive ${type} contains both the raw and reactive versions of the same object${type === `Map` ? ` as keys` : ``}, which can lead to inconsistencies. Avoid differentiating between the raw and reactive versions of an object and only use the reactive version if possible.`);
   }
 }
-var reactiveMap = new WeakMap();
-var shallowReactiveMap = new WeakMap();
-var readonlyMap = new WeakMap();
-var shallowReadonlyMap = new WeakMap();
+var reactiveMap = /* @__PURE__ */ new WeakMap();
+var shallowReactiveMap = /* @__PURE__ */ new WeakMap();
+var readonlyMap = /* @__PURE__ */ new WeakMap();
+var shallowReadonlyMap = /* @__PURE__ */ new WeakMap();
 function targetTypeMap(rawType) {
   switch (rawType) {
     case "Object":
@@ -2212,10 +2320,16 @@ function targetTypeMap(rawType) {
   }
 }
 function getTargetType(value) {
-  return value["__v_skip"] || !Object.isExtensible(value) ? 0 : targetTypeMap(toRawType(value));
+  return value[
+    "__v_skip"
+    /* SKIP */
+  ] || !Object.isExtensible(value) ? 0 : targetTypeMap(toRawType(value));
 }
 function reactive2(target) {
-  if (target && target["__v_isReadonly"]) {
+  if (target && target[
+    "__v_isReadonly"
+    /* IS_READONLY */
+  ]) {
     return target;
   }
   return createReactiveObject(target, false, mutableHandlers, mutableCollectionHandlers, reactiveMap);
@@ -2230,7 +2344,13 @@ function createReactiveObject(target, isReadonly, baseHandlers, collectionHandle
     }
     return target;
   }
-  if (target["__v_raw"] && !(isReadonly && target["__v_isReactive"])) {
+  if (target[
+    "__v_raw"
+    /* RAW */
+  ] && !(isReadonly && target[
+    "__v_isReactive"
+    /* IS_REACTIVE */
+  ])) {
     return target;
   }
   const existingProxy = proxyMap.get(target);
@@ -2246,7 +2366,10 @@ function createReactiveObject(target, isReadonly, baseHandlers, collectionHandle
   return proxy;
 }
 function toRaw(observed) {
-  return observed && toRaw(observed["__v_raw"]) || observed;
+  return observed && toRaw(observed[
+    "__v_raw"
+    /* RAW */
+  ]) || observed;
 }
 function isRef(r) {
   return Boolean(r && r.__v_isRef === true);
@@ -2259,7 +2382,7 @@ magic("nextTick", () => nextTick);
 magic("dispatch", (el) => dispatch.bind(dispatch, el));
 
 // packages/alpinejs/src/magics/$watch.js
-magic("watch", (el, {evaluateLater: evaluateLater2, effect: effect3}) => (key, callback) => {
+magic("watch", (el, { evaluateLater: evaluateLater2, effect: effect3 }) => (key, callback) => {
   let evaluate2 = evaluateLater2(key);
   let firstTime = true;
   let oldValue;
@@ -2339,11 +2462,44 @@ magic("el", (el) => el);
 warnMissingPluginMagic("Focus", "focus", "focus");
 warnMissingPluginMagic("Persist", "persist", "persist");
 function warnMissingPluginMagic(name, magicName, slug) {
-  magic(magicName, (el) => warn(`You can't use [$${directiveName}] without first installing the "${name}" plugin here: https://alpine.dev/plugins/${slug}`, el));
+  magic(magicName, (el) => warn(`You can't use [$${directiveName}] without first installing the "${name}" plugin here: https://alpinejs.dev/plugins/${slug}`, el));
+}
+
+// packages/alpinejs/src/entangle.js
+function entangle({ get: outerGet, set: outerSet }, { get: innerGet, set: innerSet }) {
+  let firstRun = true;
+  let outerHash, innerHash, outerHashLatest, innerHashLatest;
+  let reference = effect(() => {
+    let outer, inner;
+    if (firstRun) {
+      outer = outerGet();
+      innerSet(outer);
+      inner = innerGet();
+      firstRun = false;
+    } else {
+      outer = outerGet();
+      inner = innerGet();
+      outerHashLatest = JSON.stringify(outer);
+      innerHashLatest = JSON.stringify(inner);
+      if (outerHashLatest !== outerHash) {
+        inner = innerGet();
+        innerSet(outer);
+        inner = outer;
+      } else {
+        outerSet(inner);
+        outer = inner;
+      }
+    }
+    outerHash = JSON.stringify(outer);
+    innerHash = JSON.stringify(inner);
+  });
+  return () => {
+    release(reference);
+  };
 }
 
 // packages/alpinejs/src/directives/x-modelable.js
-directive("modelable", (el, {expression}, {effect: effect3, evaluateLater: evaluateLater2}) => {
+directive("modelable", (el, { expression }, { effect: effect3, evaluateLater: evaluateLater2, cleanup: cleanup2 }) => {
   let func = evaluateLater2(expression);
   let innerGet = () => {
     let result;
@@ -2352,7 +2508,7 @@ directive("modelable", (el, {expression}, {effect: effect3, evaluateLater: evalu
   };
   let evaluateInnerSet = evaluateLater2(`${expression} = __placeholder`);
   let innerSet = (val) => evaluateInnerSet(() => {
-  }, {scope: {__placeholder: val}});
+  }, { scope: { "__placeholder": val } });
   let initialValue = innerGet();
   innerSet(initialValue);
   queueMicrotask(() => {
@@ -2361,16 +2517,38 @@ directive("modelable", (el, {expression}, {effect: effect3, evaluateLater: evalu
     el._x_removeModelListeners["default"]();
     let outerGet = el._x_model.get;
     let outerSet = el._x_model.set;
-    effect3(() => innerSet(outerGet()));
-    effect3(() => outerSet(innerGet()));
+    let releaseEntanglement = entangle(
+      {
+        get() {
+          return outerGet();
+        },
+        set(value) {
+          outerSet(value);
+        }
+      },
+      {
+        get() {
+          return innerGet();
+        },
+        set(value) {
+          innerSet(value);
+        }
+      }
+    );
+    cleanup2(releaseEntanglement);
   });
 });
 
 // packages/alpinejs/src/directives/x-teleport.js
-directive("teleport", (el, {expression}, {cleanup: cleanup2}) => {
+var teleportContainerDuringClone = document.createElement("div");
+directive("teleport", (el, { modifiers, expression }, { cleanup: cleanup2 }) => {
   if (el.tagName.toLowerCase() !== "template")
     warn("x-teleport can only be used on a <template> tag", el);
-  let target = document.querySelector(expression);
+  let target = skipDuringClone(() => {
+    return document.querySelector(expression);
+  }, () => {
+    return teleportContainerDuringClone;
+  })();
   if (!target)
     warn(`Cannot find x-teleport element for selector: "${expression}"`);
   let clone2 = el.content.cloneNode(true).firstElementChild;
@@ -2386,7 +2564,13 @@ directive("teleport", (el, {expression}, {cleanup: cleanup2}) => {
   }
   addScopeToNode(clone2, {}, el);
   mutateDom(() => {
-    target.appendChild(clone2);
+    if (modifiers.includes("prepend")) {
+      target.parentNode.insertBefore(clone2, target);
+    } else if (modifiers.includes("append")) {
+      target.parentNode.insertBefore(clone2, target.nextSibling);
+    } else {
+      target.appendChild(clone2);
+    }
     initTree(clone2);
     clone2._x_ignore = true;
   });
@@ -2396,7 +2580,7 @@ directive("teleport", (el, {expression}, {cleanup: cleanup2}) => {
 // packages/alpinejs/src/directives/x-ignore.js
 var handler = () => {
 };
-handler.inline = (el, {modifiers}, {cleanup: cleanup2}) => {
+handler.inline = (el, { modifiers }, { cleanup: cleanup2 }) => {
   modifiers.includes("self") ? el._x_ignoreSelf = true : el._x_ignore = true;
   cleanup2(() => {
     modifiers.includes("self") ? delete el._x_ignoreSelf : delete el._x_ignore;
@@ -2405,7 +2589,7 @@ handler.inline = (el, {modifiers}, {cleanup: cleanup2}) => {
 directive("ignore", handler);
 
 // packages/alpinejs/src/directives/x-effect.js
-directive("effect", (el, {expression}, {effect: effect3}) => effect3(evaluateLater(el, expression)));
+directive("effect", (el, { expression }, { effect: effect3 }) => effect3(evaluateLater(el, expression)));
 
 // packages/alpinejs/src/utils/on.js
 function on(el, event, modifiers, callback) {
@@ -2492,6 +2676,10 @@ function isNumeric(subject) {
   return !Array.isArray(subject) && !isNaN(subject);
 }
 function kebabCase2(subject) {
+  if ([" ", "_"].includes(
+    subject
+  ))
+    return subject;
   return subject.replace(/([a-z])([A-Z])/g, "$1-$2").replace(/[_\s]/, "-").toLowerCase();
 }
 function isKeyEvent(event) {
@@ -2499,10 +2687,14 @@ function isKeyEvent(event) {
 }
 function isListeningForASpecificKeyThatHasntBeenPressed(e, modifiers) {
   let keyModifiers = modifiers.filter((i) => {
-    return !["window", "document", "prevent", "stop", "once"].includes(i);
+    return !["window", "document", "prevent", "stop", "once", "capture"].includes(i);
   });
   if (keyModifiers.includes("debounce")) {
     let debounceIndex = keyModifiers.indexOf("debounce");
+    keyModifiers.splice(debounceIndex, isNumeric((keyModifiers[debounceIndex + 1] || "invalid-wait").split("ms")[0]) ? 2 : 1);
+  }
+  if (keyModifiers.includes("throttle")) {
+    let debounceIndex = keyModifiers.indexOf("throttle");
     keyModifiers.splice(debounceIndex, isNumeric((keyModifiers[debounceIndex + 1] || "invalid-wait").split("ms")[0]) ? 2 : 1);
   }
   if (keyModifiers.length === 0)
@@ -2530,18 +2722,20 @@ function keyToModifiers(key) {
     return [];
   key = kebabCase2(key);
   let modifierToKeyMap = {
-    ctrl: "control",
-    slash: "/",
-    space: "-",
-    spacebar: "-",
-    cmd: "meta",
-    esc: "escape",
-    up: "arrow-up",
-    down: "arrow-down",
-    left: "arrow-left",
-    right: "arrow-right",
-    period: ".",
-    equal: "="
+    "ctrl": "control",
+    "slash": "/",
+    "space": " ",
+    "spacebar": " ",
+    "cmd": "meta",
+    "esc": "escape",
+    "up": "arrow-up",
+    "down": "arrow-down",
+    "left": "arrow-left",
+    "right": "arrow-right",
+    "period": ".",
+    "equal": "=",
+    "minus": "-",
+    "underscore": "_"
   };
   modifierToKeyMap[key] = key;
   return Object.keys(modifierToKeyMap).map((modifier) => {
@@ -2551,81 +2745,108 @@ function keyToModifiers(key) {
 }
 
 // packages/alpinejs/src/directives/x-model.js
-directive("model", (el, {modifiers, expression}, {effect: effect3, cleanup: cleanup2}) => {
-  let evaluate2 = evaluateLater(el, expression);
-  let assignmentExpression = `${expression} = rightSideOfExpression($event, ${expression})`;
-  let evaluateAssignment = evaluateLater(el, assignmentExpression);
-  var event = el.tagName.toLowerCase() === "select" || ["checkbox", "radio"].includes(el.type) || modifiers.includes("lazy") ? "change" : "input";
-  let assigmentFunction = generateAssignmentFunction(el, modifiers, expression);
-  let removeListener = on(el, event, modifiers, (e) => {
-    evaluateAssignment(() => {
-    }, {scope: {
-      $event: e,
-      rightSideOfExpression: assigmentFunction
-    }});
-  });
-  if (!el._x_removeModelListeners)
-    el._x_removeModelListeners = {};
-  el._x_removeModelListeners["default"] = removeListener;
-  cleanup2(() => el._x_removeModelListeners["default"]());
-  let evaluateSetModel = evaluateLater(el, `${expression} = __placeholder`);
-  el._x_model = {
-    get() {
-      let result;
-      evaluate2((value) => result = value);
-      return result;
-    },
-    set(value) {
-      evaluateSetModel(() => {
-      }, {scope: {__placeholder: value}});
+directive("model", (el, { modifiers, expression }, { effect: effect3, cleanup: cleanup2 }) => {
+  let scopeTarget = el;
+  if (modifiers.includes("parent")) {
+    scopeTarget = el.parentNode;
+  }
+  let evaluateGet = evaluateLater(scopeTarget, expression);
+  let evaluateSet;
+  if (typeof expression === "string") {
+    evaluateSet = evaluateLater(scopeTarget, `${expression} = __placeholder`);
+  } else if (typeof expression === "function" && typeof expression() === "string") {
+    evaluateSet = evaluateLater(scopeTarget, `${expression()} = __placeholder`);
+  } else {
+    evaluateSet = () => {
+    };
+  }
+  let getValue = () => {
+    let result;
+    evaluateGet((value) => result = value);
+    return isGetterSetter(result) ? result.get() : result;
+  };
+  let setValue = (value) => {
+    let result;
+    evaluateGet((value2) => result = value2);
+    if (isGetterSetter(result)) {
+      result.set(value);
+    } else {
+      evaluateSet(() => {
+      }, {
+        scope: { "__placeholder": value }
+      });
     }
   };
-  el._x_forceModelUpdate = () => {
-    evaluate2((value) => {
-      if (value === void 0 && expression.match(/\./))
-        value = "";
-      window.fromModel = true;
-      mutateDom(() => bind(el, "value", value));
-      delete window.fromModel;
-    });
-  };
-  effect3(() => {
-    if (modifiers.includes("unintrusive") && document.activeElement.isSameNode(el))
-      return;
-    el._x_forceModelUpdate();
-  });
-});
-function generateAssignmentFunction(el, modifiers, expression) {
-  if (el.type === "radio") {
+  if (modifiers.includes("fill") && el.hasAttribute("value") && (getValue() === null || getValue() === "")) {
+    setValue(el.value);
+  }
+  if (typeof expression === "string" && el.type === "radio") {
     mutateDom(() => {
       if (!el.hasAttribute("name"))
         el.setAttribute("name", expression);
     });
   }
-  return (event, currentValue) => {
-    return mutateDom(() => {
-      if (event instanceof CustomEvent && event.detail !== void 0) {
-        return event.detail || event.target.value;
-      } else if (el.type === "checkbox") {
-        if (Array.isArray(currentValue)) {
-          let newValue = modifiers.includes("number") ? safeParseNumber(event.target.value) : event.target.value;
-          return event.target.checked ? currentValue.concat([newValue]) : currentValue.filter((el2) => !checkedAttrLooseCompare2(el2, newValue));
-        } else {
-          return event.target.checked;
-        }
-      } else if (el.tagName.toLowerCase() === "select" && el.multiple) {
-        return modifiers.includes("number") ? Array.from(event.target.selectedOptions).map((option) => {
-          let rawValue = option.value || option.text;
-          return safeParseNumber(rawValue);
-        }) : Array.from(event.target.selectedOptions).map((option) => {
-          return option.value || option.text;
-        });
-      } else {
-        let rawValue = event.target.value;
-        return modifiers.includes("number") ? safeParseNumber(rawValue) : modifiers.includes("trim") ? rawValue.trim() : rawValue;
-      }
+  var event = el.tagName.toLowerCase() === "select" || ["checkbox", "radio"].includes(el.type) || modifiers.includes("lazy") ? "change" : "input";
+  let removeListener = isCloning ? () => {
+  } : on(el, event, modifiers, (e) => {
+    setValue(getInputValue(el, modifiers, e, getValue()));
+  });
+  if (!el._x_removeModelListeners)
+    el._x_removeModelListeners = {};
+  el._x_removeModelListeners["default"] = removeListener;
+  cleanup2(() => el._x_removeModelListeners["default"]());
+  if (el.form) {
+    let removeResetListener = on(el.form, "reset", [], (e) => {
+      nextTick(() => el._x_model && el._x_model.set(el.value));
     });
+    cleanup2(() => removeResetListener());
+  }
+  el._x_model = {
+    get() {
+      return getValue();
+    },
+    set(value) {
+      setValue(value);
+    }
   };
+  el._x_forceModelUpdate = (value) => {
+    value = value === void 0 ? getValue() : value;
+    if (value === void 0 && typeof expression === "string" && expression.match(/\./))
+      value = "";
+    window.fromModel = true;
+    mutateDom(() => bind(el, "value", value));
+    delete window.fromModel;
+  };
+  effect3(() => {
+    let value = getValue();
+    if (modifiers.includes("unintrusive") && document.activeElement.isSameNode(el))
+      return;
+    el._x_forceModelUpdate(value);
+  });
+});
+function getInputValue(el, modifiers, event, currentValue) {
+  return mutateDom(() => {
+    if (event instanceof CustomEvent && event.detail !== void 0) {
+      return typeof event.detail != "undefined" ? event.detail : event.target.value;
+    } else if (el.type === "checkbox") {
+      if (Array.isArray(currentValue)) {
+        let newValue = modifiers.includes("number") ? safeParseNumber(event.target.value) : event.target.value;
+        return event.target.checked ? currentValue.concat([newValue]) : currentValue.filter((el2) => !checkedAttrLooseCompare2(el2, newValue));
+      } else {
+        return event.target.checked;
+      }
+    } else if (el.tagName.toLowerCase() === "select" && el.multiple) {
+      return modifiers.includes("number") ? Array.from(event.target.selectedOptions).map((option) => {
+        let rawValue = option.value || option.text;
+        return safeParseNumber(rawValue);
+      }) : Array.from(event.target.selectedOptions).map((option) => {
+        return option.value || option.text;
+      });
+    } else {
+      let rawValue = event.target.value;
+      return modifiers.includes("number") ? safeParseNumber(rawValue) : modifiers.includes("trim") ? rawValue.trim() : rawValue;
+    }
+  });
 }
 function safeParseNumber(rawValue) {
   let number = rawValue ? parseFloat(rawValue) : null;
@@ -2637,13 +2858,16 @@ function checkedAttrLooseCompare2(valueA, valueB) {
 function isNumeric2(subject) {
   return !Array.isArray(subject) && !isNaN(subject);
 }
+function isGetterSetter(value) {
+  return value !== null && typeof value === "object" && typeof value.get === "function" && typeof value.set === "function";
+}
 
 // packages/alpinejs/src/directives/x-cloak.js
 directive("cloak", (el) => queueMicrotask(() => mutateDom(() => el.removeAttribute(prefix("cloak")))));
 
 // packages/alpinejs/src/directives/x-init.js
 addInitSelector(() => `[${prefix("init")}]`);
-directive("init", skipDuringClone((el, {expression}, {evaluate: evaluate2}) => {
+directive("init", skipDuringClone((el, { expression }, { evaluate: evaluate2 }) => {
   if (typeof expression === "string") {
     return !!expression.trim() && evaluate2(expression, {}, false);
   }
@@ -2651,7 +2875,7 @@ directive("init", skipDuringClone((el, {expression}, {evaluate: evaluate2}) => {
 }));
 
 // packages/alpinejs/src/directives/x-text.js
-directive("text", (el, {expression}, {effect: effect3, evaluateLater: evaluateLater2}) => {
+directive("text", (el, { expression }, { effect: effect3, evaluateLater: evaluateLater2 }) => {
   let evaluate2 = evaluateLater2(expression);
   effect3(() => {
     evaluate2((value) => {
@@ -2663,7 +2887,7 @@ directive("text", (el, {expression}, {effect: effect3, evaluateLater: evaluateLa
 });
 
 // packages/alpinejs/src/directives/x-html.js
-directive("html", (el, {expression}, {effect: effect3, evaluateLater: evaluateLater2}) => {
+directive("html", (el, { expression }, { effect: effect3, evaluateLater: evaluateLater2 }) => {
   let evaluate2 = evaluateLater2(expression);
   effect3(() => {
     evaluate2((value) => {
@@ -2679,58 +2903,40 @@ directive("html", (el, {expression}, {effect: effect3, evaluateLater: evaluateLa
 
 // packages/alpinejs/src/directives/x-bind.js
 mapAttributes(startingWith(":", into(prefix("bind:"))));
-directive("bind", (el, {value, modifiers, expression, original}, {effect: effect3}) => {
+directive("bind", (el, { value, modifiers, expression, original }, { effect: effect3 }) => {
   if (!value) {
-    return applyBindingsObject(el, expression, original, effect3);
+    let bindingProviders = {};
+    injectBindingProviders(bindingProviders);
+    let getBindings = evaluateLater(el, expression);
+    getBindings((bindings) => {
+      applyBindingsObject(el, bindings, original);
+    }, { scope: bindingProviders });
+    return;
   }
   if (value === "key")
     return storeKeyForXFor(el, expression);
   let evaluate2 = evaluateLater(el, expression);
   effect3(() => evaluate2((result) => {
-    if (result === void 0 && expression.match(/\./))
+    if (result === void 0 && typeof expression === "string" && expression.match(/\./)) {
       result = "";
+    }
     mutateDom(() => bind(el, value, result, modifiers));
   }));
 });
-function applyBindingsObject(el, expression, original, effect3) {
-  let bindingProviders = {};
-  injectBindingProviders(bindingProviders);
-  let getBindings = evaluateLater(el, expression);
-  let cleanupRunners = [];
-  while (cleanupRunners.length)
-    cleanupRunners.pop()();
-  getBindings((bindings) => {
-    let attributes = Object.entries(bindings).map(([name, value]) => ({name, value}));
-    let staticAttributes = attributesOnly(attributes);
-    attributes = attributes.map((attribute) => {
-      if (staticAttributes.find((attr) => attr.name === attribute.name)) {
-        return {
-          name: `x-bind:${attribute.name}`,
-          value: `"${attribute.value}"`
-        };
-      }
-      return attribute;
-    });
-    directives(el, attributes, original).map((handle) => {
-      cleanupRunners.push(handle.runCleanups);
-      handle();
-    });
-  }, {scope: bindingProviders});
-}
 function storeKeyForXFor(el, expression) {
   el._x_keyExpression = expression;
 }
 
 // packages/alpinejs/src/directives/x-data.js
 addRootSelector(() => `[${prefix("data")}]`);
-directive("data", skipDuringClone((el, {expression}, {cleanup: cleanup2}) => {
+directive("data", skipDuringClone((el, { expression }, { cleanup: cleanup2 }) => {
   expression = expression === "" ? "{}" : expression;
   let magicContext = {};
   injectMagics(magicContext, el);
   let dataProviderContext = {};
   injectDataProviders(dataProviderContext, magicContext);
-  let data2 = evaluate(el, expression, {scope: dataProviderContext});
-  if (data2 === void 0)
+  let data2 = evaluate(el, expression, { scope: dataProviderContext });
+  if (data2 === void 0 || data2 === true)
     data2 = {};
   injectMagics(data2, el);
   let reactiveData = reactive(data2);
@@ -2744,11 +2950,13 @@ directive("data", skipDuringClone((el, {expression}, {cleanup: cleanup2}) => {
 }));
 
 // packages/alpinejs/src/directives/x-show.js
-directive("show", (el, {modifiers, expression}, {effect: effect3}) => {
+directive("show", (el, { modifiers, expression }, { effect: effect3 }) => {
   let evaluate2 = evaluateLater(el, expression);
   if (!el._x_doHide)
     el._x_doHide = () => {
-      mutateDom(() => el.style.display = "none");
+      mutateDom(() => {
+        el.style.setProperty("display", "none", modifiers.includes("important") ? "important" : void 0);
+      });
     };
   if (!el._x_doShow)
     el._x_doShow = () => {
@@ -2769,13 +2977,16 @@ directive("show", (el, {modifiers, expression}, {effect: effect3}) => {
     el._x_isShown = true;
   };
   let clickAwayCompatibleShow = () => setTimeout(show);
-  let toggle = once((value) => value ? show() : hide(), (value) => {
-    if (typeof el._x_toggleAndCascadeWithTransitions === "function") {
-      el._x_toggleAndCascadeWithTransitions(el, value, show, hide);
-    } else {
-      value ? clickAwayCompatibleShow() : hide();
+  let toggle = once(
+    (value) => value ? show() : hide(),
+    (value) => {
+      if (typeof el._x_toggleAndCascadeWithTransitions === "function") {
+        el._x_toggleAndCascadeWithTransitions(el, value, show, hide);
+      } else {
+        value ? clickAwayCompatibleShow() : hide();
+      }
     }
-  });
+  );
   let oldValue;
   let firstTime = true;
   effect3(() => evaluate2((value) => {
@@ -2790,10 +3001,14 @@ directive("show", (el, {modifiers, expression}, {effect: effect3}) => {
 });
 
 // packages/alpinejs/src/directives/x-for.js
-directive("for", (el, {expression}, {effect: effect3, cleanup: cleanup2}) => {
+directive("for", (el, { expression }, { effect: effect3, cleanup: cleanup2 }) => {
   let iteratorNames = parseForExpression(expression);
   let evaluateItems = evaluateLater(el, iteratorNames.items);
-  let evaluateKey = evaluateLater(el, el._x_keyExpression || "index");
+  let evaluateKey = evaluateLater(
+    el,
+    // the x-bind:key expression is stored for our use instead of evaluated.
+    el._x_keyExpression || "index"
+  );
   el._x_prevKeys = [];
   el._x_lookup = {};
   effect3(() => loop(el, iteratorNames, evaluateItems, evaluateKey));
@@ -2819,13 +3034,13 @@ function loop(el, iteratorNames, evaluateItems, evaluateKey) {
     if (isObject2(items)) {
       items = Object.entries(items).map(([key, value]) => {
         let scope2 = getIterationScopeVariables(iteratorNames, value, key, items);
-        evaluateKey((value2) => keys.push(value2), {scope: {index: key, ...scope2}});
+        evaluateKey((value2) => keys.push(value2), { scope: { index: key, ...scope2 } });
         scopes.push(scope2);
       });
     } else {
       for (let i = 0; i < items.length; i++) {
         let scope2 = getIterationScopeVariables(iteratorNames, items[i], i, items);
-        evaluateKey((value) => keys.push(value), {scope: {index: i, ...scope2}});
+        evaluateKey((value) => keys.push(value), { scope: { index: i, ...scope2 } });
         scopes.push(scope2);
       }
     }
@@ -2955,7 +3170,7 @@ function isNumeric3(subject) {
 // packages/alpinejs/src/directives/x-ref.js
 function handler2() {
 }
-handler2.inline = (el, {expression}, {cleanup: cleanup2}) => {
+handler2.inline = (el, { expression }, { cleanup: cleanup2 }) => {
   let root = closestRoot(el);
   if (!root._x_refs)
     root._x_refs = {};
@@ -2965,7 +3180,7 @@ handler2.inline = (el, {expression}, {cleanup: cleanup2}) => {
 directive("ref", handler2);
 
 // packages/alpinejs/src/directives/x-if.js
-directive("if", (el, {expression}, {effect: effect3, cleanup: cleanup2}) => {
+directive("if", (el, { expression }, { effect: effect3, cleanup: cleanup2 }) => {
   let evaluate2 = evaluateLater(el, expression);
   let show = () => {
     if (el._x_currentIfEl)
@@ -3001,14 +3216,14 @@ directive("if", (el, {expression}, {effect: effect3, cleanup: cleanup2}) => {
 });
 
 // packages/alpinejs/src/directives/x-id.js
-directive("id", (el, {expression}, {evaluate: evaluate2}) => {
+directive("id", (el, { expression }, { evaluate: evaluate2 }) => {
   let names = evaluate2(expression);
   names.forEach((name) => setIdRoot(el, name));
 });
 
 // packages/alpinejs/src/directives/x-on.js
 mapAttributes(startingWith("@", into(prefix("on:"))));
-directive("on", skipDuringClone((el, {value, modifiers, expression}, {cleanup: cleanup2}) => {
+directive("on", skipDuringClone((el, { value, modifiers, expression }, { cleanup: cleanup2 }) => {
   let evaluate2 = expression ? evaluateLater(el, expression) : () => {
   };
   if (el.tagName.toLowerCase() === "template") {
@@ -3019,7 +3234,7 @@ directive("on", skipDuringClone((el, {value, modifiers, expression}, {cleanup: c
   }
   let removeListener = on(el, value, modifiers, (e) => {
     evaluate2(() => {
-    }, {scope: {$event: e}, params: [e]});
+    }, { scope: { "$event": e }, params: [e] });
   });
   cleanup2(() => removeListener());
 }));
@@ -3028,13 +3243,14 @@ directive("on", skipDuringClone((el, {value, modifiers, expression}, {cleanup: c
 warnMissingPluginDirective("Collapse", "collapse", "collapse");
 warnMissingPluginDirective("Intersect", "intersect", "intersect");
 warnMissingPluginDirective("Focus", "trap", "focus");
+warnMissingPluginDirective("Mask", "mask", "mask");
 function warnMissingPluginDirective(name, directiveName2, slug) {
-  directive(directiveName2, (el) => warn(`You can't use [x-${directiveName2}] without first installing the "${name}" plugin here: https://alpine.dev/plugins/${slug}`, el));
+  directive(directiveName2, (el) => warn(`You can't use [x-${directiveName2}] without first installing the "${name}" plugin here: https://alpinejs.dev/plugins/${slug}`, el));
 }
 
 // packages/alpinejs/src/index.js
 alpine_default.setEvaluator(normalEvaluator);
-alpine_default.setReactivityEngine({reactive: reactive2, effect: effect2, release: stop, raw: toRaw});
+alpine_default.setReactivityEngine({ reactive: reactive2, effect: effect2, release: stop, raw: toRaw });
 var src_default = alpine_default;
 
 // packages/alpinejs/builds/module.js
@@ -5212,7 +5428,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
-
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].plugin(_alpinejs_collapse__WEBPACK_IMPORTED_MODULE_1__["default"]);
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
@@ -5226,6 +5441,7 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -5234,13 +5450,17 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
+
 // import Echo from 'laravel-echo';
+
 // window.Pusher = require('pusher-js');
+
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
 //     key: process.env.MIX_PUSHER_APP_KEY,
